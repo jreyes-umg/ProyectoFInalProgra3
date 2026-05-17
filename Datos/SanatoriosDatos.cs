@@ -8,5 +8,23 @@ namespace Datos
 {
     internal class SanatoriosDatos
     {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
