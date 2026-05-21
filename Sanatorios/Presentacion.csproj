@@ -101,6 +101,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="JuanDavid\LaboratoriosForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JuanDavid\LaboratoriosForms.Designer.cs">
+      <DependentUpon>LaboratoriosForms.cs</DependentUpon>
+    </Compile>
     <Compile Include="JuanDavid\MedicosForms.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +115,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="JuanDavid\LaboratoriosForms.resx">
+      <DependentUpon>LaboratoriosForms.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="JuanDavid\MedicosForms.resx">
       <DependentUpon>MedicosForms.cs</DependentUpon>
     </EmbeddedResource>

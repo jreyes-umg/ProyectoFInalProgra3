@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sanatorios
+namespace Sanatorios.JuanDavid
 {
-    public partial class MedicosForms : Form
+    public partial class LaboratoriosForms : Form
     {
-        public MedicosForms()
+        public LaboratoriosForms()
         {
             InitializeComponent();
-        }
-
-        private void MedicosForms_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

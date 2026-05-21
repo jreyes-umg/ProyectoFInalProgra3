@@ -21,7 +21,7 @@ namespace Entidad
         public decimal BonoExperiencia { get; set; }
         public bool Estado { get; set; }
         public string UsuarioSistema { get; set; }
-        public DateTime.Date FechaSistema { get; set; }
-        public DateTime.Time HoraSistema { get; set; }
+        public DateTime FechaSistema { get; set; }
+        public DateTime HoraSistema { get; set; }
     }
 }
