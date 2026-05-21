@@ -53,6 +53,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="SegurosMedicosEntidad.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
