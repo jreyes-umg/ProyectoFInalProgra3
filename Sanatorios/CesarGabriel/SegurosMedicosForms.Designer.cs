@@ -62,6 +62,10 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtpHoraSistema = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtUsuarioSistema = new System.Windows.Forms.TextBox();
             this.rdbActivo = new System.Windows.Forms.RadioButton();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -72,10 +76,6 @@
             this.txtCodigomedico = new System.Windows.Forms.TextBox();
             this.CodigoSeguro = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.txtUsuarioSistema = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dtpHoraSistema = new System.Windows.Forms.DateTimePicker();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroMedicos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMontoMaximo)).BeginInit();
@@ -510,7 +510,38 @@
             this.groupBox1.Size = new System.Drawing.Size(974, 403);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Datos del doctor";
+            // 
+            // dtpHoraSistema
+            // 
+            this.dtpHoraSistema.Location = new System.Drawing.Point(617, 227);
+            this.dtpHoraSistema.Name = "dtpHoraSistema";
+            this.dtpHoraSistema.Size = new System.Drawing.Size(209, 20);
+            this.dtpHoraSistema.TabIndex = 40;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(616, 186);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(209, 20);
+            this.dateTimePicker1.TabIndex = 39;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(494, 230);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(73, 13);
+            this.label3.TabIndex = 38;
+            this.label3.Text = "Hora Sistema:";
+            // 
+            // txtUsuarioSistema
+            // 
+            this.txtUsuarioSistema.Location = new System.Drawing.Point(616, 134);
+            this.txtUsuarioSistema.Margin = new System.Windows.Forms.Padding(2);
+            this.txtUsuarioSistema.Name = "txtUsuarioSistema";
+            this.txtUsuarioSistema.Size = new System.Drawing.Size(210, 20);
+            this.txtUsuarioSistema.TabIndex = 37;
             // 
             // rdbActivo
             // 
@@ -611,38 +642,6 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1024, 488);
             this.tabControl1.TabIndex = 36;
-            // 
-            // txtUsuarioSistema
-            // 
-            this.txtUsuarioSistema.Location = new System.Drawing.Point(616, 134);
-            this.txtUsuarioSistema.Margin = new System.Windows.Forms.Padding(2);
-            this.txtUsuarioSistema.Name = "txtUsuarioSistema";
-            this.txtUsuarioSistema.Size = new System.Drawing.Size(210, 20);
-            this.txtUsuarioSistema.TabIndex = 37;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(494, 230);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 13);
-            this.label3.TabIndex = 38;
-            this.label3.Text = "Hora Sistema:";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(616, 186);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(209, 20);
-            this.dateTimePicker1.TabIndex = 39;
-            // 
-            // dtpHoraSistema
-            // 
-            this.dtpHoraSistema.Location = new System.Drawing.Point(617, 227);
-            this.dtpHoraSistema.Name = "dtpHoraSistema";
-            this.dtpHoraSistema.Size = new System.Drawing.Size(209, 20);
-            this.dtpHoraSistema.TabIndex = 40;
             // 
             // SegurosMedicosForms
             // 

@@ -46,14 +46,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="CesarGabriel\DetallesFacturasEntidad.cs" />
+    <Compile Include="CesarGabriel\FacturasEntidad.cs" />
     <Compile Include="MeedicosEntidad.cs" />
+    <Compile Include="CesarGabriel\PagosEntidad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="SegurosMedicosEntidad.cs" />
+    <Compile Include="CesarGabriel\SegurosMedicosEntidad.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
