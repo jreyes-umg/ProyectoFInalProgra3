@@ -41,16 +41,14 @@
             this.txtBuscarNombre = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnCerrar = new FontAwesome.Sharp.IconButton();
-            this.nudBonoporexperiencia = new System.Windows.Forms.NumericUpDown();
-            this.nudAñosdeexperiencia = new System.Windows.Forms.NumericUpDown();
-            this.nudhonorarioBase = new System.Windows.Forms.NumericUpDown();
+            this.nudMontoMaximo = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.picPrestamoLibros = new System.Windows.Forms.PictureBox();
-            this.txtEspecialidad = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtPorcentajeCobertura = new System.Windows.Forms.TextBox();
+            this.txtTipoSeguro = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtcorreo = new System.Windows.Forms.TextBox();
+            this.txtDireccion = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.btnEditar = new FontAwesome.Sharp.IconButton();
             this.btnGuardar = new FontAwesome.Sharp.IconButton();
@@ -60,7 +58,7 @@
             this.rdbInactivo = new System.Windows.Forms.RadioButton();
             this.label9 = new System.Windows.Forms.Label();
             this.BtnCerrarr = new FontAwesome.Sharp.IconButton();
-            this.label4 = new System.Windows.Forms.Label();
+            this.NombreSeguro = new System.Windows.Forms.Label();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -70,15 +68,17 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtNombreUsuario = new System.Windows.Forms.TextBox();
+            this.txtNombreSeguro = new System.Windows.Forms.TextBox();
             this.txtCodigomedico = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.CodigoSeguro = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.txtUsuarioSistema = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpHoraSistema = new System.Windows.Forms.DateTimePicker();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroMedicos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudBonoporexperiencia)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAñosdeexperiencia)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudhonorarioBase)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMontoMaximo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPrestamoLibros)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -251,43 +251,18 @@
             this.btnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCerrar.UseVisualStyleBackColor = true;
             // 
-            // nudBonoporexperiencia
+            // nudMontoMaximo
             // 
-            this.nudBonoporexperiencia.DecimalPlaces = 2;
-            this.nudBonoporexperiencia.Location = new System.Drawing.Point(617, 182);
-            this.nudBonoporexperiencia.Maximum = new decimal(new int[] {
+            this.nudMontoMaximo.DecimalPlaces = 2;
+            this.nudMontoMaximo.Location = new System.Drawing.Point(616, 88);
+            this.nudMontoMaximo.Maximum = new decimal(new int[] {
             90000,
             0,
             0,
             0});
-            this.nudBonoporexperiencia.Name = "nudBonoporexperiencia";
-            this.nudBonoporexperiencia.Size = new System.Drawing.Size(211, 20);
-            this.nudBonoporexperiencia.TabIndex = 36;
-            // 
-            // nudAñosdeexperiencia
-            // 
-            this.nudAñosdeexperiencia.Location = new System.Drawing.Point(616, 135);
-            this.nudAñosdeexperiencia.Maximum = new decimal(new int[] {
-            90000,
-            0,
-            0,
-            0});
-            this.nudAñosdeexperiencia.Name = "nudAñosdeexperiencia";
-            this.nudAñosdeexperiencia.Size = new System.Drawing.Size(211, 20);
-            this.nudAñosdeexperiencia.TabIndex = 35;
-            // 
-            // nudhonorarioBase
-            // 
-            this.nudhonorarioBase.DecimalPlaces = 2;
-            this.nudhonorarioBase.Location = new System.Drawing.Point(616, 88);
-            this.nudhonorarioBase.Maximum = new decimal(new int[] {
-            90000,
-            0,
-            0,
-            0});
-            this.nudhonorarioBase.Name = "nudhonorarioBase";
-            this.nudhonorarioBase.Size = new System.Drawing.Size(211, 20);
-            this.nudhonorarioBase.TabIndex = 34;
+            this.nudMontoMaximo.Name = "nudMontoMaximo";
+            this.nudMontoMaximo.Size = new System.Drawing.Size(211, 20);
+            this.nudMontoMaximo.TabIndex = 34;
             // 
             // label1
             // 
@@ -312,21 +287,21 @@
             this.picPrestamoLibros.TabIndex = 38;
             this.picPrestamoLibros.TabStop = false;
             // 
-            // txtEspecialidad
+            // txtPorcentajeCobertura
             // 
-            this.txtEspecialidad.Location = new System.Drawing.Point(133, 186);
-            this.txtEspecialidad.Margin = new System.Windows.Forms.Padding(2);
-            this.txtEspecialidad.Name = "txtEspecialidad";
-            this.txtEspecialidad.Size = new System.Drawing.Size(236, 20);
-            this.txtEspecialidad.TabIndex = 33;
+            this.txtPorcentajeCobertura.Location = new System.Drawing.Point(133, 186);
+            this.txtPorcentajeCobertura.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPorcentajeCobertura.Name = "txtPorcentajeCobertura";
+            this.txtPorcentajeCobertura.Size = new System.Drawing.Size(236, 20);
+            this.txtPorcentajeCobertura.TabIndex = 33;
             // 
-            // textBox2
+            // txtTipoSeguro
             // 
-            this.textBox2.Location = new System.Drawing.Point(133, 134);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(236, 20);
-            this.textBox2.TabIndex = 32;
+            this.txtTipoSeguro.Location = new System.Drawing.Point(133, 134);
+            this.txtTipoSeguro.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTipoSeguro.Name = "txtTipoSeguro";
+            this.txtTipoSeguro.Size = new System.Drawing.Size(236, 20);
+            this.txtTipoSeguro.TabIndex = 32;
             // 
             // txtTelefono
             // 
@@ -342,17 +317,17 @@
             this.label10.Location = new System.Drawing.Point(494, 189);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(107, 13);
+            this.label10.Size = new System.Drawing.Size(80, 13);
             this.label10.TabIndex = 29;
-            this.label10.Text = "Bono de experiencia:";
+            this.label10.Text = "Fecha Sistema:";
             // 
-            // txtcorreo
+            // txtDireccion
             // 
-            this.txtcorreo.Location = new System.Drawing.Point(617, 44);
-            this.txtcorreo.Margin = new System.Windows.Forms.Padding(2);
-            this.txtcorreo.Name = "txtcorreo";
-            this.txtcorreo.Size = new System.Drawing.Size(210, 20);
-            this.txtcorreo.TabIndex = 28;
+            this.txtDireccion.Location = new System.Drawing.Point(617, 44);
+            this.txtDireccion.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Size = new System.Drawing.Size(210, 20);
+            this.txtDireccion.TabIndex = 28;
             // 
             // label13
             // 
@@ -360,9 +335,9 @@
             this.label13.Location = new System.Drawing.Point(494, 47);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(41, 13);
+            this.label13.Size = new System.Drawing.Size(55, 13);
             this.label13.TabIndex = 27;
-            this.label13.Text = "Correo:";
+            this.label13.Text = "Direccion:";
             // 
             // btnEditar
             // 
@@ -442,7 +417,7 @@
             // rdbInactivo
             // 
             this.rdbInactivo.AutoSize = true;
-            this.rdbInactivo.Location = new System.Drawing.Point(616, 251);
+            this.rdbInactivo.Location = new System.Drawing.Point(189, 308);
             this.rdbInactivo.Margin = new System.Windows.Forms.Padding(2);
             this.rdbInactivo.Name = "rdbInactivo";
             this.rdbInactivo.Size = new System.Drawing.Size(63, 17);
@@ -454,12 +429,12 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(43, 189);
+            this.label9.Location = new System.Drawing.Point(4, 189);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(70, 13);
+            this.label9.Size = new System.Drawing.Size(125, 13);
             this.label9.TabIndex = 12;
-            this.label9.Text = "Especialidad:";
+            this.label9.Text = "Porcentaje de Cobertura:";
             // 
             // BtnCerrarr
             // 
@@ -476,15 +451,15 @@
             this.BtnCerrarr.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnCerrarr.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // NombreSeguro
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(66, 95);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 13);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Nombre:";
+            this.NombreSeguro.AutoSize = true;
+            this.NombreSeguro.Location = new System.Drawing.Point(28, 95);
+            this.NombreSeguro.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.NombreSeguro.Name = "NombreSeguro";
+            this.NombreSeguro.Size = new System.Drawing.Size(99, 13);
+            this.NombreSeguro.TabIndex = 2;
+            this.NombreSeguro.Text = "Nombre de Seguro:";
             // 
             // tabPage2
             // 
@@ -500,14 +475,16 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.nudBonoporexperiencia);
-            this.groupBox1.Controls.Add(this.nudAñosdeexperiencia);
-            this.groupBox1.Controls.Add(this.nudhonorarioBase);
-            this.groupBox1.Controls.Add(this.txtEspecialidad);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.dtpHoraSistema);
+            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.txtUsuarioSistema);
+            this.groupBox1.Controls.Add(this.nudMontoMaximo);
+            this.groupBox1.Controls.Add(this.txtPorcentajeCobertura);
+            this.groupBox1.Controls.Add(this.txtTipoSeguro);
             this.groupBox1.Controls.Add(this.txtTelefono);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.txtcorreo);
+            this.groupBox1.Controls.Add(this.txtDireccion);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.btnEliminar);
             this.groupBox1.Controls.Add(this.btnEditar);
@@ -522,10 +499,10 @@
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtNombreUsuario);
-            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.txtNombreSeguro);
+            this.groupBox1.Controls.Add(this.NombreSeguro);
             this.groupBox1.Controls.Add(this.txtCodigomedico);
-            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.CodigoSeguro);
             this.groupBox1.Location = new System.Drawing.Point(18, 22);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
@@ -538,7 +515,7 @@
             // rdbActivo
             // 
             this.rdbActivo.AutoSize = true;
-            this.rdbActivo.Location = new System.Drawing.Point(617, 226);
+            this.rdbActivo.Location = new System.Drawing.Point(190, 283);
             this.rdbActivo.Margin = new System.Windows.Forms.Padding(2);
             this.rdbActivo.Name = "rdbActivo";
             this.rdbActivo.Size = new System.Drawing.Size(55, 17);
@@ -550,7 +527,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(494, 230);
+            this.label12.Location = new System.Drawing.Point(67, 287);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(43, 13);
@@ -573,9 +550,9 @@
             this.label8.Location = new System.Drawing.Point(494, 91);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(83, 13);
+            this.label8.Size = new System.Drawing.Size(79, 13);
             this.label8.TabIndex = 10;
-            this.label8.Text = "Honorario Base:";
+            this.label8.Text = "Monto Maximo:";
             // 
             // label7
             // 
@@ -583,27 +560,27 @@
             this.label7.Location = new System.Drawing.Point(494, 137);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(106, 13);
+            this.label7.Size = new System.Drawing.Size(86, 13);
             this.label7.TabIndex = 8;
-            this.label7.Text = "Años de experiencia:";
+            this.label7.Text = "Usuario Sistema:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(66, 144);
+            this.label6.Location = new System.Drawing.Point(43, 141);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 13);
+            this.label6.Size = new System.Drawing.Size(83, 13);
             this.label6.TabIndex = 6;
-            this.label6.Text = "Apellido:";
+            this.label6.Text = "Tipo de Seguro:";
             // 
-            // txtNombreUsuario
+            // txtNombreSeguro
             // 
-            this.txtNombreUsuario.Location = new System.Drawing.Point(133, 88);
-            this.txtNombreUsuario.Margin = new System.Windows.Forms.Padding(2);
-            this.txtNombreUsuario.Name = "txtNombreUsuario";
-            this.txtNombreUsuario.Size = new System.Drawing.Size(236, 20);
-            this.txtNombreUsuario.TabIndex = 3;
+            this.txtNombreSeguro.Location = new System.Drawing.Point(133, 88);
+            this.txtNombreSeguro.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNombreSeguro.Name = "txtNombreSeguro";
+            this.txtNombreSeguro.Size = new System.Drawing.Size(236, 20);
+            this.txtNombreSeguro.TabIndex = 3;
             // 
             // txtCodigomedico
             // 
@@ -614,15 +591,15 @@
             this.txtCodigomedico.Size = new System.Drawing.Size(236, 20);
             this.txtCodigomedico.TabIndex = 1;
             // 
-            // label3
+            // CodigoSeguro
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(32, 51);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Codigo Medico:";
+            this.CodigoSeguro.AutoSize = true;
+            this.CodigoSeguro.Location = new System.Drawing.Point(32, 51);
+            this.CodigoSeguro.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CodigoSeguro.Name = "CodigoSeguro";
+            this.CodigoSeguro.Size = new System.Drawing.Size(95, 13);
+            this.CodigoSeguro.TabIndex = 0;
+            this.CodigoSeguro.Text = "Codigo de Seguro:";
             // 
             // tabControl1
             // 
@@ -634,6 +611,38 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1024, 488);
             this.tabControl1.TabIndex = 36;
+            // 
+            // txtUsuarioSistema
+            // 
+            this.txtUsuarioSistema.Location = new System.Drawing.Point(616, 134);
+            this.txtUsuarioSistema.Margin = new System.Windows.Forms.Padding(2);
+            this.txtUsuarioSistema.Name = "txtUsuarioSistema";
+            this.txtUsuarioSistema.Size = new System.Drawing.Size(210, 20);
+            this.txtUsuarioSistema.TabIndex = 37;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(494, 230);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(73, 13);
+            this.label3.TabIndex = 38;
+            this.label3.Text = "Hora Sistema:";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(616, 186);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(209, 20);
+            this.dateTimePicker1.TabIndex = 39;
+            // 
+            // dtpHoraSistema
+            // 
+            this.dtpHoraSistema.Location = new System.Drawing.Point(617, 227);
+            this.dtpHoraSistema.Name = "dtpHoraSistema";
+            this.dtpHoraSistema.Size = new System.Drawing.Size(209, 20);
+            this.dtpHoraSistema.TabIndex = 40;
             // 
             // SegurosMedicosForms
             // 
@@ -649,9 +658,7 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroMedicos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudBonoporexperiencia)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAñosdeexperiencia)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudhonorarioBase)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMontoMaximo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPrestamoLibros)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -676,16 +683,14 @@
         private System.Windows.Forms.TextBox txtBuscarNombre;
         private System.Windows.Forms.Label label2;
         private FontAwesome.Sharp.IconButton btnCerrar;
-        private System.Windows.Forms.NumericUpDown nudBonoporexperiencia;
-        private System.Windows.Forms.NumericUpDown nudAñosdeexperiencia;
-        private System.Windows.Forms.NumericUpDown nudhonorarioBase;
+        private System.Windows.Forms.NumericUpDown nudMontoMaximo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox picPrestamoLibros;
-        private System.Windows.Forms.TextBox txtEspecialidad;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtPorcentajeCobertura;
+        private System.Windows.Forms.TextBox txtTipoSeguro;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtcorreo;
+        private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.Label label13;
         private FontAwesome.Sharp.IconButton btnEditar;
         private FontAwesome.Sharp.IconButton btnGuardar;
@@ -695,7 +700,7 @@
         private System.Windows.Forms.RadioButton rdbInactivo;
         private System.Windows.Forms.Label label9;
         private FontAwesome.Sharp.IconButton BtnCerrarr;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label NombreSeguro;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -705,9 +710,13 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtNombreUsuario;
+        private System.Windows.Forms.TextBox txtNombreSeguro;
         private System.Windows.Forms.TextBox txtCodigomedico;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label CodigoSeguro;
         private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TextBox txtUsuarioSistema;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dtpHoraSistema;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
