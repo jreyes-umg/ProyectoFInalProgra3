@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Entidad
 {
-    internal class MeedicosEntidad
+    public class MeedicosEntidad
     {
         [Key]
         public int CodigoMedico { get; set; }
