@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Datos.CesarGabriel
+namespace Datos.Pagos
 {
     internal class PagosDatos
     {
-        public class FacturaDatos
+        public class PagoDatos
         {
             ConexionDatos conexionDatos = new ConexionDatos();
 

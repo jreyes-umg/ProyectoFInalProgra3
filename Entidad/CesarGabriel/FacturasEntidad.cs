@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entidad
 {
-    internal class FacturasEntidad
+    public class FacturasEntidad
     {
 
         [Key]
