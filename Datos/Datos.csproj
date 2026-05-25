@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Conexion.cs" />
     <Compile Include="JuanDavid\MedicosDatos.cs" />
+    <Compile Include="PagosDatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SanatoriosDatos.cs" />
   </ItemGroup>

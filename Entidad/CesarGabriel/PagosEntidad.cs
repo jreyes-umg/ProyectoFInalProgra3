@@ -5,9 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Entidad
 {
-    internal class PagosEntidad
+    public class PagosEntidad
     {
         [Key]
         public int CodigoPago { get; set; }
