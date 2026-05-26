@@ -48,8 +48,7 @@
             this.nudAñosdeexperiencia = new System.Windows.Forms.NumericUpDown();
             this.nudhonorarioBase = new System.Windows.Forms.NumericUpDown();
             this.txtEspecialidad = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.txtApellidoDoctor = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtcorreo = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -66,7 +65,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtNombreUsuario = new System.Windows.Forms.TextBox();
+            this.txtNombreDoctor = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCodigomedico = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -74,6 +73,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.picPrestamoLibros = new System.Windows.Forms.PictureBox();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroMedicos)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -150,6 +150,7 @@
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnBuscar
             // 
@@ -165,6 +166,7 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // dgvRegistroMedicos
             // 
@@ -183,6 +185,7 @@
             this.dgvRegistroMedicos.RowTemplate.Height = 24;
             this.dgvRegistroMedicos.Size = new System.Drawing.Size(995, 335);
             this.dgvRegistroMedicos.TabIndex = 14;
+            this.dgvRegistroMedicos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRegistroMedicos_CellContentClick);
             // 
             // Seleccionar
             // 
@@ -276,12 +279,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtTelefono);
             this.groupBox1.Controls.Add(this.nudBonoporexperiencia);
             this.groupBox1.Controls.Add(this.nudAñosdeexperiencia);
             this.groupBox1.Controls.Add(this.nudhonorarioBase);
             this.groupBox1.Controls.Add(this.txtEspecialidad);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.txtTelefono);
+            this.groupBox1.Controls.Add(this.txtApellidoDoctor);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.txtcorreo);
             this.groupBox1.Controls.Add(this.label13);
@@ -298,7 +301,7 @@
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtNombreUsuario);
+            this.groupBox1.Controls.Add(this.txtNombreDoctor);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtCodigomedico);
             this.groupBox1.Controls.Add(this.label3);
@@ -321,6 +324,7 @@
             0,
             0});
             this.nudBonoporexperiencia.Name = "nudBonoporexperiencia";
+            this.nudBonoporexperiencia.ReadOnly = true;
             this.nudBonoporexperiencia.Size = new System.Drawing.Size(211, 20);
             this.nudBonoporexperiencia.TabIndex = 36;
             // 
@@ -335,6 +339,7 @@
             this.nudAñosdeexperiencia.Name = "nudAñosdeexperiencia";
             this.nudAñosdeexperiencia.Size = new System.Drawing.Size(211, 20);
             this.nudAñosdeexperiencia.TabIndex = 35;
+            this.nudAñosdeexperiencia.ValueChanged += new System.EventHandler(this.nudAñosdeexperiencia_ValueChanged);
             // 
             // nudhonorarioBase
             // 
@@ -357,21 +362,13 @@
             this.txtEspecialidad.Size = new System.Drawing.Size(236, 20);
             this.txtEspecialidad.TabIndex = 33;
             // 
-            // textBox2
+            // txtApellidoDoctor
             // 
-            this.textBox2.Location = new System.Drawing.Point(133, 134);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(236, 20);
-            this.textBox2.TabIndex = 32;
-            // 
-            // txtTelefono
-            // 
-            this.txtTelefono.Location = new System.Drawing.Point(133, 227);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(236, 20);
-            this.txtTelefono.TabIndex = 31;
+            this.txtApellidoDoctor.Location = new System.Drawing.Point(133, 134);
+            this.txtApellidoDoctor.Margin = new System.Windows.Forms.Padding(2);
+            this.txtApellidoDoctor.Name = "txtApellidoDoctor";
+            this.txtApellidoDoctor.Size = new System.Drawing.Size(236, 20);
+            this.txtApellidoDoctor.TabIndex = 32;
             // 
             // label10
             // 
@@ -445,6 +442,7 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnCancelar
             // 
@@ -460,6 +458,7 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnNuevo
             // 
@@ -561,13 +560,13 @@
             this.label6.TabIndex = 6;
             this.label6.Text = "Apellido:";
             // 
-            // txtNombreUsuario
+            // txtNombreDoctor
             // 
-            this.txtNombreUsuario.Location = new System.Drawing.Point(133, 88);
-            this.txtNombreUsuario.Margin = new System.Windows.Forms.Padding(2);
-            this.txtNombreUsuario.Name = "txtNombreUsuario";
-            this.txtNombreUsuario.Size = new System.Drawing.Size(236, 20);
-            this.txtNombreUsuario.TabIndex = 3;
+            this.txtNombreDoctor.Location = new System.Drawing.Point(133, 88);
+            this.txtNombreDoctor.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNombreDoctor.Name = "txtNombreDoctor";
+            this.txtNombreDoctor.Size = new System.Drawing.Size(236, 20);
+            this.txtNombreDoctor.TabIndex = 3;
             // 
             // label4
             // 
@@ -636,6 +635,14 @@
             this.picPrestamoLibros.TabIndex = 30;
             this.picPrestamoLibros.TabStop = false;
             // 
+            // txtTelefono
+            // 
+            this.txtTelefono.Location = new System.Drawing.Point(133, 227);
+            this.txtTelefono.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(236, 20);
+            this.txtTelefono.TabIndex = 37;
+            // 
             // MedicosForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -686,8 +693,7 @@
         private System.Windows.Forms.NumericUpDown nudAñosdeexperiencia;
         private System.Windows.Forms.NumericUpDown nudhonorarioBase;
         private System.Windows.Forms.TextBox txtEspecialidad;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox txtTelefono;
+        private System.Windows.Forms.TextBox txtApellidoDoctor;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtcorreo;
         private System.Windows.Forms.Label label13;
@@ -704,7 +710,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtNombreUsuario;
+        private System.Windows.Forms.TextBox txtNombreDoctor;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCodigomedico;
         private System.Windows.Forms.Label label3;
@@ -712,5 +718,6 @@
         private System.Windows.Forms.Label label1;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PictureBox picPrestamoLibros;
+        private System.Windows.Forms.TextBox txtTelefono;
     }
 }

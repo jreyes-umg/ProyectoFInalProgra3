@@ -12,6 +12,7 @@ namespace Negocio.JuanDavid
 {
     public class MedicosNegocio
     {
+        decimal bonoporaño = 50;
         MedicosDatos Datos = new MedicosDatos(); 
         public List<MeedicosEntidad> MtdConsultar()
         {
@@ -81,7 +82,7 @@ namespace Negocio.JuanDavid
                     Estado = Convert.ToBoolean(row["Estado"]),
                     UsuarioSistema = Convert.ToString(row["UsuarioSistema"]),
                     FechaSistema = Convert.ToDateTime(row["FechaSistema"]),
-                    HoraSistema = Convert.ToDateTime(row["HoraSistema"])
+                    HoraSistema = (TimeSpan)row["HoraSistema"]
                 };
 
                 lista.Add(RegistroDoctor);
@@ -89,6 +90,10 @@ namespace Negocio.JuanDavid
             return lista;
         }
 
+        public decimal BonoExperiencia(decimal añosexperiencia)
+        {
+            return añosexperiencia * bonoporaño;
+        }
 
 
 
