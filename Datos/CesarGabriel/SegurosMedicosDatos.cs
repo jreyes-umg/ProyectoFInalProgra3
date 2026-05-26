@@ -7,32 +7,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Datos.Facturas
+namespace Datos.SegurosMedicos
 {
-        
-            public class FacturaDatos
+
+            public class SegurosMedicoDatos
             {
                 ConexionDatos conexionDatos = new ConexionDatos();
 
 
                 /*  ----- AGREGAR ----- */
-                public bool MtdAgregar(FacturasEntidad ControlFacturas)
+                public bool MtdAgregar(SegurosMedicosEntidad ControlSegurosMedicos)
                 {
                     try
                     {
                         using (SqlConnection conn = conexionDatos.MtdConexion())
                         {
                             conn.Open();
-                            string QueryAgregar = @"INSERT INTO Tbl_Facturas
+                            string QueryAgregar = @"INSERT INTO Tbl_SegurosMedicos
                                             (
-	                                            CodigoFactura,
-	                                            CodigoAtencion,
-	                                            CodigoSeguro,
-	                                            FechaFactura,
-	                                            SubTotal,
-	                                            DescuentoSeguro,
-	                                            Impuesto,
-	                                            TotalPagar,
+	                                            NombreSeguro,
+	                                            TipoSeguro,
+	                                            PorcentajeCobertura,
+	                                            Telefono,
+	                                            Direccion,
+	                                            MontoMaximo,
 	                                            Estado,
                                                 UsuarioSistema,
                                                 FechaSistema,
@@ -41,14 +39,12 @@ namespace Datos.Facturas
                                             )   
                                             VALUES
                                             (
-	                                            @CodigoFactura,
-	                                            @CodigoAtencion,
-	                                            @CodigoSeguro,
-	                                            @FechaFactura,
-	                                            @SubTotal,
-	                                            @DescuentoSeguro,
-	                                            @Impuesto,
-	                                            @TotalPagar,
+	                                            @NombreSeguro,
+	                                            @TipoSeguro,
+	                                            @PorcentajeCobertura,
+	                                            @Telefono,
+	                                            @Direccion,
+	                                            @MontoMaximo, 
 	                                            @Estado,
                                                 @UsuarioSistema,
                                                 @FechaSistema,
@@ -57,18 +53,16 @@ namespace Datos.Facturas
 
                             using (SqlCommand cmd = new SqlCommand(QueryAgregar, conn))
                             {
-                                cmd.Parameters.AddWithValue("@CodigoFactura", ControlFacturas.CodigoFactura);
-                                cmd.Parameters.AddWithValue("@CodigoAtencion", ControlFacturas.CodigoAtencion);
-                                cmd.Parameters.AddWithValue("@CodigoSeguro", ControlFacturas.CodigoSeguro);
-                                cmd.Parameters.AddWithValue("@MontoPagado", ControlFacturas.FechaFactura);
-                                cmd.Parameters.AddWithValue("@SubTotal", ControlFacturas.SubTotal);
-                                cmd.Parameters.AddWithValue("@DescuentoSeguro", ControlFacturas.DescuentoSeguro);
-                                cmd.Parameters.AddWithValue("@Impuesto", ControlFacturas.Impuesto);
-                                cmd.Parameters.AddWithValue("@TotalPagar", ControlFacturas.TotalPagar);
-                                cmd.Parameters.AddWithValue("@Estado", ControlFacturas.Estado);
-                                cmd.Parameters.AddWithValue("@UsuarioSistema", ControlFacturas.UsuarioSistema);
-                                cmd.Parameters.AddWithValue("@FechaSistema", ControlFacturas.FechaSistema);
-                                cmd.Parameters.AddWithValue("@HoraSistema", ControlFacturas.HoraSistema);
+                                cmd.Parameters.AddWithValue("@NombreSeguro", ControlSegurosMedicos.NombreSeguro);
+                                cmd.Parameters.AddWithValue("@TipoSeguro", ControlSegurosMedicos.TipoSeguro);
+                                cmd.Parameters.AddWithValue("@PorcentajeCobertura", ControlSegurosMedicos.PorcentajeCobertura);
+                                cmd.Parameters.AddWithValue("@Telefono", ControlSegurosMedicos.Telefono);
+                                cmd.Parameters.AddWithValue("@Direccion", ControlSegurosMedicos.Direccion);
+                                cmd.Parameters.AddWithValue("@MontoMaximo", ControlSegurosMedicos.MontoMaximo);
+                                cmd.Parameters.AddWithValue("@Estado", ControlSegurosMedicos.Estado);
+                                cmd.Parameters.AddWithValue("@UsuarioSistema", ControlSegurosMedicos.UsuarioSistema);
+                                cmd.Parameters.AddWithValue("@FechaSistema", ControlSegurosMedicos.FechaSistema);
+                                cmd.Parameters.AddWithValue("@HoraSistema", ControlSegurosMedicos.HoraSistema);
 
 
                                 return cmd.ExecuteNonQuery() > 0;
@@ -81,39 +75,38 @@ namespace Datos.Facturas
                     }
                 }
                 /*  ----- EDITAR ----- */
-                public bool MtdEditar(FacturasEntidad ControlFacturas)
+                public bool MtdEditar(SegurosMedicosEntidad ControlSegurosMedicos)
                 {
                     try
                     {
                         using (SqlConnection conn = conexionDatos.MtdConexion())
                         {
                             conn.Open();
-                            string QueryEditar = @"UPDATE Tbl_Facturas 
-                                        SET CodigoAtencion = @CodigoAtencion,
-                                        CodigoSeguro = @CodigoSeguro,
-                                        FechaFactura = @FechaFactura,
-                                        SubTotal = @SubTotal,
-                                        DescuentoSeguro = @DescuentoSeguro,
-                                        Impuesto = @Impuesto,
-                                        TotalPagar = @TotalPagar,
+                            string QueryEditar = @"UPDATE Tbl_SegurosMedicos 
+                                        SET NombreSeguro = @NombreSeguro,
+                                        TipoSeguro = @TipoSeguro,
+                                        PorcentajeCobertura = @PorcentajeCobertura,
+                                        Telefono = @Telefono,
+                                        Direccion = @Direccion,
+                                        MontoMaximo = @MontoMaximo,
                                         Estado = @Estado,
                                         UsuarioSistema = @UsuarioSistema,
                                         FechaSistema = @FechaSistema,
                                         HoraSistema = @HoraSistema
-                                        WHERE CodigoFactura = @CodigoFactura;";
+                                        WHERE CodigoSeguro = @CodigoSeguro;";
 
                             using (SqlCommand cmd = new SqlCommand(QueryEditar, conn))
                             {
-                                cmd.Parameters.AddWithValue("@CodigoAtencion", ControlFacturas.CodigoAtencion);
-                                cmd.Parameters.AddWithValue("@CodigoSeguro", ControlFacturas.CodigoSeguro);
-                                cmd.Parameters.AddWithValue("@FechaFactura", ControlFacturas.FechaFactura);
-                                cmd.Parameters.AddWithValue("@SubTotal", ControlFacturas.SubTotal);
-                                cmd.Parameters.AddWithValue("@DescuentoSeguro", ControlFacturas.DescuentoSeguro);
-                                cmd.Parameters.AddWithValue("@Impuesto", ControlFacturas.Impuesto);
-                                cmd.Parameters.AddWithValue("@Estado", ControlFacturas.Estado);
-                                cmd.Parameters.AddWithValue("@UsuarioSistema", ControlFacturas.UsuarioSistema);
-                                cmd.Parameters.AddWithValue("@FechaSistema", ControlFacturas.FechaSistema);
-                                cmd.Parameters.AddWithValue("@HoraSistema", ControlFacturas.HoraSistema);
+                                cmd.Parameters.AddWithValue("@NombreSeguro", ControlSegurosMedicos.NombreSeguro);
+                                cmd.Parameters.AddWithValue("@TipoSeguro", ControlSegurosMedicos.TipoSeguro);
+                                cmd.Parameters.AddWithValue("@PorcentajeCobertura", ControlSegurosMedicos.PorcentajeCobertura);
+                                cmd.Parameters.AddWithValue("@Telefono", ControlSegurosMedicos.Telefono);
+                                cmd.Parameters.AddWithValue("@Direccion", ControlSegurosMedicos.Direccion);
+                                cmd.Parameters.AddWithValue("@MontoMaximo", ControlSegurosMedicos.MontoMaximo);                        
+                                cmd.Parameters.AddWithValue("@Estado", ControlSegurosMedicos.Estado);
+                                cmd.Parameters.AddWithValue("@UsuarioSistema", ControlSegurosMedicos.UsuarioSistema);
+                                cmd.Parameters.AddWithValue("@FechaSistema", ControlSegurosMedicos.FechaSistema);
+                                cmd.Parameters.AddWithValue("@HoraSistema", ControlSegurosMedicos.HoraSistema);
                                 return cmd.ExecuteNonQuery() > 0;
                             }
                         }
@@ -124,18 +117,18 @@ namespace Datos.Facturas
                     }
                 }
 
-                public bool MtdEliminar(int ControlFacturas)
+                public bool MtdEliminar(int CodigoSegurosMedicos)
                 {
                     try
                     {
                         using (SqlConnection conn = conexionDatos.MtdConexion())
                         {
                             conn.Open();
-                            string QueryEliminar = @"DELETE Tbl_Facturas WHERE CodigoAtencion = @CodigoAtencion;";
+                            string QueryEliminar = @"DELETE Tbl_SegurosMedicos WHERE CodigoSeguro = @CodigoSeguro;";
 
                             using (SqlCommand cmd = new SqlCommand(QueryEliminar, conn))
                             {
-                                cmd.Parameters.AddWithValue("@CodigoAtencion", ControlFacturas);
+                                cmd.Parameters.AddWithValue("@CodigoSeguro", CodigoSegurosMedicos);
 
                                 return cmd.ExecuteNonQuery() > 0;
                             }
@@ -148,7 +141,7 @@ namespace Datos.Facturas
                 }
 
 
-                public DataTable MtdBuscar(string Codigofactura)
+                public DataTable MtdBuscar(string CodigoSegurosMedicos)
                 {
                     try
                     {
@@ -157,13 +150,13 @@ namespace Datos.Facturas
                             conn.Open();
 
                             string query = @"SELECT * 
-                                         FROM Tbl_Facturas 
-                                         WHERE CodigoFactura LIKE @CodigoFactura;";
+                                         FROM Tbl_SegurosMedicos 
+                                         WHERE CodigoSeguro LIKE @CodigoSeguro;";
 
                             using (SqlCommand cmd = new SqlCommand(query, conn))
                             {
                                 cmd.CommandType = CommandType.Text;
-                                cmd.Parameters.AddWithValue("@CodigoFactura", Codigofactura);
+                                cmd.Parameters.AddWithValue("@CodigoSeguro", CodigoSegurosMedicos);
 
                                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                                 DataTable dt = new DataTable();
@@ -182,31 +175,30 @@ namespace Datos.Facturas
                         throw new Exception("Error general al buscar el Doctor: " + ex.Message);
                     }
                 }
-                public List<FacturasEntidad> MtdConsultarPagos()
+                public List<SegurosMedicosEntidad> MtdConsultarPagos()
                 {
-                    List<FacturasEntidad> ListaFacturas = new List<FacturasEntidad>();
+                    List<SegurosMedicosEntidad> ListaSegurosMedicos = new List<SegurosMedicosEntidad>();
                     try
                     {
                         using (SqlConnection conn = conexionDatos.MtdConexion())
                         {
                             conn.Open();
-                            string QueryListar = "SELECT * FROM Tbl_Facturas ORDER BY CodigoFactura ASC;";
+                            string QueryListar = "SELECT * FROM Tbl_SegurosMedicos ORDER BY CodigoSeguro ASC;";
                             using (SqlCommand cmd = new SqlCommand(QueryListar, conn))
                             {
                                 using (SqlDataReader dr = cmd.ExecuteReader())
                                 {
                                     while (dr.Read())
                                     {
-                                    ListaFacturas.Add(new FacturasEntidad()
+                                    ListaSegurosMedicos.Add(new SegurosMedicosEntidad()
                                         {
-                                            CodigoFactura = Convert.ToInt32(dr["CodigoFactura"]),
-                                            CodigoAtencion = Convert.ToInt32(dr["CodigoAtencion"]),
                                             CodigoSeguro = Convert.ToInt32(dr["CodigoSeguro"]),
-                                            FechaFactura = Convert.ToDateTime(dr["FechaFactura"]),
-                                            SubTotal = Convert.ToDecimal(dr["SubTotal"]),
-                                            DescuentoSeguro = Convert.ToDecimal(dr["DescuentoSeguro"]),
-                                            Impuesto = Convert.ToDecimal(dr["Impuesto"]),
-                                            TotalPagar = Convert.ToDecimal(dr["TotalPagar"]),
+                                            NombreSeguro = Convert.ToString(dr["NombreSeguro"]),
+                                            TipoSeguro = Convert.ToString(dr["TipoSeguro"]),
+                                            PorcentajeCobertura = Convert.ToDecimal(dr["PorcentajeCobertura"]),
+                                            Telefono = Convert.ToString(dr["Telefono"]),
+                                            Direccion = Convert.ToString(dr["Direccion"]),
+                                            MontoMaximo = Convert.ToDecimal(dr["MontoMaximo"]),
                                             Estado = Convert.ToBoolean(dr["Estado"]),
                                             UsuarioSistema = Convert.ToString(dr["UsuarioSistema"]),
                                             FechaSistema = Convert.ToDateTime(dr["FechaSistema"]),
@@ -216,7 +208,7 @@ namespace Datos.Facturas
                                 }
 
                             }
-                            return ListaFacturas;
+                            return ListaSegurosMedicos;
                         }
                     }
                     catch (Exception ex)
@@ -227,6 +219,6 @@ namespace Datos.Facturas
                 }
 
             }
-}
 
+}
 
