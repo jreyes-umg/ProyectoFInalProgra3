@@ -8,16 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sanatorios.JuanDavid
+namespace Sanatorios.MarlonMeda
 {
-    public partial class LaboratoriosForms : Form
+    public partial class PacientesForm : Form
     {
-        public LaboratoriosForms()
+        public PacientesForm()
         {
             InitializeComponent();
         }
 
-        private void LaboratoriosForms_Load(object sender, EventArgs e)
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }

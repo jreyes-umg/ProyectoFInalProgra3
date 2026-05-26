@@ -112,6 +112,30 @@
     <Compile Include="CesarGabriel\PagosForms.Designer.cs">
       <DependentUpon>PagosForms.cs</DependentUpon>
     </Compile>
+    <Compile Include="MarlonMeda\DietasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarlonMeda\DietasForm.Designer.cs">
+      <DependentUpon>DietasForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarlonMeda\HospitalizacionesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarlonMeda\HospitalizacionesForm.Designer.cs">
+      <DependentUpon>HospitalizacionesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarlonMeda\PacientesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarlonMeda\PacientesForm.Designer.cs">
+      <DependentUpon>PacientesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarlonMeda\TipoServicioForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarlonMeda\TipoServicioForm.Designer.cs">
+      <DependentUpon>TipoServicioForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CesarGabriel\SegurosMedicosForms.cs">
@@ -135,6 +159,18 @@
     <EmbeddedResource Include="CesarGabriel\PagosForms.resx">
       <DependentUpon>PagosForms.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MarlonMeda\DietasForm.resx">
+      <DependentUpon>DietasForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarlonMeda\HospitalizacionesForm.resx">
+      <DependentUpon>HospitalizacionesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarlonMeda\PacientesForm.resx">
+      <DependentUpon>PacientesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarlonMeda\TipoServicioForm.resx">
+      <DependentUpon>TipoServicioForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -143,6 +179,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="CesarGabriel\SegurosMedicosForms.resx">
       <DependentUpon>SegurosMedicosForms.cs</DependentUpon>
@@ -171,6 +208,8 @@
       <Name>Negocio</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

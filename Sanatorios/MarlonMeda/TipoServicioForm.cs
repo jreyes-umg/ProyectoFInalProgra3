@@ -8,16 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sanatorios.JuanDavid
+namespace Sanatorios.MarlonMeda
 {
-    public partial class LaboratoriosForms : Form
+    public partial class TipoServicioForm : Form
     {
-        public LaboratoriosForms()
+        public TipoServicioForm()
         {
             InitializeComponent();
         }
 
-        private void LaboratoriosForms_Load(object sender, EventArgs e)
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUsuarioSistema_TextChanged(object sender, EventArgs e)
         {
 
         }
