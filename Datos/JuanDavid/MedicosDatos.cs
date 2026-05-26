@@ -9,10 +9,9 @@ using System.Threading.Tasks;
 
 namespace Datos.JuanDavid
 {
-    internal class MedicosDatos
+    public class MedicosDatos
     {
-        public class PrestamosDatos
-        {
+        
             ConexionDatos conexionDatos = new ConexionDatos();
 
             //Agregar
@@ -187,7 +186,7 @@ namespace Datos.JuanDavid
                     throw new Exception("Error general al buscar el Doctor: " + ex.Message);
                 }
             }
-            public List<MeedicosEntidad> MtdConsultarDoctores()
+            public List<MeedicosEntidad> MtdConsultar()
             {
                 List<MeedicosEntidad> ListPrestamos = new List<MeedicosEntidad>();
                 try
@@ -230,8 +229,12 @@ namespace Datos.JuanDavid
                     throw new Exception("Error al mostrar la lista" + ex.Message);
 
                 }
+
+
+
             }
 
-        }
+
+        
     }
 }
