@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 
 namespace Datos.Facturas
 {
-        internal class FacturasDatos
-        {
+        
             public class FacturaDatos
             {
                 ConexionDatos conexionDatos = new ConexionDatos();
@@ -228,6 +227,6 @@ namespace Datos.Facturas
                 }
 
             }
-        }
 }
+
 

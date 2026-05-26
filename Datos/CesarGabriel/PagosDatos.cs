@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 
 namespace Datos.Pagos
 {
-    internal class PagosDatos
-    {
         public class PagoDatos
         {
             ConexionDatos conexionDatos = new ConexionDatos();
@@ -232,7 +230,7 @@ namespace Datos.Pagos
             }
 
         }
-    }
 }
+
 
 

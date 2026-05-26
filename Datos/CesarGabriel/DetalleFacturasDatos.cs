@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 
 namespace Datos.DetalleFacturas
 {
-    internal class DetalleFacturasDatos
-    {
+   
             public class DetalleFacturaDatos
             {
                 ConexionDatos conexionDatos = new ConexionDatos();
@@ -241,7 +240,7 @@ namespace Datos.DetalleFacturas
                 }
 
             }
-    }
-
-
 }
+
+
+

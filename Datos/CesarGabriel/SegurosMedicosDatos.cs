@@ -9,9 +9,7 @@ using System.Threading.Tasks;
 
 namespace Datos.SegurosMedicos
 {
-    internal class SegurosMedicosDatos
-    {
- 
+
             public class SegurosMedicoDatos
             {
                 ConexionDatos conexionDatos = new ConexionDatos();
@@ -222,5 +220,5 @@ namespace Datos.SegurosMedicos
 
             }
 
-        }
 }
+
