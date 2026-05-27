@@ -1,5 +1,4 @@
-﻿using Datos.JuanDavid;
-using Datos.Pagos;
+﻿using Datos.Pagos;
 using Entidad;
 using System;
 using System.Collections.Generic;
@@ -17,9 +16,9 @@ namespace Negocio.Pagos
             PagoDatos Datos = new PagoDatos();
             public List<PagosEntidad> MtdConsultar()
             {
-                return Datos.MtdConsultar();
+                return Datos.MtdConsultarPagos();
             }
-            /*  ----- Agregar -----   */
+            /*  ----- Agregar -----   
             public bool MtdAgregar(PagosEntidad RegistroDoctor)
             {
                 if (RegistroDoctor == null)
@@ -34,7 +33,7 @@ namespace Negocio.Pagos
                     throw new Exception("La Especialidad es incorrecto");
                 return Datos.MtdAgregar(RegistroDoctor);
             }
-            /*  ----- EDITAR -----   */
+            /*  ----- EDITAR -----   
             public bool MtdEditar(MeedicosEntidad RegistroDoctor)
             {
                 if (RegistroDoctor == null)
@@ -49,7 +48,7 @@ namespace Negocio.Pagos
                     throw new Exception("La Especialidad es incorrecto");
                 return Datos.MtdEditar(RegistroDoctor);
             }
-            /*  ----- ELIMINAR ----- */
+            /*  ----- ELIMINAR ----- 
 
             public bool MtdEliminar(int codigodoctor)
             {
@@ -59,8 +58,7 @@ namespace Negocio.Pagos
                 return Datos.MtdEliminar(codigodoctor);
             }
 
-            /* ---- BUSCAR ---- */
-
+            /* ---- BUSCAR ---- 
             public List<MeedicosEntidad> MtdBuscar(string NombreDoctor)
             {
                 DataTable dt = Datos.MtdBuscar(NombreDoctor);
@@ -94,11 +92,8 @@ namespace Negocio.Pagos
             public decimal BonoExperiencia(decimal añosexperiencia)
             {
                 return añosexperiencia * bonoporaño;
-            }
-
-
-
-
+        }
+                */
 
         }
 

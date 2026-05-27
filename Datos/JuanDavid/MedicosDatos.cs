@@ -1,4 +1,5 @@
 ﻿using Entidad;
+using Datos.Pagos;
 using System;
 using System.Collections.Generic;
 using System.Data;
