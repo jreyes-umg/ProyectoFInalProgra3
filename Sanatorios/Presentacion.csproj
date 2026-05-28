@@ -115,11 +115,23 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="JuanDavid\AtencionPacientesForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JuanDavid\AtencionPacientesForms.Designer.cs">
+      <DependentUpon>AtencionPacientesForms.cs</DependentUpon>
+    </Compile>
     <Compile Include="JuanDavid\LaboratoriosForms.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="JuanDavid\LaboratoriosForms.Designer.cs">
       <DependentUpon>LaboratoriosForms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JuanDavid\SanatoriosFoms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JuanDavid\SanatoriosFoms.Designer.cs">
+      <DependentUpon>SanatoriosFoms.cs</DependentUpon>
     </Compile>
     <Compile Include="JuanDavid\MedicosForms.cs">
       <SubType>Form</SubType>
@@ -171,8 +183,14 @@
     <EmbeddedResource Include="CesarGabriel\FacturasForms.resx">
       <DependentUpon>FacturasForms.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="JuanDavid\AtencionPacientesForms.resx">
+      <DependentUpon>AtencionPacientesForms.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="JuanDavid\LaboratoriosForms.resx">
       <DependentUpon>LaboratoriosForms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JuanDavid\SanatoriosFoms.resx">
+      <DependentUpon>SanatoriosFoms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JuanDavid\MedicosForms.resx">
       <DependentUpon>MedicosForms.cs</DependentUpon>
