@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace Entidad.JuanDavid
 {
-    internal class AntencionPacientesEntidad
+    public class AntencionPacientesEntidad
     {
         [Key]
         [Required]
-        public int CodigoLaboratorio { get; set; }
         public int CodigoAtencion { get; set; }
-        public string TipoExamen {  get; set; }
-        public decimal CostoExamen { get; set; }
-        public int Cantidad {  get; set; }
-        public bool Urgente { get; set; }
-        public decimal RecargoUrgente { get; set; }
-        public decimal SubTotal { get; set; }
-        public decimal TotalLaboratorio { get; set; }
+        public int CodigoPaciente { get; set; }
+        public int CodigoMedico { get; set; }
+        public int CodigoTipoServicio { get; set; }
+        public int CodigoSanatorio { get; set; }
+        public DateTime FechaAtencion { get; set; }
+        public decimal CostoBase { get; set; }
+        public decimal RecargoEmergencia {  get; set; }
+        public decimal TotalAtencion { get; set; }
         public bool Estado { get; set; }
         public string UsuarioSistema { get; set; }
         public DateTime FechaSistema { get; set; }
