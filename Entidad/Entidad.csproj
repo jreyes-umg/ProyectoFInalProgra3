@@ -48,6 +48,9 @@
     <Compile Include="Class1.cs" />
     <Compile Include="CesarGabriel\DetallesFacturasEntidad.cs" />
     <Compile Include="CesarGabriel\FacturasEntidad.cs" />
+    <Compile Include="JuanDavid\AntencionPacientesEntidad.cs" />
+    <Compile Include="JuanDavid\EntidadSanatorios.cs" />
+    <Compile Include="JuanDavid\LaboratoriosEntidad.cs" />
     <Compile Include="JuanDavid\MeedicosEntidad.cs" />
     <Compile Include="CesarGabriel\PagosEntidad.cs" />
     <Compile Include="MarlonMeda\DietasEntidad.cs" />

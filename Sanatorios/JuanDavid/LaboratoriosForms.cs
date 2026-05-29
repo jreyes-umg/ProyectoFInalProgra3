@@ -17,6 +17,26 @@ namespace Sanatorios.JuanDavid
             InitializeComponent();
         }
 
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rdbActivo_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rdbInactivo_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void LaboratoriosForms_Load(object sender, EventArgs e)
         {
 
