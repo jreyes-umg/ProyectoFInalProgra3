@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entidad.MarlonMeda
 {
-    internal class DietasEntidad
+    public class DietasEntidad
     {
         [Key]
         public int CodigoDieta { get; set; }
@@ -34,6 +34,6 @@ namespace Entidad.MarlonMeda
 
         public DateTime FechaSistema { get; set; }
 
-        public DateTime HoraSistema { get; set; }
+        public TimeSpan HoraSistema { get; set; }
     }
 }

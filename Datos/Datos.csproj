@@ -53,6 +53,10 @@
     <Compile Include="CesarGabriel\DetalleFacturasDatos.cs" />
     <Compile Include="JuanDavid\MedicosDatos.cs" />
     <Compile Include="CesarGabriel\PagosDatos.cs" />
+    <Compile Include="MarlonMeda\DietaDatos.cs" />
+    <Compile Include="MarlonMeda\HospitalizacionesDatos.cs" />
+    <Compile Include="MarlonMeda\PacienteDatos.cs" />
+    <Compile Include="MarlonMeda\TipoServicioDatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SanatoriosDatos.cs" />
     <Compile Include="CesarGabriel\SegurosMedicosDatos.cs" />
@@ -66,8 +70,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MarlonMeda\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

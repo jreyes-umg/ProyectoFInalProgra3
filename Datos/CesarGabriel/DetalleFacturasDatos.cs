@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 
 namespace Datos.DetalleFacturas
 {
-   
-            public class DetalleFacturaDatos
+             public class DetalleFacturaDatos
             {
                 ConexionDatos conexionDatos = new ConexionDatos();
 
@@ -234,7 +233,7 @@ namespace Datos.DetalleFacturas
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception("Error al mostrar la lista" + ex.Message);
+                       throw new Exception("Error al mostrar la lista" + ex.Message);
 
                     }
                 }
