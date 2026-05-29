@@ -127,11 +127,11 @@
     <Compile Include="JuanDavid\LaboratoriosForms.Designer.cs">
       <DependentUpon>LaboratoriosForms.cs</DependentUpon>
     </Compile>
-    <Compile Include="JuanDavid\SanatoriosFoms.cs">
+    <Compile Include="JuanDavid\SanatoriosForms.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="JuanDavid\SanatoriosFoms.Designer.cs">
-      <DependentUpon>SanatoriosFoms.cs</DependentUpon>
+    <Compile Include="JuanDavid\SanatoriosForms.Designer.cs">
+      <DependentUpon>SanatoriosForms.cs</DependentUpon>
     </Compile>
     <Compile Include="JuanDavid\MedicosForms.cs">
       <SubType>Form</SubType>
@@ -189,8 +189,8 @@
     <EmbeddedResource Include="JuanDavid\LaboratoriosForms.resx">
       <DependentUpon>LaboratoriosForms.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="JuanDavid\SanatoriosFoms.resx">
-      <DependentUpon>SanatoriosFoms.cs</DependentUpon>
+    <EmbeddedResource Include="JuanDavid\SanatoriosForms.resx">
+      <DependentUpon>SanatoriosForms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JuanDavid\MedicosForms.resx">
       <DependentUpon>MedicosForms.cs</DependentUpon>

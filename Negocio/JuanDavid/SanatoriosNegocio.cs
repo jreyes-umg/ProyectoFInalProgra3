@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Negocio.JuanDavid
 {
-    internal class SanatoriosNegocio
+    public class SanatoriosNegocio
     {
         SanatoriosDatos Datos = new SanatoriosDatos();
         public List<EntidadSanatorios> MtdConsultar()
@@ -77,9 +77,9 @@ namespace Negocio.JuanDavid
 
         /* ---- BUSCAR ---- */
 
-        public List<EntidadSanatorios> MtdBuscar(string NombreDoctor)
+        public List<EntidadSanatorios> MtdBuscar(string NombreSanatorios)
         {
-            DataTable dt = Datos.MtdBuscar(NombreDoctor);
+            DataTable dt = Datos.MtdBuscar(NombreSanatorios);
 
             List<EntidadSanatorios> lista = new List<EntidadSanatorios>();
 
@@ -87,7 +87,7 @@ namespace Negocio.JuanDavid
             {
                 EntidadSanatorios RegistroSanatorio = new EntidadSanatorios
                 {
-                    CodigoSanatorio = Convert.ToInt32(row["CodigoMedico"]),
+                    CodigoSanatorio = Convert.ToInt32(row["CodigoSanatorio"]),
                     Nombre = Convert.ToString(row["Nombre"]),
                     Ubicacion = Convert.ToString(row["Ubicacion"]),
                     TipoSanatorio = Convert.ToString(row["TipoSanatorio"]),

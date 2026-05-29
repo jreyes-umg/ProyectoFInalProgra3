@@ -9,12 +9,6 @@ namespace Negocio
     public class SanatorioNegocios
     {
 
-
-
-
-
-
-
         //* ---- Metodos ---- *//
 
         const int CantidadBonoExperiencia = 50;

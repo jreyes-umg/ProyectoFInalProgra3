@@ -51,6 +51,7 @@
     <Compile Include="Conexion.cs" />
     <Compile Include="CesarGabriel\FacturasDatos.cs" />
     <Compile Include="CesarGabriel\DetalleFacturasDatos.cs" />
+    <Compile Include="JuanDavid\AtencionesDatos.cs" />
     <Compile Include="JuanDavid\MedicosDatos.cs" />
     <Compile Include="CesarGabriel\PagosDatos.cs" />
     <Compile Include="JuanDavid\SanatoriosDatos.cs" />

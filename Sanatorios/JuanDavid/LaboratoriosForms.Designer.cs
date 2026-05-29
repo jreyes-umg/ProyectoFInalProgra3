@@ -59,6 +59,11 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.nudTotalLaboratorio = new System.Windows.Forms.NumericUpDown();
+            this.nudRecargoUrgencia = new System.Windows.Forms.NumericUpDown();
+            this.rdbUrgente = new System.Windows.Forms.RadioButton();
+            this.nudCantidad = new System.Windows.Forms.NumericUpDown();
+            this.cbxCodigodeatencion = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label9CosotExc = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -69,11 +74,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.BtnCerrarr = new FontAwesome.Sharp.IconButton();
-            this.cbxCodigodeatencion = new System.Windows.Forms.ComboBox();
-            this.nudCantidad = new System.Windows.Forms.NumericUpDown();
-            this.rdbUrgente = new System.Windows.Forms.RadioButton();
-            this.nudRecargoUrgencia = new System.Windows.Forms.NumericUpDown();
-            this.nudTotalLaboratorio = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroSanatorios)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCostoExamen)).BeginInit();
@@ -82,9 +82,9 @@
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudRecargoUrgencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTotalLaboratorio)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRecargoUrgencia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
             this.SuspendLayout();
             // 
             // Seleccionar
@@ -502,6 +502,65 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del doctor";
             // 
+            // nudTotalLaboratorio
+            // 
+            this.nudTotalLaboratorio.DecimalPlaces = 2;
+            this.nudTotalLaboratorio.Location = new System.Drawing.Point(617, 183);
+            this.nudTotalLaboratorio.Maximum = new decimal(new int[] {
+            90000,
+            0,
+            0,
+            0});
+            this.nudTotalLaboratorio.Name = "nudTotalLaboratorio";
+            this.nudTotalLaboratorio.Size = new System.Drawing.Size(211, 20);
+            this.nudTotalLaboratorio.TabIndex = 46;
+            // 
+            // nudRecargoUrgencia
+            // 
+            this.nudRecargoUrgencia.DecimalPlaces = 2;
+            this.nudRecargoUrgencia.Location = new System.Drawing.Point(617, 84);
+            this.nudRecargoUrgencia.Maximum = new decimal(new int[] {
+            90000,
+            0,
+            0,
+            0});
+            this.nudRecargoUrgencia.Name = "nudRecargoUrgencia";
+            this.nudRecargoUrgencia.ReadOnly = true;
+            this.nudRecargoUrgencia.Size = new System.Drawing.Size(211, 20);
+            this.nudRecargoUrgencia.TabIndex = 45;
+            // 
+            // rdbUrgente
+            // 
+            this.rdbUrgente.AutoSize = true;
+            this.rdbUrgente.Location = new System.Drawing.Point(627, 45);
+            this.rdbUrgente.Margin = new System.Windows.Forms.Padding(2);
+            this.rdbUrgente.Name = "rdbUrgente";
+            this.rdbUrgente.Size = new System.Drawing.Size(63, 17);
+            this.rdbUrgente.TabIndex = 44;
+            this.rdbUrgente.TabStop = true;
+            this.rdbUrgente.Text = "Urgente";
+            this.rdbUrgente.UseVisualStyleBackColor = true;
+            // 
+            // nudCantidad
+            // 
+            this.nudCantidad.Location = new System.Drawing.Point(161, 226);
+            this.nudCantidad.Maximum = new decimal(new int[] {
+            90000,
+            0,
+            0,
+            0});
+            this.nudCantidad.Name = "nudCantidad";
+            this.nudCantidad.Size = new System.Drawing.Size(236, 20);
+            this.nudCantidad.TabIndex = 41;
+            // 
+            // cbxCodigodeatencion
+            // 
+            this.cbxCodigodeatencion.FormattingEnabled = true;
+            this.cbxCodigodeatencion.Location = new System.Drawing.Point(161, 86);
+            this.cbxCodigodeatencion.Name = "cbxCodigodeatencion";
+            this.cbxCodigodeatencion.Size = new System.Drawing.Size(236, 21);
+            this.cbxCodigodeatencion.TabIndex = 40;
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -597,65 +656,6 @@
             this.BtnCerrarr.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnCerrarr.UseVisualStyleBackColor = true;
             // 
-            // cbxCodigodeatencion
-            // 
-            this.cbxCodigodeatencion.FormattingEnabled = true;
-            this.cbxCodigodeatencion.Location = new System.Drawing.Point(161, 86);
-            this.cbxCodigodeatencion.Name = "cbxCodigodeatencion";
-            this.cbxCodigodeatencion.Size = new System.Drawing.Size(236, 21);
-            this.cbxCodigodeatencion.TabIndex = 40;
-            // 
-            // nudCantidad
-            // 
-            this.nudCantidad.Location = new System.Drawing.Point(161, 226);
-            this.nudCantidad.Maximum = new decimal(new int[] {
-            90000,
-            0,
-            0,
-            0});
-            this.nudCantidad.Name = "nudCantidad";
-            this.nudCantidad.Size = new System.Drawing.Size(236, 20);
-            this.nudCantidad.TabIndex = 41;
-            // 
-            // rdbUrgente
-            // 
-            this.rdbUrgente.AutoSize = true;
-            this.rdbUrgente.Location = new System.Drawing.Point(627, 45);
-            this.rdbUrgente.Margin = new System.Windows.Forms.Padding(2);
-            this.rdbUrgente.Name = "rdbUrgente";
-            this.rdbUrgente.Size = new System.Drawing.Size(63, 17);
-            this.rdbUrgente.TabIndex = 44;
-            this.rdbUrgente.TabStop = true;
-            this.rdbUrgente.Text = "Urgente";
-            this.rdbUrgente.UseVisualStyleBackColor = true;
-            // 
-            // nudRecargoUrgencia
-            // 
-            this.nudRecargoUrgencia.DecimalPlaces = 2;
-            this.nudRecargoUrgencia.Location = new System.Drawing.Point(617, 84);
-            this.nudRecargoUrgencia.Maximum = new decimal(new int[] {
-            90000,
-            0,
-            0,
-            0});
-            this.nudRecargoUrgencia.Name = "nudRecargoUrgencia";
-            this.nudRecargoUrgencia.ReadOnly = true;
-            this.nudRecargoUrgencia.Size = new System.Drawing.Size(211, 20);
-            this.nudRecargoUrgencia.TabIndex = 45;
-            // 
-            // nudTotalLaboratorio
-            // 
-            this.nudTotalLaboratorio.DecimalPlaces = 2;
-            this.nudTotalLaboratorio.Location = new System.Drawing.Point(617, 183);
-            this.nudTotalLaboratorio.Maximum = new decimal(new int[] {
-            90000,
-            0,
-            0,
-            0});
-            this.nudTotalLaboratorio.Name = "nudTotalLaboratorio";
-            this.nudTotalLaboratorio.Size = new System.Drawing.Size(211, 20);
-            this.nudTotalLaboratorio.TabIndex = 46;
-            // 
             // LaboratoriosForms
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -667,6 +667,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LaboratoriosForms";
             this.Text = "LaboratoriosForms";
+            this.Load += new System.EventHandler(this.LaboratoriosForms_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroSanatorios)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -677,9 +678,9 @@
             this.tabPage2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudRecargoUrgencia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTotalLaboratorio)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRecargoUrgencia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

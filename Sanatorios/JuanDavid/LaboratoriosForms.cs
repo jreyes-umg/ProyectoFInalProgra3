@@ -36,5 +36,10 @@ namespace Sanatorios.JuanDavid
         {
 
         }
+
+        private void LaboratoriosForms_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -31,7 +31,7 @@ namespace Datos.JuanDavid
                             {
                                 ListaSanatorios.Add(new EntidadSanatorios()
                                 {
-                                    CodigoSanatorio = Convert.ToInt32(dr["CodigoMedico"]),
+                                    CodigoSanatorio = Convert.ToInt32(dr["CodigoSanatorio"]),
                                     Nombre = Convert.ToString(dr["Nombre"]),
                                     Ubicacion = Convert.ToString(dr["Ubicacion"]),
                                     TipoSanatorio = Convert.ToString(dr["TipoSanatorio"]),

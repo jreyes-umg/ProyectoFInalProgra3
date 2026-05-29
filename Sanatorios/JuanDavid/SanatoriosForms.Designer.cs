@@ -40,10 +40,13 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtNiveldeservicio = new System.Windows.Forms.TextBox();
+            this.txtTipoSanatorio = new System.Windows.Forms.TextBox();
+            this.nudCapacidad = new System.Windows.Forms.NumericUpDown();
             this.txtUbicacion = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtcorreo = new System.Windows.Forms.TextBox();
+            this.txtDirector = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.btnEditar = new FontAwesome.Sharp.IconButton();
             this.btnCancelar = new FontAwesome.Sharp.IconButton();
@@ -71,17 +74,14 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.picPrestamoLibros = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.nudCapacidad = new System.Windows.Forms.NumericUpDown();
-            this.txtTipoSanatorio = new System.Windows.Forms.TextBox();
-            this.txtNiveldeservicio = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudCostodiario)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCapacidad)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroSanatorios)).BeginInit();
             this.tabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPrestamoLibros)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCapacidad)).BeginInit();
             this.SuspendLayout();
             // 
             // btnImprimir
@@ -151,6 +151,7 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnGuardar
             // 
@@ -166,6 +167,7 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnExportar
             // 
@@ -213,7 +215,7 @@
             this.groupBox1.Controls.Add(this.txtUbicacion);
             this.groupBox1.Controls.Add(this.txtTelefono);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.txtcorreo);
+            this.groupBox1.Controls.Add(this.txtDirector);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.btnEliminar);
             this.groupBox1.Controls.Add(this.btnEditar);
@@ -241,6 +243,34 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del doctor";
             // 
+            // txtNiveldeservicio
+            // 
+            this.txtNiveldeservicio.Location = new System.Drawing.Point(617, 183);
+            this.txtNiveldeservicio.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNiveldeservicio.Name = "txtNiveldeservicio";
+            this.txtNiveldeservicio.Size = new System.Drawing.Size(211, 20);
+            this.txtNiveldeservicio.TabIndex = 39;
+            // 
+            // txtTipoSanatorio
+            // 
+            this.txtTipoSanatorio.Location = new System.Drawing.Point(617, 88);
+            this.txtTipoSanatorio.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTipoSanatorio.Name = "txtTipoSanatorio";
+            this.txtTipoSanatorio.Size = new System.Drawing.Size(210, 20);
+            this.txtTipoSanatorio.TabIndex = 38;
+            // 
+            // nudCapacidad
+            // 
+            this.nudCapacidad.Location = new System.Drawing.Point(161, 183);
+            this.nudCapacidad.Maximum = new decimal(new int[] {
+            90000,
+            0,
+            0,
+            0});
+            this.nudCapacidad.Name = "nudCapacidad";
+            this.nudCapacidad.Size = new System.Drawing.Size(236, 20);
+            this.nudCapacidad.TabIndex = 37;
+            // 
             // txtUbicacion
             // 
             this.txtUbicacion.Location = new System.Drawing.Point(161, 130);
@@ -267,13 +297,13 @@
             this.label10.TabIndex = 29;
             this.label10.Text = "Nivel de servicio:";
             // 
-            // txtcorreo
+            // txtDirector
             // 
-            this.txtcorreo.Location = new System.Drawing.Point(617, 44);
-            this.txtcorreo.Margin = new System.Windows.Forms.Padding(2);
-            this.txtcorreo.Name = "txtcorreo";
-            this.txtcorreo.Size = new System.Drawing.Size(210, 20);
-            this.txtcorreo.TabIndex = 28;
+            this.txtDirector.Location = new System.Drawing.Point(617, 44);
+            this.txtDirector.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDirector.Name = "txtDirector";
+            this.txtDirector.Size = new System.Drawing.Size(210, 20);
+            this.txtDirector.TabIndex = 28;
             // 
             // label13
             // 
@@ -299,6 +329,7 @@
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnCancelar
             // 
@@ -314,6 +345,7 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnNuevo
             // 
@@ -329,6 +361,7 @@
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // rdbInactivo
             // 
@@ -445,6 +478,7 @@
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // Seleccionar
             // 
@@ -494,6 +528,7 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // dgvRegistroSanatorios
             // 
@@ -512,6 +547,7 @@
             this.dgvRegistroSanatorios.RowTemplate.Height = 24;
             this.dgvRegistroSanatorios.Size = new System.Drawing.Size(995, 335);
             this.dgvRegistroSanatorios.TabIndex = 14;
+            this.dgvRegistroSanatorios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRegistroSanatorios_CellContentClick);
             // 
             // lblTotalRegistros
             // 
@@ -601,34 +637,6 @@
             this.label1.TabIndex = 31;
             this.label1.Text = "Registro de Sanatorios";
             // 
-            // nudCapacidad
-            // 
-            this.nudCapacidad.Location = new System.Drawing.Point(161, 183);
-            this.nudCapacidad.Maximum = new decimal(new int[] {
-            90000,
-            0,
-            0,
-            0});
-            this.nudCapacidad.Name = "nudCapacidad";
-            this.nudCapacidad.Size = new System.Drawing.Size(236, 20);
-            this.nudCapacidad.TabIndex = 37;
-            // 
-            // txtTipoSanatorio
-            // 
-            this.txtTipoSanatorio.Location = new System.Drawing.Point(617, 88);
-            this.txtTipoSanatorio.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTipoSanatorio.Name = "txtTipoSanatorio";
-            this.txtTipoSanatorio.Size = new System.Drawing.Size(210, 20);
-            this.txtTipoSanatorio.TabIndex = 38;
-            // 
-            // txtNiveldeservicio
-            // 
-            this.txtNiveldeservicio.Location = new System.Drawing.Point(617, 183);
-            this.txtNiveldeservicio.Margin = new System.Windows.Forms.Padding(2);
-            this.txtNiveldeservicio.Name = "txtNiveldeservicio";
-            this.txtNiveldeservicio.Size = new System.Drawing.Size(211, 20);
-            this.txtNiveldeservicio.TabIndex = 39;
-            // 
             // Sanatorios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -645,12 +653,12 @@
             this.tabPage2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCapacidad)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroSanatorios)).EndInit();
             this.tabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picPrestamoLibros)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCapacidad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -672,7 +680,7 @@
         private System.Windows.Forms.TextBox txtUbicacion;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtcorreo;
+        private System.Windows.Forms.TextBox txtDirector;
         private System.Windows.Forms.Label label13;
         private FontAwesome.Sharp.IconButton btnEditar;
         private FontAwesome.Sharp.IconButton btnCancelar;
