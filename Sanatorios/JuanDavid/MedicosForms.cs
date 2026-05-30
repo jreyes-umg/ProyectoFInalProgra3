@@ -46,20 +46,7 @@ namespace Sanatorios
 
             lblTotalRegistros.Text = $"Cantidad registros: {total}";
         }
-        private void MtdConsultarDoctores()
-        {
-            try
-            {
-                dgvRegistroMedicos.DataSource = Negocio.MtdConsultar();
-                dgvRegistroMedicos.ClearSelection();
-                dgvRegistroMedicos.CurrentCell = null;
-                MtdActualizarTotalRegistros();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        
         private void MtdLimpiarControlesForm()
         {
             // ---> CAMBIAR: Controles forms

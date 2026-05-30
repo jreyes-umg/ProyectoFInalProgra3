@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entidad.JuanDavid
 {
-    internal class LaboratoriosEntidad
+    public class LaboratoriosEntidad
     {
         [Key]
         [Required]

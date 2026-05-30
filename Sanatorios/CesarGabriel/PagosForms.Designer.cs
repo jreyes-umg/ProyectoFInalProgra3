@@ -741,6 +741,7 @@
             this.Controls.Add(this.BtnCerrarr);
             this.Name = "PagosForms";
             this.Text = "PagosForms";
+            this.Load += new System.EventHandler(this.PagosForms_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroPagos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTotalCancelado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCambio)).EndInit();

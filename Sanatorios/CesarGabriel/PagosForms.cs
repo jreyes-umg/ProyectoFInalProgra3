@@ -593,7 +593,10 @@ namespace Sanatorios
             }
         }
 
-      
+        private void PagosForms_Load_1(object sender, EventArgs e)
+        {
+            MtdConsultarControlPagos();
+        }
     }
 }
 

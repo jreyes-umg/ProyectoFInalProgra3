@@ -43,7 +43,7 @@
             this.btnImprimir = new FontAwesome.Sharp.IconButton();
             this.btnLimpiar = new FontAwesome.Sharp.IconButton();
             this.btnBuscar = new FontAwesome.Sharp.IconButton();
-            this.dgvRegistroSanatorios = new System.Windows.Forms.DataGridView();
+            this.dgvRegistroAtenciones = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.lblTotalRegistros = new System.Windows.Forms.Label();
             this.chkSeleccionar = new System.Windows.Forms.CheckBox();
@@ -52,9 +52,14 @@
             this.btnCerrar = new FontAwesome.Sharp.IconButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rdbUrgente = new System.Windows.Forms.CheckBox();
+            this.dtpFechaDeatencion = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbxCodigoSanatorio = new System.Windows.Forms.ComboBox();
+            this.cbxCodigoTIpoDeservicio = new System.Windows.Forms.ComboBox();
+            this.cbxCodigoMedico = new System.Windows.Forms.ComboBox();
             this.nudTotal = new System.Windows.Forms.NumericUpDown();
-            this.rdbUrgente = new System.Windows.Forms.RadioButton();
-            this.cbxCodigodeatencion = new System.Windows.Forms.ComboBox();
+            this.cbxCodigodePaciente = new System.Windows.Forms.ComboBox();
             this.btnCancelar = new FontAwesome.Sharp.IconButton();
             this.btnNuevo = new FontAwesome.Sharp.IconButton();
             this.rdbInactivo = new System.Windows.Forms.RadioButton();
@@ -66,22 +71,17 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtcodigoLaboratorio = new System.Windows.Forms.TextBox();
+            this.txtcodigoAtencion = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.BtnCerrarr = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dtpFechaDeatencion = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.nudCostoBase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRecargoEmergencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPrestamoLibros)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroSanatorios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroAtenciones)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTotal)).BeginInit();
@@ -99,9 +99,10 @@
             0,
             0});
             this.nudCostoBase.Name = "nudCostoBase";
+            this.nudCostoBase.ReadOnly = true;
             this.nudCostoBase.Size = new System.Drawing.Size(211, 20);
             this.nudCostoBase.TabIndex = 45;
-            this.nudCostoBase.ValueChanged += new System.EventHandler(this.nudRecargoUrgencia_ValueChanged);
+            this.nudCostoBase.ValueChanged += new System.EventHandler(this.nudCostoBase_ValueChanged);
             // 
             // nudRecargoEmergencia
             // 
@@ -116,6 +117,7 @@
             this.nudRecargoEmergencia.ReadOnly = true;
             this.nudRecargoEmergencia.Size = new System.Drawing.Size(211, 20);
             this.nudRecargoEmergencia.TabIndex = 36;
+            this.nudRecargoEmergencia.ValueChanged += new System.EventHandler(this.nudRecargoEmergencia_ValueChanged);
             // 
             // label10
             // 
@@ -136,7 +138,6 @@
             this.label13.Size = new System.Drawing.Size(101, 13);
             this.label13.TabIndex = 27;
             this.label13.Text = "Fecha De atencion:";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // btnEliminar
             // 
@@ -152,6 +153,7 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnEditar
             // 
@@ -167,6 +169,7 @@
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnGuardar
             // 
@@ -182,6 +185,7 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // picPrestamoLibros
             // 
@@ -212,7 +216,7 @@
             this.tabPage1.Controls.Add(this.btnImprimir);
             this.tabPage1.Controls.Add(this.btnLimpiar);
             this.tabPage1.Controls.Add(this.btnBuscar);
-            this.tabPage1.Controls.Add(this.dgvRegistroSanatorios);
+            this.tabPage1.Controls.Add(this.dgvRegistroAtenciones);
             this.tabPage1.Controls.Add(this.lblTotalRegistros);
             this.tabPage1.Controls.Add(this.chkSeleccionar);
             this.tabPage1.Controls.Add(this.txtBuscarNombre);
@@ -240,6 +244,7 @@
             this.btnExportar.Text = "Exportar";
             this.btnExportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // btnImprimir
             // 
@@ -285,24 +290,26 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // dgvRegistroSanatorios
+            // dgvRegistroAtenciones
             // 
-            this.dgvRegistroSanatorios.AllowUserToAddRows = false;
-            this.dgvRegistroSanatorios.AllowUserToDeleteRows = false;
-            this.dgvRegistroSanatorios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvRegistroSanatorios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRegistroSanatorios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvRegistroAtenciones.AllowUserToAddRows = false;
+            this.dgvRegistroAtenciones.AllowUserToDeleteRows = false;
+            this.dgvRegistroAtenciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvRegistroAtenciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRegistroAtenciones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar});
-            this.dgvRegistroSanatorios.Location = new System.Drawing.Point(12, 77);
-            this.dgvRegistroSanatorios.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvRegistroSanatorios.MultiSelect = false;
-            this.dgvRegistroSanatorios.Name = "dgvRegistroSanatorios";
-            this.dgvRegistroSanatorios.ReadOnly = true;
-            this.dgvRegistroSanatorios.RowHeadersWidth = 51;
-            this.dgvRegistroSanatorios.RowTemplate.Height = 24;
-            this.dgvRegistroSanatorios.Size = new System.Drawing.Size(995, 335);
-            this.dgvRegistroSanatorios.TabIndex = 14;
+            this.dgvRegistroAtenciones.Location = new System.Drawing.Point(12, 77);
+            this.dgvRegistroAtenciones.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvRegistroAtenciones.MultiSelect = false;
+            this.dgvRegistroAtenciones.Name = "dgvRegistroAtenciones";
+            this.dgvRegistroAtenciones.ReadOnly = true;
+            this.dgvRegistroAtenciones.RowHeadersWidth = 51;
+            this.dgvRegistroAtenciones.RowTemplate.Height = 24;
+            this.dgvRegistroAtenciones.Size = new System.Drawing.Size(995, 335);
+            this.dgvRegistroAtenciones.TabIndex = 14;
+            this.dgvRegistroAtenciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRegistroAtenciones_CellContentClick);
             // 
             // Seleccionar
             // 
@@ -337,6 +344,7 @@
             this.chkSeleccionar.TabIndex = 12;
             this.chkSeleccionar.Text = "Seleccionar";
             this.chkSeleccionar.UseVisualStyleBackColor = true;
+            this.chkSeleccionar.CheckedChanged += new System.EventHandler(this.chkSeleccionar_CheckedChanged);
             // 
             // txtBuscarNombre
             // 
@@ -385,15 +393,15 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.rdbUrgente);
             this.groupBox1.Controls.Add(this.dtpFechaDeatencion);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.comboBox3);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.cbxCodigoSanatorio);
+            this.groupBox1.Controls.Add(this.cbxCodigoTIpoDeservicio);
+            this.groupBox1.Controls.Add(this.cbxCodigoMedico);
             this.groupBox1.Controls.Add(this.nudTotal);
             this.groupBox1.Controls.Add(this.nudCostoBase);
-            this.groupBox1.Controls.Add(this.rdbUrgente);
-            this.groupBox1.Controls.Add(this.cbxCodigodeatencion);
+            this.groupBox1.Controls.Add(this.cbxCodigodePaciente);
             this.groupBox1.Controls.Add(this.nudRecargoEmergencia);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label13);
@@ -411,7 +419,7 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txtcodigoLaboratorio);
+            this.groupBox1.Controls.Add(this.txtcodigoAtencion);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(18, 22);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
@@ -421,7 +429,84 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del doctor";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // rdbUrgente
+            // 
+            this.rdbUrgente.AutoSize = true;
+            this.rdbUrgente.Location = new System.Drawing.Point(617, 100);
+            this.rdbUrgente.Name = "rdbUrgente";
+            this.rdbUrgente.Size = new System.Drawing.Size(64, 17);
+            this.rdbUrgente.TabIndex = 52;
+            this.rdbUrgente.Text = "Urgente";
+            this.rdbUrgente.UseVisualStyleBackColor = true;
+            this.rdbUrgente.CheckedChanged += new System.EventHandler(this.rdbUrgente_CheckedChanged);
+            // 
+            // dtpFechaDeatencion
+            // 
+            this.dtpFechaDeatencion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaDeatencion.Location = new System.Drawing.Point(617, 19);
+            this.dtpFechaDeatencion.Name = "dtpFechaDeatencion";
+            this.dtpFechaDeatencion.Size = new System.Drawing.Size(211, 20);
+            this.dtpFechaDeatencion.TabIndex = 51;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(536, 101);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 13);
+            this.label5.TabIndex = 50;
+            this.label5.Text = "Importancia:";
+            // 
+            // cbxCodigoSanatorio
+            // 
+            this.cbxCodigoSanatorio.FormattingEnabled = true;
+            this.cbxCodigoSanatorio.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"});
+            this.cbxCodigoSanatorio.Location = new System.Drawing.Point(161, 225);
+            this.cbxCodigoSanatorio.Name = "cbxCodigoSanatorio";
+            this.cbxCodigoSanatorio.Size = new System.Drawing.Size(236, 21);
+            this.cbxCodigoSanatorio.TabIndex = 49;
+            // 
+            // cbxCodigoTIpoDeservicio
+            // 
+            this.cbxCodigoTIpoDeservicio.FormattingEnabled = true;
+            this.cbxCodigoTIpoDeservicio.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"});
+            this.cbxCodigoTIpoDeservicio.Location = new System.Drawing.Point(161, 182);
+            this.cbxCodigoTIpoDeservicio.Name = "cbxCodigoTIpoDeservicio";
+            this.cbxCodigoTIpoDeservicio.Size = new System.Drawing.Size(236, 21);
+            this.cbxCodigoTIpoDeservicio.TabIndex = 48;
+            this.cbxCodigoTIpoDeservicio.SelectedIndexChanged += new System.EventHandler(this.cbxCodigoTIpoDeservicio_SelectedIndexChanged);
+            // 
+            // cbxCodigoMedico
+            // 
+            this.cbxCodigoMedico.FormattingEnabled = true;
+            this.cbxCodigoMedico.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"});
+            this.cbxCodigoMedico.Location = new System.Drawing.Point(161, 134);
+            this.cbxCodigoMedico.Name = "cbxCodigoMedico";
+            this.cbxCodigoMedico.Size = new System.Drawing.Size(236, 21);
+            this.cbxCodigoMedico.TabIndex = 47;
             // 
             // nudTotal
             // 
@@ -437,26 +522,21 @@
             this.nudTotal.Size = new System.Drawing.Size(211, 20);
             this.nudTotal.TabIndex = 46;
             // 
-            // rdbUrgente
+            // cbxCodigodePaciente
             // 
-            this.rdbUrgente.AutoSize = true;
-            this.rdbUrgente.Location = new System.Drawing.Point(617, 101);
-            this.rdbUrgente.Margin = new System.Windows.Forms.Padding(2);
-            this.rdbUrgente.Name = "rdbUrgente";
-            this.rdbUrgente.Size = new System.Drawing.Size(81, 17);
-            this.rdbUrgente.TabIndex = 44;
-            this.rdbUrgente.TabStop = true;
-            this.rdbUrgente.Text = "Emergencia";
-            this.rdbUrgente.UseVisualStyleBackColor = true;
-            this.rdbUrgente.CheckedChanged += new System.EventHandler(this.rdbUrgente_CheckedChanged);
-            // 
-            // cbxCodigodeatencion
-            // 
-            this.cbxCodigodeatencion.FormattingEnabled = true;
-            this.cbxCodigodeatencion.Location = new System.Drawing.Point(161, 86);
-            this.cbxCodigodeatencion.Name = "cbxCodigodeatencion";
-            this.cbxCodigodeatencion.Size = new System.Drawing.Size(236, 21);
-            this.cbxCodigodeatencion.TabIndex = 40;
+            this.cbxCodigodePaciente.FormattingEnabled = true;
+            this.cbxCodigodePaciente.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"});
+            this.cbxCodigodePaciente.Location = new System.Drawing.Point(161, 86);
+            this.cbxCodigodePaciente.Name = "cbxCodigodePaciente";
+            this.cbxCodigodePaciente.Size = new System.Drawing.Size(236, 21);
+            this.cbxCodigodePaciente.TabIndex = 40;
             // 
             // btnCancelar
             // 
@@ -472,6 +552,7 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnNuevo
             // 
@@ -487,6 +568,7 @@
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // rdbInactivo
             // 
@@ -551,7 +633,6 @@
             this.label8.Size = new System.Drawing.Size(64, 13);
             this.label8.TabIndex = 10;
             this.label8.Text = "Costo Base:";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label7
             // 
@@ -583,14 +664,14 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "Codigo de Paciente:";
             // 
-            // txtcodigoLaboratorio
+            // txtcodigoAtencion
             // 
-            this.txtcodigoLaboratorio.Location = new System.Drawing.Point(161, 40);
-            this.txtcodigoLaboratorio.Margin = new System.Windows.Forms.Padding(2);
-            this.txtcodigoLaboratorio.Name = "txtcodigoLaboratorio";
-            this.txtcodigoLaboratorio.ReadOnly = true;
-            this.txtcodigoLaboratorio.Size = new System.Drawing.Size(236, 20);
-            this.txtcodigoLaboratorio.TabIndex = 1;
+            this.txtcodigoAtencion.Location = new System.Drawing.Point(161, 40);
+            this.txtcodigoAtencion.Margin = new System.Windows.Forms.Padding(2);
+            this.txtcodigoAtencion.Name = "txtcodigoAtencion";
+            this.txtcodigoAtencion.ReadOnly = true;
+            this.txtcodigoAtencion.Size = new System.Drawing.Size(236, 20);
+            this.txtcodigoAtencion.TabIndex = 1;
             // 
             // label3
             // 
@@ -601,6 +682,10 @@
             this.label3.Size = new System.Drawing.Size(103, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "Codigo de Atencion:";
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // BtnCerrarr
             // 
@@ -629,49 +714,6 @@
             this.label1.TabIndex = 39;
             this.label1.Text = "Registro de Atenciones";
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(161, 134);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(236, 21);
-            this.comboBox1.TabIndex = 47;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(161, 182);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(236, 21);
-            this.comboBox2.TabIndex = 48;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(161, 225);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(236, 21);
-            this.comboBox3.TabIndex = 49;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(535, 105);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(66, 13);
-            this.label5.TabIndex = 50;
-            this.label5.Text = "Emergencia:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // dtpFechaDeatencion
-            // 
-            this.dtpFechaDeatencion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaDeatencion.Location = new System.Drawing.Point(617, 19);
-            this.dtpFechaDeatencion.Name = "dtpFechaDeatencion";
-            this.dtpFechaDeatencion.Size = new System.Drawing.Size(211, 20);
-            this.dtpFechaDeatencion.TabIndex = 51;
-            // 
             // AtencionPacientesForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -690,7 +732,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroSanatorios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroAtenciones)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -716,7 +758,7 @@
         private FontAwesome.Sharp.IconButton btnImprimir;
         private FontAwesome.Sharp.IconButton btnLimpiar;
         private FontAwesome.Sharp.IconButton btnBuscar;
-        private System.Windows.Forms.DataGridView dgvRegistroSanatorios;
+        private System.Windows.Forms.DataGridView dgvRegistroAtenciones;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private System.Windows.Forms.Label lblTotalRegistros;
         private System.Windows.Forms.CheckBox chkSeleccionar;
@@ -726,8 +768,7 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.NumericUpDown nudTotal;
-        private System.Windows.Forms.RadioButton rdbUrgente;
-        private System.Windows.Forms.ComboBox cbxCodigodeatencion;
+        private System.Windows.Forms.ComboBox cbxCodigodePaciente;
         private FontAwesome.Sharp.IconButton btnCancelar;
         private FontAwesome.Sharp.IconButton btnNuevo;
         private System.Windows.Forms.RadioButton rdbInactivo;
@@ -739,15 +780,16 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtcodigoLaboratorio;
+        private System.Windows.Forms.TextBox txtcodigoAtencion;
         private System.Windows.Forms.Label label3;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private FontAwesome.Sharp.IconButton BtnCerrarr;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbxCodigoSanatorio;
+        private System.Windows.Forms.ComboBox cbxCodigoTIpoDeservicio;
+        private System.Windows.Forms.ComboBox cbxCodigoMedico;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dtpFechaDeatencion;
+        private System.Windows.Forms.CheckBox rdbUrgente;
     }
 }
