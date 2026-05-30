@@ -55,6 +55,7 @@
             this.btnCerrar = new FontAwesome.Sharp.IconButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbxCodigoHospitalizacion = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtNutricionista = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -79,7 +80,6 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.BtnCerrarr = new FontAwesome.Sharp.IconButton();
             this.picPrestamoLibros = new System.Windows.Forms.PictureBox();
-            this.cbxCodigoHospitalizacion = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDietas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTotalDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudImpuesto)).BeginInit();
@@ -124,7 +124,7 @@
             this.dgvDietas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDietas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar});
-            this.dgvDietas.Location = new System.Drawing.Point(16, 95);
+            this.dgvDietas.Location = new System.Drawing.Point(24, 97);
             this.dgvDietas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvDietas.MultiSelect = false;
             this.dgvDietas.Name = "dgvDietas";
@@ -133,6 +133,7 @@
             this.dgvDietas.RowTemplate.Height = 24;
             this.dgvDietas.Size = new System.Drawing.Size(1327, 412);
             this.dgvDietas.TabIndex = 14;
+            this.dgvDietas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDietas_CellContentClick);
             // 
             // nudTotalDetalle
             // 
@@ -433,6 +434,14 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // cbxCodigoHospitalizacion
+            // 
+            this.cbxCodigoHospitalizacion.FormattingEnabled = true;
+            this.cbxCodigoHospitalizacion.Location = new System.Drawing.Point(177, 93);
+            this.cbxCodigoHospitalizacion.Name = "cbxCodigoHospitalizacion";
+            this.cbxCodigoHospitalizacion.Size = new System.Drawing.Size(313, 24);
+            this.cbxCodigoHospitalizacion.TabIndex = 56;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -557,6 +566,7 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnNuevo
             // 
@@ -572,6 +582,7 @@
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // rdbInactivo
             // 
@@ -688,14 +699,6 @@
             this.picPrestamoLibros.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picPrestamoLibros.TabIndex = 46;
             this.picPrestamoLibros.TabStop = false;
-            // 
-            // cbxCodigoHospitalizacion
-            // 
-            this.cbxCodigoHospitalizacion.FormattingEnabled = true;
-            this.cbxCodigoHospitalizacion.Location = new System.Drawing.Point(177, 93);
-            this.cbxCodigoHospitalizacion.Name = "cbxCodigoHospitalizacion";
-            this.cbxCodigoHospitalizacion.Size = new System.Drawing.Size(313, 24);
-            this.cbxCodigoHospitalizacion.TabIndex = 56;
             // 
             // DietasForm
             // 
