@@ -17,7 +17,7 @@ namespace Sanatorios
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MedicosForms());
+            Application.Run(new FacturasForms());
         }
     }
 }

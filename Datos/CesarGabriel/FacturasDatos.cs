@@ -61,7 +61,7 @@ namespace Datos.Facturas
                                 cmd.Parameters.AddWithValue("@CodigoFactura", ControlFacturas.CodigoFactura);
                                 cmd.Parameters.AddWithValue("@CodigoAtencion", ControlFacturas.CodigoAtencion);
                                 cmd.Parameters.AddWithValue("@CodigoSeguro", ControlFacturas.CodigoSeguro);
-                                cmd.Parameters.AddWithValue("@MontoPagado", ControlFacturas.FechaFactura);
+                                cmd.Parameters.AddWithValue("@FechaFactura", ControlFacturas.FechaFactura);
                                 cmd.Parameters.AddWithValue("@SubTotal", ControlFacturas.SubTotal);
                                 cmd.Parameters.AddWithValue("@DescuentoSeguro", ControlFacturas.DescuentoSeguro);
                                 cmd.Parameters.AddWithValue("@Impuesto", ControlFacturas.Impuesto);
@@ -132,11 +132,11 @@ namespace Datos.Facturas
                         using (SqlConnection conn = conexionDatos.MtdConexion())
                         {
                             conn.Open();
-                            string QueryEliminar = @"DELETE Tbl_Facturas WHERE CodigoAtencion = @CodigoAtencion;";
+                            string QueryEliminar = @"DELETE Tbl_Facturas WHERE CodigoFactura = @CodigoFactura;";
 
                             using (SqlCommand cmd = new SqlCommand(QueryEliminar, conn))
                             {
-                                cmd.Parameters.AddWithValue("@CodigoAtencion", ControlFacturas);
+                                cmd.Parameters.AddWithValue("@CodigoFactura", ControlFacturas);
 
                                 return cmd.ExecuteNonQuery() > 0;
                             }
