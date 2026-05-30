@@ -1,4 +1,5 @@
 ﻿using Entidad;
+using Entidad.Factura;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -60,7 +61,7 @@ namespace Datos.Facturas
                                 cmd.Parameters.AddWithValue("@CodigoFactura", ControlFacturas.CodigoFactura);
                                 cmd.Parameters.AddWithValue("@CodigoAtencion", ControlFacturas.CodigoAtencion);
                                 cmd.Parameters.AddWithValue("@CodigoSeguro", ControlFacturas.CodigoSeguro);
-                                cmd.Parameters.AddWithValue("@MontoPagado", ControlFacturas.FechaFactura);
+                                cmd.Parameters.AddWithValue("@FechaFactura", ControlFacturas.FechaFactura);
                                 cmd.Parameters.AddWithValue("@SubTotal", ControlFacturas.SubTotal);
                                 cmd.Parameters.AddWithValue("@DescuentoSeguro", ControlFacturas.DescuentoSeguro);
                                 cmd.Parameters.AddWithValue("@Impuesto", ControlFacturas.Impuesto);
@@ -131,11 +132,11 @@ namespace Datos.Facturas
                         using (SqlConnection conn = conexionDatos.MtdConexion())
                         {
                             conn.Open();
-                            string QueryEliminar = @"DELETE Tbl_Facturas WHERE CodigoAtencion = @CodigoAtencion;";
+                            string QueryEliminar = @"DELETE Tbl_Facturas WHERE CodigoFactura = @CodigoFactura;";
 
                             using (SqlCommand cmd = new SqlCommand(QueryEliminar, conn))
                             {
-                                cmd.Parameters.AddWithValue("@CodigoAtencion", ControlFacturas);
+                                cmd.Parameters.AddWithValue("@CodigoFactura", ControlFacturas);
 
                                 return cmd.ExecuteNonQuery() > 0;
                             }
@@ -182,7 +183,7 @@ namespace Datos.Facturas
                         throw new Exception("Error general al buscar el Doctor: " + ex.Message);
                     }
                 }
-                public List<FacturasEntidad> MtdConsultarPagos()
+                public List<FacturasEntidad> MtdConsultarFacturas()
                 {
                     List<FacturasEntidad> ListaFacturas = new List<FacturasEntidad>();
                     try
@@ -210,8 +211,8 @@ namespace Datos.Facturas
                                             Estado = Convert.ToBoolean(dr["Estado"]),
                                             UsuarioSistema = Convert.ToString(dr["UsuarioSistema"]),
                                             FechaSistema = Convert.ToDateTime(dr["FechaSistema"]),
-                                            HoraSistema = Convert.ToDateTime(dr["HoraSistema"])
-                                        });
+                                            HoraSistema = (TimeSpan)dr["HoraSistema"]
+                                    });
                                     }
                                 }
 

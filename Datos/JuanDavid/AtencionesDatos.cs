@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Datos.JuanDavid
 {
-    internal class AtencionesDatos
+    public class AtencionesDatos
     {
         ConexionDatos conexionDatos = new ConexionDatos();
         /*  ----- CONSULTAR ----- */
@@ -33,7 +33,7 @@ namespace Datos.JuanDavid
                                     CodigoAtencion = Convert.ToInt32(dr["CodigoAtencion"]),
                                     CodigoPaciente = Convert.ToInt32(dr["CodigoPaciente"]),
                                     CodigoMedico = Convert.ToInt32(dr["CodigoMedico"]),
-                                    CodigoTipoServicio = Convert.ToInt32(dr["TipoSanatorio"]),
+                                    CodigoTipoServicio = Convert.ToInt32(dr["CodigoTipoServicio"]),
                                     CodigoSanatorio = Convert.ToInt32(dr["CodigoMedico"]),
                                     FechaAtencion = Convert.ToDateTime(dr["FechaAtencion"]),
                                     CostoBase = Convert.ToDecimal(dr["CostoBase"]),
@@ -53,11 +53,11 @@ namespace Datos.JuanDavid
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al mostrar la lista " + ex.Message);
+                throw new Exception("Error al mostrar la lista DATYOS " + ex.Message);
 
             }
         }
-            /*  ----- AGREGAR ----- */
+        /*  ----- AGREGAR ----- */
         public bool MtdAgregar(AntencionPacientesEntidad ControlAtencion)
         {
             try
@@ -167,8 +167,7 @@ namespace Datos.JuanDavid
         }
         public bool MtdEliminar(int CodigoAtencion)
         {
-            try
-            {
+            try { 
                 using (SqlConnection conn = conexionDatos.MtdConexion())
                 {
                     conn.Open();
@@ -181,15 +180,15 @@ namespace Datos.JuanDavid
                         return cmd.ExecuteNonQuery() > 0;
                     }
                 }
-            }
+        }
             catch (Exception ex)
             {
                 throw new Exception("Error al eliminar la Atencioin de la base de datos", ex);
-            }
-        }
+    }
+}
 
 
-        public DataTable MtdBuscar(int UsuarioSistema)
+        public DataTable MtdBuscar(string nombrePaciente)
         {
             try
             {
@@ -197,15 +196,22 @@ namespace Datos.JuanDavid
                 {
                     conn.Open();
 
-                    string query = @"SELECT * FROM Tbl_AtencionesPacientes WHERE UsuarioSistema LIKE @UsuarioSistema;";
+
+                    string query = @"SELECT a.* FROM Tbl_AtencionesPacientes a
+                             INNER JOIN Tbl_Pacientes p ON a.CodigoPaciente = p.CodigoPaciente
+                             WHERE p.Nombre LIKE '%' + @Nombre + '%';";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.CommandType = CommandType.Text;
-                        cmd.Parameters.AddWithValue("@UsuarioSistema", UsuarioSistema);
+
+
+                        cmd.Parameters.AddWithValue("@Nombre", nombrePaciente);
 
                         SqlDataAdapter da = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
+
+
                         da.Fill(dt);
 
                         return dt;
@@ -214,11 +220,11 @@ namespace Datos.JuanDavid
             }
             catch (SqlException exSql)
             {
-                throw new Exception("Error al buscar la Atencion: " + exSql.Message);
+                throw new Exception("Error al buscar las atenciones: " + exSql.Message);
             }
             catch (Exception ex)
             {
-                throw new Exception("Error general al buscar la Atencion: " + ex.Message);
+                throw new Exception("Error general al buscar las atenciones: " + ex.Message);
             }
         }
 
@@ -233,7 +239,7 @@ namespace Datos.JuanDavid
                 {
                     conn.Open();
                     string QueryListaClientes = @"
-												select  CodigoPaciente, Nombre
+												select  CodigoPaciente, Nombre, Apellido
 													From Tbl_Pacientes;
 												"; // Cambiar query
 
@@ -248,7 +254,7 @@ namespace Datos.JuanDavid
                                 ListarDatos.Add(new
                                 {
                                     Value = dr["CodigoPaciente"], // Cambiar nombre de campo codigo segun query
-                                    Text = $"{dr["CodigoPaciente"]} - {dr["Nombre"]}" // Cambiar codigo y nombre, segun query
+                                    Text = $"{dr["CodigoPaciente"]} - {dr["Nombre"]} {dr["Apellido"]}" // Cambiar codigo y nombre, segun query
                                 });
                             }
                         }
@@ -262,7 +268,7 @@ namespace Datos.JuanDavid
                 throw new Exception("Error al mostrar los datos : " + ex.Message);
             }
         }
-   
+
         public List<dynamic> MtdListarDoctores()
         {
             List<dynamic> ListarDatos = new List<dynamic>();
@@ -273,7 +279,7 @@ namespace Datos.JuanDavid
                 {
                     conn.Open();
                     string QueryListaClientes = @"
-												select  CodigoMedico, Nombre
+												select  CodigoMedico, Nombre, Apellido
 													From Tbl_Medicos;
 												"; // Cambiar query
 
@@ -288,7 +294,7 @@ namespace Datos.JuanDavid
                                 ListarDatos.Add(new
                                 {
                                     Value = dr["CodigoMedico"], // Cambiar nombre de campo codigo segun query
-                                    Text = $"{dr["CodigoMedico"]} - {dr["Nombre"]}" // Cambiar codigo y nombre, segun query
+                                    Text = $"{dr["CodigoMedico"]} - {dr["Nombre"]} {dr["Apellido"]}" // Cambiar codigo y nombre, segun query
                                 });
                             }
                         }
@@ -312,7 +318,7 @@ namespace Datos.JuanDavid
                 {
                     conn.Open();
                     string QueryListaClientes = @"
-												select  CodigoTipoServicio, Nombre
+												select  CodigoTipoServicio, NombreServicio
 													From Tbl_TiposServicios;
 												"; // Cambiar query
 
@@ -327,7 +333,7 @@ namespace Datos.JuanDavid
                                 ListarDatos.Add(new
                                 {
                                     Value = dr["CodigoTipoServicio"], // Cambiar nombre de campo codigo segun query
-                                    Text = $"{dr["CodigoTipoServicio"]} - {dr["Nombre"]}" // Cambiar codigo y nombre, segun query
+                                    Text = $"{dr["CodigoTipoServicio"]} - {dr["NombreServicio"]}" // Cambiar codigo y nombre, segun query
                                 });
                             }
                         }
@@ -378,6 +384,87 @@ namespace Datos.JuanDavid
             catch (Exception ex)
             {
                 throw new Exception("Error al mostrar los datos : " + ex.Message);
+            }
+        }
+        public List<dynamic> MtdCodigoPacientePorNombre(string Nombre)
+        {
+            List<dynamic> ListarDatos = new List<dynamic>();
+
+            try
+            {
+                using (SqlConnection conn = conexionDatos.MtdConexion())
+                {
+                    conn.Open();
+                    string QueryListaClientes = @"
+												select  CodigoSanatorio, Nombre
+													From Tbl_Sanatorios;
+												"; // Cambiar query
+
+                    using (SqlCommand cmd = new SqlCommand(QueryListaClientes, conn))
+                    {
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+
+
+                            while (dr.Read())
+                            {
+                                ListarDatos.Add(new
+                                {
+                                    Value = dr["CodigoSanatorio"], // Cambiar nombre de campo codigo segun query
+                                    Text = $"{dr["CodigoSanatorio"]} - {dr["Nombre"]}" // Cambiar codigo y nombre, segun query
+                                });
+                            }
+                        }
+                    }
+
+                }
+                return ListarDatos;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al mostrar los datos : " + ex.Message);
+            }
+
+        }
+        /*OBTENER PRECIO de TarifaBase +  RecargoBase*/
+        public decimal MtdCostoTipoServicos(int codigoTipoPaquete)
+        {
+            try
+            {
+                using (SqlConnection conn = conexionDatos.MtdConexion())
+                {
+                    conn.Open();
+
+                    string query = @"SELECT TarifaBase + RecargoBase
+                             FROM Tbl_TiposServicios
+                             WHERE CodigoTipoServicio = @CodigoTipoServicio;";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.CommandType = CommandType.Text;
+
+                        cmd.Parameters.AddWithValue("@CodigoTipoServicio", codigoTipoPaquete);
+
+                        object rs = cmd.ExecuteScalar();
+
+                        if (rs != null && rs != DBNull.Value)
+                        {
+                            return Convert.ToDecimal(rs);
+                        }
+                        else
+                        {
+                            return 0m; 
+                        }
+                    }
+                }
+            }
+            catch (SqlException exSql)
+            {
+                throw new Exception("Error al buscar el tipo de paquete: " + exSql.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error general al buscar el paquete: " + ex.Message);
             }
         }
     }
