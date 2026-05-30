@@ -1,4 +1,5 @@
 ﻿using Entidad;
+using Entidad.Factura;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -182,7 +183,7 @@ namespace Datos.Facturas
                         throw new Exception("Error general al buscar el Doctor: " + ex.Message);
                     }
                 }
-                public List<FacturasEntidad> MtdConsultarPagos()
+                public List<FacturasEntidad> MtdConsultarFacturas()
                 {
                     List<FacturasEntidad> ListaFacturas = new List<FacturasEntidad>();
                     try
@@ -210,8 +211,8 @@ namespace Datos.Facturas
                                             Estado = Convert.ToBoolean(dr["Estado"]),
                                             UsuarioSistema = Convert.ToString(dr["UsuarioSistema"]),
                                             FechaSistema = Convert.ToDateTime(dr["FechaSistema"]),
-                                            HoraSistema = Convert.ToDateTime(dr["HoraSistema"])
-                                        });
+                                            HoraSistema = (TimeSpan)dr["HoraSistema"]
+                                    });
                                     }
                                 }
 

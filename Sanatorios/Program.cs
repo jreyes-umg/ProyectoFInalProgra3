@@ -17,7 +17,7 @@ namespace Sanatorios
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Sanatorios.JuanDavid.Sanatorios());
+            Application.Run(new MedicosForms());
         }
     }
 }
