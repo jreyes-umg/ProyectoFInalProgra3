@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Sanatorios.UsuarioLogueado;
 
 namespace Sanatorios
 {
@@ -108,8 +109,8 @@ namespace Sanatorios
                 nuevaFactura.TotalPagar = nudTotalPagar.Value;
                 nuevaFactura.Estado = rdbActivo.Checked;
 
-               
-                nuevaFactura.UsuarioSistema = "Admin"; //Prueba, aun faltan los tipos de usuario
+
+                nuevaFactura.UsuarioSistema = Sesion.NombreUsuario;
                 nuevaFactura.FechaSistema = DateTime.Now.Date;
                 nuevaFactura.HoraSistema = DateTime.Now.TimeOfDay;
 
@@ -185,7 +186,7 @@ namespace Sanatorios
                 facturaEditada.TotalPagar = nudTotalPagar.Value;
                 facturaEditada.Estado = rdbActivo.Checked;
 
-                facturaEditada.UsuarioSistema = "Admin";
+                facturaEditada.UsuarioSistema = Sesion.NombreUsuario;
                 facturaEditada.FechaSistema = DateTime.Now.Date;
                 facturaEditada.HoraSistema = DateTime.Now.TimeOfDay;
 
@@ -238,6 +239,100 @@ namespace Sanatorios
 
             }
 
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Font tituloFont = new Font("Arial", 16, FontStyle.Bold);
+            Font textFont = new Font("Arial", 11);
+            Brush brush = Brushes.Black;
+            float y = 40;
+            float margenizquierdo = 50;
+
+            e.Graphics.DrawString("DOCUMENTO DE FACTURACIÓN", tituloFont, brush, margenizquierdo, y);
+            y += 40;
+
+            e.Graphics.DrawString($"Código de Factura: {txtCodigoFactura.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Paciente: {cbxAtencion.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Seguro Médico: {cbxCodigoSeguro.Text}", textFont, brush, margenizquierdo, y); y += 25; 
+            e.Graphics.DrawString($"SubTotal: Q{nudSubTotal.Value}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Descuento/Cobertura: Q{nudDescuentoSeguro.Value}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Impuesto: Q{nudImpuesto.Value}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Total a Pagar: Q{nudTotalPagar.Value}", textFont, brush, margenizquierdo, y); y += 25;
+
+            string estado = rdbActivo.Checked ? "Activa" : "Anulada";
+            e.Graphics.DrawString($"Estado: {estado}", textFont, brush, margenizquierdo, y);
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            {
+                try
+                {
+                    string textoBusqueda = txtBuscarNombre.Text.Trim().ToLower(); 
+                    if (string.IsNullOrEmpty(textoBusqueda))
+                    {
+                        MtdCargarDatosEnTabla();
+                        return;
+                    }
+
+                    FacturasNegocio negocio = new FacturasNegocio();
+                    var listaCompleta = negocio.MtdConsultarFacturas();
+
+                    var listaFiltrada = listaCompleta.Where(s => s.CodigoFactura.ToString().Contains(textoBusqueda)).ToList();
+                    dgvFacturas.DataSource = listaFiltrada;
+                }
+                catch (Exception ex) { MessageBox.Show("Error al buscar: " + ex.Message); }
+            }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtBuscarNombre.Text = ""; 
+            MtdCargarDatosEnTabla();
+        }
+
+        private void BtnCerrarr_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            try { printDocument1.Print(); }
+            catch (Exception ex) { MessageBox.Show("Error al imprimir: " + ex.Message); }
+        }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvFacturas.Rows.Count == 0) return;
+                SaveFileDialog guardarArchivo = new SaveFileDialog { Filter = "Archivo CSV (*.csv)|*.csv", FileName = "Facturas_" + DateTime.Now.ToString("ddMMyyyy") + ".csv" };
+                if (guardarArchivo.ShowDialog() == DialogResult.OK)
+                {
+                    using (System.IO.StreamWriter sw = new System.IO.StreamWriter(guardarArchivo.FileName, false, System.Text.Encoding.UTF8))
+                    {
+                        for (int i = 0; i < dgvFacturas.Columns.Count; i++)
+                        {
+                            sw.Write(dgvFacturas.Columns[i].HeaderText);
+                            if (i < dgvFacturas.Columns.Count - 1) sw.Write(",");
+                        }
+                        sw.WriteLine();
+                        foreach (DataGridViewRow fila in dgvFacturas.Rows)
+                        {
+                            for (int i = 0; i < dgvFacturas.Columns.Count; i++)
+                            {
+                                if (fila.Cells[i].Value != null) sw.Write(fila.Cells[i].Value.ToString().Replace(",", " "));
+                                if (i < dgvFacturas.Columns.Count - 1) sw.Write(",");
+                            }
+                            sw.WriteLine();
+                        }
+                    }
+                    MessageBox.Show("Exportado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
         }
     }
 }

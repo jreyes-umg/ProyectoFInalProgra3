@@ -20,7 +20,7 @@ namespace Negocio.Pagos
         /* ----- AGREGAR ----- */
         public bool MtdAgregar(PagosEntidad ControlPagos)
         {
-            // Validaciones de seguridad antes de ir a SQL
+           
             if (ControlPagos == null)
                 throw new Exception("Error: El objeto de pago está vacío.");
             if (ControlPagos.CodigoFactura <= 0)

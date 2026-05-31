@@ -115,6 +115,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="InicioForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InicioForms.Designer.cs">
+      <DependentUpon>InicioForms.cs</DependentUpon>
+    </Compile>
     <Compile Include="JuanDavid\AtencionPacientesForms.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,12 @@
     </Compile>
     <Compile Include="CesarGabriel\PagosForms.Designer.cs">
       <DependentUpon>PagosForms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForms.Designer.cs">
+      <DependentUpon>LoginForms.cs</DependentUpon>
     </Compile>
     <Compile Include="MarlonMeda\DietasForm.cs">
       <SubType>Form</SubType>
@@ -177,11 +189,15 @@
     <Compile Include="CesarGabriel\SegurosMedicosForms.Designer.cs">
       <DependentUpon>SegurosMedicosForms.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsuarioLogueado.cs" />
     <EmbeddedResource Include="CesarGabriel\DetalleFacturasForms.resx">
       <DependentUpon>DetalleFacturasForms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CesarGabriel\FacturasForms.resx">
       <DependentUpon>FacturasForms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InicioForms.resx">
+      <DependentUpon>InicioForms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JuanDavid\AtencionPacientesForms.resx">
       <DependentUpon>AtencionPacientesForms.cs</DependentUpon>
@@ -197,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CesarGabriel\PagosForms.resx">
       <DependentUpon>PagosForms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForms.resx">
+      <DependentUpon>LoginForms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MarlonMeda\DietasForm.resx">
       <DependentUpon>DietasForm.cs</DependentUpon>

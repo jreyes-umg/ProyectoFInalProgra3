@@ -1,5 +1,4 @@
 ﻿using Sanatorios.JuanDavid;
-using Sanatorios.MarlonMeda;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +17,7 @@ namespace Sanatorios
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DietasForm());
+            Application.Run(new LoginForms());
         }
     }
 }

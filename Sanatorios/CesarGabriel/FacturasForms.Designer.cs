@@ -38,6 +38,8 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbxAtencion = new System.Windows.Forms.ComboBox();
+            this.cbxCodigoSeguro = new System.Windows.Forms.ComboBox();
             this.nudSubTotal = new System.Windows.Forms.NumericUpDown();
             this.nudDescuentoSeguro = new System.Windows.Forms.NumericUpDown();
             this.nudTotalPagar = new System.Windows.Forms.NumericUpDown();
@@ -70,8 +72,6 @@
             this.btnCerrar = new FontAwesome.Sharp.IconButton();
             this.picPrestamoLibros = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbxCodigoSeguro = new System.Windows.Forms.ComboBox();
-            this.cbxAtencion = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudImpuesto)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -160,6 +160,11 @@
             this.BtnCerrarr.Text = "Cerrar";
             this.BtnCerrarr.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnCerrarr.UseVisualStyleBackColor = true;
+            this.BtnCerrarr.Click += new System.EventHandler(this.BtnCerrarr_Click);
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // tabPage2
             // 
@@ -206,6 +211,24 @@
             this.groupBox1.Size = new System.Drawing.Size(974, 403);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // cbxAtencion
+            // 
+            this.cbxAtencion.FormattingEnabled = true;
+            this.cbxAtencion.Location = new System.Drawing.Point(131, 189);
+            this.cbxAtencion.Name = "cbxAtencion";
+            this.cbxAtencion.Size = new System.Drawing.Size(236, 21);
+            this.cbxAtencion.TabIndex = 46;
+            this.cbxAtencion.SelectedIndexChanged += new System.EventHandler(this.cbxAtencion_SelectedIndexChanged);
+            // 
+            // cbxCodigoSeguro
+            // 
+            this.cbxCodigoSeguro.FormattingEnabled = true;
+            this.cbxCodigoSeguro.Location = new System.Drawing.Point(131, 235);
+            this.cbxCodigoSeguro.Name = "cbxCodigoSeguro";
+            this.cbxCodigoSeguro.Size = new System.Drawing.Size(236, 21);
+            this.cbxCodigoSeguro.TabIndex = 45;
+            this.cbxCodigoSeguro.SelectedIndexChanged += new System.EventHandler(this.cbxCodigoSeguro_SelectedIndexChanged);
             // 
             // nudSubTotal
             // 
@@ -453,6 +476,7 @@
             this.btnExportar.Text = "Exportar";
             this.btnExportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // btnImprimir
             // 
@@ -468,6 +492,7 @@
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnLimpiar
             // 
@@ -483,6 +508,7 @@
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnBuscar
             // 
@@ -498,6 +524,7 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // dgvFacturas
             // 
@@ -587,10 +614,10 @@
             // picPrestamoLibros
             // 
             this.picPrestamoLibros.Image = ((System.Drawing.Image)(resources.GetObject("picPrestamoLibros.Image")));
-            this.picPrestamoLibros.Location = new System.Drawing.Point(942, 25);
+            this.picPrestamoLibros.Location = new System.Drawing.Point(935, 11);
             this.picPrestamoLibros.Margin = new System.Windows.Forms.Padding(2);
             this.picPrestamoLibros.Name = "picPrestamoLibros";
-            this.picPrestamoLibros.Size = new System.Drawing.Size(66, 53);
+            this.picPrestamoLibros.Size = new System.Drawing.Size(82, 73);
             this.picPrestamoLibros.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picPrestamoLibros.TabIndex = 42;
             this.picPrestamoLibros.TabStop = false;
@@ -606,24 +633,6 @@
             this.label1.Size = new System.Drawing.Size(113, 29);
             this.label1.TabIndex = 39;
             this.label1.Text = "Facturas";
-            // 
-            // cbxCodigoSeguro
-            // 
-            this.cbxCodigoSeguro.FormattingEnabled = true;
-            this.cbxCodigoSeguro.Location = new System.Drawing.Point(131, 235);
-            this.cbxCodigoSeguro.Name = "cbxCodigoSeguro";
-            this.cbxCodigoSeguro.Size = new System.Drawing.Size(236, 21);
-            this.cbxCodigoSeguro.TabIndex = 45;
-            this.cbxCodigoSeguro.SelectedIndexChanged += new System.EventHandler(this.cbxCodigoSeguro_SelectedIndexChanged);
-            // 
-            // cbxAtencion
-            // 
-            this.cbxAtencion.FormattingEnabled = true;
-            this.cbxAtencion.Location = new System.Drawing.Point(131, 189);
-            this.cbxAtencion.Name = "cbxAtencion";
-            this.cbxAtencion.Size = new System.Drawing.Size(236, 21);
-            this.cbxAtencion.TabIndex = 46;
-            this.cbxAtencion.SelectedIndexChanged += new System.EventHandler(this.cbxAtencion_SelectedIndexChanged);
             // 
             // FacturasForms
             // 

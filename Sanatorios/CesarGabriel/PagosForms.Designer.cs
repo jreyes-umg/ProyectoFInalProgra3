@@ -36,13 +36,10 @@
             this.nudTotalCancelado = new System.Windows.Forms.NumericUpDown();
             this.nudCambio = new System.Windows.Forms.NumericUpDown();
             this.nudMontoPagado = new System.Windows.Forms.NumericUpDown();
-            this.txtUsuarioSistema = new System.Windows.Forms.TextBox();
             this.dtpFechaPago = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnExportar = new FontAwesome.Sharp.IconButton();
             this.btnImprimir = new FontAwesome.Sharp.IconButton();
             this.btnLimpiar = new FontAwesome.Sharp.IconButton();
@@ -54,13 +51,10 @@
             this.btnCerrar = new FontAwesome.Sharp.IconButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dtpHoraSistema = new System.Windows.Forms.DateTimePicker();
-            this.dtpFechaSistema = new System.Windows.Forms.DateTimePicker();
             this.cmbMetodoPago = new System.Windows.Forms.ComboBox();
             this.cmbCodigoFactura = new System.Windows.Forms.ComboBox();
             this.nudMora = new System.Windows.Forms.NumericUpDown();
             this.nudMontoFactura = new System.Windows.Forms.NumericUpDown();
-            this.label10 = new System.Windows.Forms.Label();
             this.btnEliminar = new FontAwesome.Sharp.IconButton();
             this.btnEditar = new FontAwesome.Sharp.IconButton();
             this.btnGuardar = new FontAwesome.Sharp.IconButton();
@@ -192,14 +186,6 @@
             this.nudMontoPagado.TabIndex = 48;
             this.nudMontoPagado.ValueChanged += new System.EventHandler(this.nudMontoPagado_ValueChanged);
             // 
-            // txtUsuarioSistema
-            // 
-            this.txtUsuarioSistema.Location = new System.Drawing.Point(582, 249);
-            this.txtUsuarioSistema.Margin = new System.Windows.Forms.Padding(2);
-            this.txtUsuarioSistema.Name = "txtUsuarioSistema";
-            this.txtUsuarioSistema.Size = new System.Drawing.Size(236, 20);
-            this.txtUsuarioSistema.TabIndex = 47;
-            // 
             // dtpFechaPago
             // 
             this.dtpFechaPago.Location = new System.Drawing.Point(160, 115);
@@ -237,26 +223,6 @@
             this.label14.Size = new System.Drawing.Size(88, 13);
             this.label14.TabIndex = 41;
             this.label14.Text = "Total Cancelado:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(478, 256);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 13);
-            this.label4.TabIndex = 39;
-            this.label4.Text = "Usuario Sistema:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(486, 322);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 13);
-            this.label3.TabIndex = 38;
-            this.label3.Text = "Hora de Sistema:";
             // 
             // btnExportar
             // 
@@ -395,23 +361,17 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dtpHoraSistema);
-            this.groupBox1.Controls.Add(this.dtpFechaSistema);
             this.groupBox1.Controls.Add(this.cmbMetodoPago);
             this.groupBox1.Controls.Add(this.cmbCodigoFactura);
             this.groupBox1.Controls.Add(this.nudMora);
             this.groupBox1.Controls.Add(this.nudTotalCancelado);
             this.groupBox1.Controls.Add(this.nudCambio);
             this.groupBox1.Controls.Add(this.nudMontoPagado);
-            this.groupBox1.Controls.Add(this.txtUsuarioSistema);
             this.groupBox1.Controls.Add(this.dtpFechaPago);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.nudMontoFactura);
-            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.btnEliminar);
             this.groupBox1.Controls.Add(this.btnEditar);
             this.groupBox1.Controls.Add(this.btnGuardar);
@@ -434,22 +394,6 @@
             this.groupBox1.Size = new System.Drawing.Size(974, 425);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            // 
-            // dtpHoraSistema
-            // 
-            this.dtpHoraSistema.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpHoraSistema.Location = new System.Drawing.Point(607, 319);
-            this.dtpHoraSistema.Name = "dtpHoraSistema";
-            this.dtpHoraSistema.Size = new System.Drawing.Size(211, 20);
-            this.dtpHoraSistema.TabIndex = 58;
-            // 
-            // dtpFechaSistema
-            // 
-            this.dtpFechaSistema.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaSistema.Location = new System.Drawing.Point(607, 286);
-            this.dtpFechaSistema.Name = "dtpFechaSistema";
-            this.dtpFechaSistema.Size = new System.Drawing.Size(211, 20);
-            this.dtpFechaSistema.TabIndex = 57;
             // 
             // cmbMetodoPago
             // 
@@ -498,16 +442,6 @@
             this.nudMontoFactura.Name = "nudMontoFactura";
             this.nudMontoFactura.Size = new System.Drawing.Size(211, 20);
             this.nudMontoFactura.TabIndex = 34;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(486, 286);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(92, 13);
-            this.label10.TabIndex = 29;
-            this.label10.Text = "Fecha de Sistema";
             // 
             // btnEliminar
             // 
@@ -707,13 +641,17 @@
             // picPrestamoLibros
             // 
             this.picPrestamoLibros.Image = ((System.Drawing.Image)(resources.GetObject("picPrestamoLibros.Image")));
-            this.picPrestamoLibros.Location = new System.Drawing.Point(942, 9);
+            this.picPrestamoLibros.Location = new System.Drawing.Point(931, 2);
             this.picPrestamoLibros.Margin = new System.Windows.Forms.Padding(2);
             this.picPrestamoLibros.Name = "picPrestamoLibros";
-            this.picPrestamoLibros.Size = new System.Drawing.Size(66, 53);
+            this.picPrestamoLibros.Size = new System.Drawing.Size(70, 58);
             this.picPrestamoLibros.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picPrestamoLibros.TabIndex = 46;
             this.picPrestamoLibros.TabStop = false;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage_1);
             // 
             // BtnCerrarr
             // 
@@ -769,13 +707,10 @@
         private System.Windows.Forms.NumericUpDown nudTotalCancelado;
         private System.Windows.Forms.NumericUpDown nudCambio;
         private System.Windows.Forms.NumericUpDown nudMontoPagado;
-        private System.Windows.Forms.TextBox txtUsuarioSistema;
         private System.Windows.Forms.DateTimePicker dtpFechaPago;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private FontAwesome.Sharp.IconButton btnExportar;
         private FontAwesome.Sharp.IconButton btnImprimir;
         private FontAwesome.Sharp.IconButton btnLimpiar;
@@ -788,7 +723,6 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.NumericUpDown nudMontoFactura;
-        private System.Windows.Forms.Label label10;
         private FontAwesome.Sharp.IconButton btnEliminar;
         private FontAwesome.Sharp.IconButton btnEditar;
         private FontAwesome.Sharp.IconButton btnGuardar;
@@ -811,7 +745,5 @@
         private System.Windows.Forms.NumericUpDown nudMora;
         private System.Windows.Forms.ComboBox cmbCodigoFactura;
         private System.Windows.Forms.ComboBox cmbMetodoPago;
-        private System.Windows.Forms.DateTimePicker dtpHoraSistema;
-        private System.Windows.Forms.DateTimePicker dtpFechaSistema;
     }
 }

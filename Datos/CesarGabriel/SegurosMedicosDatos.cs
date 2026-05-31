@@ -71,7 +71,7 @@ namespace Datos.SegurosMedicos
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception("Error al Agregar los Pagos en la base de datos (datos) ", ex);
+                        throw new Exception("Error al Agregar el seguro medico en la base de datos (datos) ", ex);
                     }
                 }
                 /*  ----- EDITAR ----- */
@@ -113,7 +113,7 @@ namespace Datos.SegurosMedicos
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception("Error al Editar el Doctor en la base de datos", ex);
+                        throw new Exception("Error al Editar el seguro medico en la base de datos", ex);
                     }
                 }
 
@@ -136,7 +136,7 @@ namespace Datos.SegurosMedicos
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception("Error al eliminar al eliminar el Doctor de la base de datos", ex);
+                        throw new Exception("Error al eliminar al eliminar el seguro medico de la base de datos", ex);
                     }
                 }
 
@@ -168,14 +168,14 @@ namespace Datos.SegurosMedicos
                     }
                     catch (SqlException exSql)
                     {
-                        throw new Exception("Error al buscar el Doctor: " + exSql.Message);
+                        throw new Exception("Error al buscar el seguro medico: " + exSql.Message);
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception("Error general al buscar el Doctor: " + ex.Message);
+                        throw new Exception("Error general al buscar el seguro medico: " + ex.Message);
                     }
                 }
-                public List<SegurosMedicosEntidad> MtdConsultarPagos()
+                public List<SegurosMedicosEntidad> MtdConsultarSeguros()
                 {
                     List<SegurosMedicosEntidad> ListaSegurosMedicos = new List<SegurosMedicosEntidad>();
                     try
@@ -213,7 +213,7 @@ namespace Datos.SegurosMedicos
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception("Error al mostrar la lista" + ex.Message);
+                        throw new Exception("Error al mostrar la los seguros medicos" + ex.Message);
 
                     }
                 }
