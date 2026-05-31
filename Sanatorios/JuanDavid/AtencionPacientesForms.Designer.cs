@@ -92,7 +92,7 @@
             this.nudCostoBase.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nudCostoBase.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.nudCostoBase.DecimalPlaces = 2;
-            this.nudCostoBase.Location = new System.Drawing.Point(617, 60);
+            this.nudCostoBase.Location = new System.Drawing.Point(616, 82);
             this.nudCostoBase.Maximum = new decimal(new int[] {
             90000,
             0,
@@ -107,7 +107,7 @@
             // nudRecargoEmergencia
             // 
             this.nudRecargoEmergencia.DecimalPlaces = 2;
-            this.nudRecargoEmergencia.Location = new System.Drawing.Point(617, 142);
+            this.nudRecargoEmergencia.Location = new System.Drawing.Point(616, 164);
             this.nudRecargoEmergencia.Maximum = new decimal(new int[] {
             90000,
             0,
@@ -122,7 +122,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(496, 185);
+            this.label10.Location = new System.Drawing.Point(495, 207);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(105, 13);
@@ -132,7 +132,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(496, 25);
+            this.label13.Location = new System.Drawing.Point(495, 47);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(101, 13);
@@ -275,6 +275,7 @@
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnBuscar
             // 
@@ -433,7 +434,7 @@
             // rdbUrgente
             // 
             this.rdbUrgente.AutoSize = true;
-            this.rdbUrgente.Location = new System.Drawing.Point(617, 100);
+            this.rdbUrgente.Location = new System.Drawing.Point(616, 122);
             this.rdbUrgente.Name = "rdbUrgente";
             this.rdbUrgente.Size = new System.Drawing.Size(64, 17);
             this.rdbUrgente.TabIndex = 52;
@@ -444,7 +445,7 @@
             // dtpFechaDeatencion
             // 
             this.dtpFechaDeatencion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaDeatencion.Location = new System.Drawing.Point(617, 19);
+            this.dtpFechaDeatencion.Location = new System.Drawing.Point(616, 41);
             this.dtpFechaDeatencion.Name = "dtpFechaDeatencion";
             this.dtpFechaDeatencion.Size = new System.Drawing.Size(211, 20);
             this.dtpFechaDeatencion.TabIndex = 51;
@@ -452,7 +453,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(536, 101);
+            this.label5.Location = new System.Drawing.Point(535, 123);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 13);
@@ -511,7 +512,7 @@
             // nudTotal
             // 
             this.nudTotal.DecimalPlaces = 2;
-            this.nudTotal.Location = new System.Drawing.Point(617, 183);
+            this.nudTotal.Location = new System.Drawing.Point(616, 205);
             this.nudTotal.Maximum = new decimal(new int[] {
             90000,
             0,
@@ -573,7 +574,7 @@
             // rdbInactivo
             // 
             this.rdbInactivo.AutoSize = true;
-            this.rdbInactivo.Location = new System.Drawing.Point(614, 245);
+            this.rdbInactivo.Location = new System.Drawing.Point(613, 267);
             this.rdbInactivo.Margin = new System.Windows.Forms.Padding(2);
             this.rdbInactivo.Name = "rdbInactivo";
             this.rdbInactivo.Size = new System.Drawing.Size(63, 17);
@@ -585,7 +586,7 @@
             // rdbActivo
             // 
             this.rdbActivo.AutoSize = true;
-            this.rdbActivo.Location = new System.Drawing.Point(614, 224);
+            this.rdbActivo.Location = new System.Drawing.Point(613, 246);
             this.rdbActivo.Margin = new System.Windows.Forms.Padding(2);
             this.rdbActivo.Name = "rdbActivo";
             this.rdbActivo.Size = new System.Drawing.Size(55, 17);
@@ -597,7 +598,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(548, 228);
+            this.label12.Location = new System.Drawing.Point(547, 250);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(43, 13);
@@ -627,7 +628,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(533, 67);
+            this.label8.Location = new System.Drawing.Point(532, 89);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(64, 13);
@@ -637,7 +638,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(491, 144);
+            this.label7.Location = new System.Drawing.Point(490, 166);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(110, 13);

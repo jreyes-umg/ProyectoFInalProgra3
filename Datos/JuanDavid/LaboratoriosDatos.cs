@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Datos.JuanDavid
 {
-    internal class LaboratoriosDatos
+    public class LaboratoriosDatos
     {
         ConexionDatos conexionDatos = new ConexionDatos();
         /*  ----- CONSULTAR ----- */
@@ -190,7 +190,7 @@ namespace Datos.JuanDavid
         }
 
 
-        public DataTable MtdBuscar(string Nombre)
+        public DataTable MtdBuscarLaboratoriosPorPaciente(string nombrePaciente)
         {
             try
             {
@@ -198,14 +198,20 @@ namespace Datos.JuanDavid
                 {
                     conn.Open();
 
-                    string query = @"SELECT * 
-                                         FROM Tbl_Medicos 
-                                         WHERE Nombre LIKE @Nombre;";
+                    string query = @"
+                SELECT l.*, p.Nombre, p.Apellido 
+                FROM Tbl_Laboratorios l
+                INNER JOIN Tbl_AtencionesPacientes a ON l.CodigoAtencion = a.CodigoAtencion
+                INNER JOIN Tbl_Pacientes p ON a.CodigoPaciente = p.CodigoPaciente
+                WHERE p.Nombre LIKE '%' + @NombreBusqueda + '%' 
+                   OR p.Apellido LIKE '%' + @NombreBusqueda + '%';";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.CommandType = CommandType.Text;
-                        cmd.Parameters.AddWithValue("@Nombre", Nombre);
+
+                        // Pasamos el parámetro ingresado por el usuario
+                        cmd.Parameters.AddWithValue("@NombreBusqueda", nombrePaciente);
 
                         SqlDataAdapter da = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
@@ -217,11 +223,55 @@ namespace Datos.JuanDavid
             }
             catch (SqlException exSql)
             {
-                throw new Exception("Error al buscar el Doctor: " + exSql.Message);
+                throw new Exception("Error de SQL al buscar los laboratorios del paciente: " + exSql.Message);
             }
             catch (Exception ex)
             {
-                throw new Exception("Error general al buscar el Doctor: " + ex.Message);
+                throw new Exception("Error general al buscar los laboratorios: " + ex.Message);
+            }
+
+        }
+        /*OBTENER ITEMS PARA CBX*/
+        public List<dynamic> MtdListarAtenciones()
+        {
+            List<dynamic> ListarDatos = new List<dynamic>();
+
+            try
+            {
+                using (SqlConnection conn = conexionDatos.MtdConexion())
+                {
+                    conn.Open();
+
+
+                    string QueryListaAtenciones = @"
+                        SELECT a.CodigoAtencion, p.Nombre, p.Apellido
+                        FROM Tbl_AtencionesPacientes a
+                        INNER JOIN Tbl_Pacientes p ON a.CodigoPaciente = p.CodigoPaciente;
+                    ";
+
+                    using (SqlCommand cmd = new SqlCommand(QueryListaAtenciones, conn))
+                    {
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                ListarDatos.Add(new
+                                {
+
+                                    Value = dr["CodigoAtencion"],
+
+
+                                    Text = $"Atención: {dr["CodigoAtencion"]} - {dr["Nombre"]} {dr["Apellido"]}"
+                                });
+                            }
+                        }
+                    }
+                }
+                return ListarDatos;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al mostrar las atenciones: " + ex.Message);
             }
         }
     }

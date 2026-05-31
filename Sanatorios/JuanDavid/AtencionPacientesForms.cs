@@ -590,6 +590,16 @@ namespace Sanatorios.JuanDavid
             }
 
         }
-    }
-}
 
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtBuscarNombre.Clear();
+            MtdConsultarControlAtenciones();
+
+            MtdLimpiarControlesForm();
+            MtdtrueFilaSelecionada(false);
+            MtdActualizarTotalRegistros();
+        }
+    }
+    
+}
