@@ -33,7 +33,7 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.label5 = new System.Windows.Forms.Label();
             this.txtDias = new System.Windows.Forms.TextBox();
-            this.nudCostoDiario = new System.Windows.Forms.NumericUpDown();
+            this.nudCostoDia = new System.Windows.Forms.NumericUpDown();
             this.txtNumeroHabitacion = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.rdbInactivo = new System.Windows.Forms.RadioButton();
@@ -45,9 +45,10 @@
             this.CodigoPaciente = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.cbmCodigoAtencion = new System.Windows.Forms.ComboBox();
+            this.nudCostoMedico = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
-            this.nudTotalDetalle = new System.Windows.Forms.NumericUpDown();
+            this.nudTotalHospitalizacion = new System.Windows.Forms.NumericUpDown();
             this.nudDescuento = new System.Windows.Forms.NumericUpDown();
             this.nudSubTotal = new System.Windows.Forms.NumericUpDown();
             this.txtUsuarioSistema = new System.Windows.Forms.TextBox();
@@ -82,11 +83,10 @@
             this.txt = new System.Windows.Forms.TextBox();
             this.txtTipoConcepto = new System.Windows.Forms.TextBox();
             this.picPrestamoLibros = new System.Windows.Forms.PictureBox();
-            this.cbxCodigoAtencion = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCostoDiario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCostoDia)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudTotalDetalle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCostoMedico)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTotalHospitalizacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDescuento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSubTotal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHospitalizaciones)).BeginInit();
@@ -107,6 +107,10 @@
             this.label1.TabIndex = 47;
             this.label1.Text = "Hospitalizaciones";
             // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -124,19 +128,19 @@
             this.txtDias.Size = new System.Drawing.Size(313, 22);
             this.txtDias.TabIndex = 52;
             // 
-            // nudCostoDiario
+            // nudCostoDia
             // 
-            this.nudCostoDiario.DecimalPlaces = 2;
-            this.nudCostoDiario.Location = new System.Drawing.Point(177, 250);
-            this.nudCostoDiario.Margin = new System.Windows.Forms.Padding(4);
-            this.nudCostoDiario.Maximum = new decimal(new int[] {
+            this.nudCostoDia.DecimalPlaces = 2;
+            this.nudCostoDia.Location = new System.Drawing.Point(177, 250);
+            this.nudCostoDia.Margin = new System.Windows.Forms.Padding(4);
+            this.nudCostoDia.Maximum = new decimal(new int[] {
             90000,
             0,
             0,
             0});
-            this.nudCostoDiario.Name = "nudCostoDiario";
-            this.nudCostoDiario.Size = new System.Drawing.Size(313, 22);
-            this.nudCostoDiario.TabIndex = 34;
+            this.nudCostoDia.Name = "nudCostoDia";
+            this.nudCostoDia.Size = new System.Drawing.Size(313, 22);
+            this.nudCostoDia.TabIndex = 34;
             // 
             // txtNumeroHabitacion
             // 
@@ -235,12 +239,12 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cbxCodigoAtencion);
-            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.cbmCodigoAtencion);
+            this.groupBox1.Controls.Add(this.nudCostoMedico);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtDias);
-            this.groupBox1.Controls.Add(this.nudTotalDetalle);
+            this.groupBox1.Controls.Add(this.nudTotalHospitalizacion);
             this.groupBox1.Controls.Add(this.nudDescuento);
             this.groupBox1.Controls.Add(this.nudSubTotal);
             this.groupBox1.Controls.Add(this.txtUsuarioSistema);
@@ -251,7 +255,7 @@
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.nudCostoDiario);
+            this.groupBox1.Controls.Add(this.nudCostoDia);
             this.groupBox1.Controls.Add(this.txtNumeroHabitacion);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.btnEliminar);
@@ -275,19 +279,28 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // numericUpDown1
+            // cbmCodigoAtencion
             // 
-            this.numericUpDown1.DecimalPlaces = 2;
-            this.numericUpDown1.Location = new System.Drawing.Point(177, 308);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.cbmCodigoAtencion.FormattingEnabled = true;
+            this.cbmCodigoAtencion.Location = new System.Drawing.Point(177, 98);
+            this.cbmCodigoAtencion.Name = "cbmCodigoAtencion";
+            this.cbmCodigoAtencion.Size = new System.Drawing.Size(313, 24);
+            this.cbmCodigoAtencion.TabIndex = 58;
+            // 
+            // nudCostoMedico
+            // 
+            this.nudCostoMedico.DecimalPlaces = 2;
+            this.nudCostoMedico.Location = new System.Drawing.Point(177, 308);
+            this.nudCostoMedico.Margin = new System.Windows.Forms.Padding(4);
+            this.nudCostoMedico.Maximum = new decimal(new int[] {
             90000,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(313, 22);
-            this.numericUpDown1.TabIndex = 57;
+            this.nudCostoMedico.Name = "nudCostoMedico";
+            this.nudCostoMedico.Size = new System.Drawing.Size(313, 22);
+            this.nudCostoMedico.TabIndex = 57;
+            this.nudCostoMedico.ValueChanged += new System.EventHandler(this.nudCostoMedico_ValueChanged);
             // 
             // label9
             // 
@@ -298,19 +311,19 @@
             this.label9.TabIndex = 56;
             this.label9.Text = "costoMedico";
             // 
-            // nudTotalDetalle
+            // nudTotalHospitalizacion
             // 
-            this.nudTotalDetalle.DecimalPlaces = 2;
-            this.nudTotalDetalle.Location = new System.Drawing.Point(819, 153);
-            this.nudTotalDetalle.Margin = new System.Windows.Forms.Padding(4);
-            this.nudTotalDetalle.Maximum = new decimal(new int[] {
+            this.nudTotalHospitalizacion.DecimalPlaces = 2;
+            this.nudTotalHospitalizacion.Location = new System.Drawing.Point(819, 153);
+            this.nudTotalHospitalizacion.Margin = new System.Windows.Forms.Padding(4);
+            this.nudTotalHospitalizacion.Maximum = new decimal(new int[] {
             90000,
             0,
             0,
             0});
-            this.nudTotalDetalle.Name = "nudTotalDetalle";
-            this.nudTotalDetalle.Size = new System.Drawing.Size(281, 22);
-            this.nudTotalDetalle.TabIndex = 51;
+            this.nudTotalHospitalizacion.Name = "nudTotalHospitalizacion";
+            this.nudTotalHospitalizacion.Size = new System.Drawing.Size(281, 22);
+            this.nudTotalHospitalizacion.TabIndex = 51;
             // 
             // nudDescuento
             // 
@@ -339,6 +352,7 @@
             this.nudSubTotal.Name = "nudSubTotal";
             this.nudSubTotal.Size = new System.Drawing.Size(281, 22);
             this.nudSubTotal.TabIndex = 49;
+            this.nudSubTotal.ValueChanged += new System.EventHandler(this.nudSubTotal_ValueChanged);
             // 
             // txtUsuarioSistema
             // 
@@ -423,6 +437,7 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnEditar
             // 
@@ -438,6 +453,7 @@
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnGuardar
             // 
@@ -453,6 +469,7 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnCancelar
             // 
@@ -468,6 +485,7 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnNuevo
             // 
@@ -483,6 +501,7 @@
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // chkSeleccionar
             // 
@@ -494,6 +513,7 @@
             this.chkSeleccionar.TabIndex = 12;
             this.chkSeleccionar.Text = "Seleccionar";
             this.chkSeleccionar.UseVisualStyleBackColor = true;
+            this.chkSeleccionar.CheckedChanged += new System.EventHandler(this.chkSeleccionar_CheckedChanged);
             // 
             // Seleccionar
             // 
@@ -525,6 +545,7 @@
             this.dgvHospitalizaciones.RowTemplate.Height = 24;
             this.dgvHospitalizaciones.Size = new System.Drawing.Size(1327, 412);
             this.dgvHospitalizaciones.TabIndex = 14;
+            this.dgvHospitalizaciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHospitalizaciones_CellContentClick);
             // 
             // tabPage2
             // 
@@ -593,6 +614,7 @@
             this.btnExportar.Text = "Exportar";
             this.btnExportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // btnImprimir
             // 
@@ -608,6 +630,7 @@
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnLimpiar
             // 
@@ -623,6 +646,7 @@
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnBuscar
             // 
@@ -638,6 +662,7 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtBuscarNombre
             // 
@@ -722,14 +747,6 @@
             this.picPrestamoLibros.TabIndex = 50;
             this.picPrestamoLibros.TabStop = false;
             // 
-            // cbxCodigoAtencion
-            // 
-            this.cbxCodigoAtencion.FormattingEnabled = true;
-            this.cbxCodigoAtencion.Location = new System.Drawing.Point(177, 98);
-            this.cbxCodigoAtencion.Name = "cbxCodigoAtencion";
-            this.cbxCodigoAtencion.Size = new System.Drawing.Size(313, 24);
-            this.cbxCodigoAtencion.TabIndex = 58;
-            // 
             // HospitalizacionesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -741,11 +758,12 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "HospitalizacionesForm";
             this.Text = "HospitalizacionesForm";
-            ((System.ComponentModel.ISupportInitialize)(this.nudCostoDiario)).EndInit();
+            this.Load += new System.EventHandler(this.HospitalizacionesForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.nudCostoDia)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudTotalDetalle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCostoMedico)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTotalHospitalizacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDescuento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSubTotal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHospitalizaciones)).EndInit();
@@ -764,7 +782,7 @@
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtDias;
-        private System.Windows.Forms.NumericUpDown nudCostoDiario;
+        private System.Windows.Forms.NumericUpDown nudCostoDia;
         private System.Windows.Forms.TextBox txtNumeroHabitacion;
         private System.Windows.Forms.Label label10;
         private FontAwesome.Sharp.IconButton btnEliminar;
@@ -782,7 +800,7 @@
         private FontAwesome.Sharp.IconButton BtnCerrarr;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.NumericUpDown nudTotalDetalle;
+        private System.Windows.Forms.NumericUpDown nudTotalHospitalizacion;
         private System.Windows.Forms.NumericUpDown nudDescuento;
         private System.Windows.Forms.NumericUpDown nudSubTotal;
         private System.Windows.Forms.TextBox txtUsuarioSistema;
@@ -807,12 +825,12 @@
         private System.Windows.Forms.TextBox txtBuscarNombre;
         private System.Windows.Forms.Label label2;
         private FontAwesome.Sharp.IconButton btnCerrar;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nudCostoMedico;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label CodigoHospitalizacion;
         private System.Windows.Forms.TextBox txt;
         private System.Windows.Forms.TextBox txtTipoConcepto;
         private System.Windows.Forms.PictureBox picPrestamoLibros;
-        private System.Windows.Forms.ComboBox cbxCodigoAtencion;
+        private System.Windows.Forms.ComboBox cbmCodigoAtencion;
     }
 }

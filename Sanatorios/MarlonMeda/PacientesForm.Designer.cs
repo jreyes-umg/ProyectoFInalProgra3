@@ -44,15 +44,24 @@
             this.btnCerrar = new FontAwesome.Sharp.IconButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtEdad = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtDireccion = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtGenero = new System.Windows.Forms.TextBox();
+            this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtDias = new System.Windows.Forms.TextBox();
+            this.txtDpi = new System.Windows.Forms.TextBox();
             this.txtUsuarioSistema = new System.Windows.Forms.TextBox();
             this.dtmHoraSistema = new System.Windows.Forms.DateTimePicker();
             this.dtmFechaSistema = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtTipoConcepto = new System.Windows.Forms.TextBox();
+            this.txtApellidoPaciente = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnEliminar = new FontAwesome.Sharp.IconButton();
             this.btnEditar = new FontAwesome.Sharp.IconButton();
@@ -72,15 +81,6 @@
             this.BtnCerrarr = new FontAwesome.Sharp.IconButton();
             this.txtCodigoHopitalizacion = new System.Windows.Forms.TextBox();
             this.picPrestamoLibros = new System.Windows.Forms.PictureBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtGenero = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
-            this.TxtDireccion = new System.Windows.Forms.TextBox();
-            this.txtEdad = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHospitalizaciones)).BeginInit();
@@ -135,6 +135,7 @@
             this.btnExportar.Text = "Exportar";
             this.btnExportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // btnImprimir
             // 
@@ -150,6 +151,7 @@
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnLimpiar
             // 
@@ -165,6 +167,7 @@
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnBuscar
             // 
@@ -180,6 +183,7 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // dgvHospitalizaciones
             // 
@@ -198,6 +202,7 @@
             this.dgvHospitalizaciones.RowTemplate.Height = 24;
             this.dgvHospitalizaciones.Size = new System.Drawing.Size(1327, 412);
             this.dgvHospitalizaciones.TabIndex = 14;
+            this.dgvHospitalizaciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHospitalizaciones_CellContentClick);
             // 
             // Seleccionar
             // 
@@ -280,22 +285,22 @@
             // 
             this.groupBox1.Controls.Add(this.txtEdad);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.TxtDireccion);
+            this.groupBox1.Controls.Add(this.txtDireccion);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.txtTelefono);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.txtGenero);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.dtpFechaNacimiento);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.txtDias);
+            this.groupBox1.Controls.Add(this.txtDpi);
             this.groupBox1.Controls.Add(this.txtUsuarioSistema);
             this.groupBox1.Controls.Add(this.dtmHoraSistema);
             this.groupBox1.Controls.Add(this.dtmFechaSistema);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.txtTipoConcepto);
+            this.groupBox1.Controls.Add(this.txtApellidoPaciente);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.btnEliminar);
             this.groupBox1.Controls.Add(this.btnEditar);
@@ -319,6 +324,83 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // txtEdad
+            // 
+            this.txtEdad.Location = new System.Drawing.Point(819, 98);
+            this.txtEdad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtEdad.Name = "txtEdad";
+            this.txtEdad.Size = new System.Drawing.Size(313, 22);
+            this.txtEdad.TabIndex = 66;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(662, 104);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(40, 16);
+            this.label8.TabIndex = 65;
+            this.label8.Text = "Edad";
+            // 
+            // txtDireccion
+            // 
+            this.txtDireccion.Location = new System.Drawing.Point(819, 42);
+            this.txtDireccion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Size = new System.Drawing.Size(313, 22);
+            this.txtDireccion.TabIndex = 64;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(38, 374);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(61, 16);
+            this.label13.TabIndex = 63;
+            this.label13.Text = "Telefono";
+            // 
+            // txtTelefono
+            // 
+            this.txtTelefono.Location = new System.Drawing.Point(201, 371);
+            this.txtTelefono.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(313, 22);
+            this.txtTelefono.TabIndex = 62;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(38, 315);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(52, 16);
+            this.label11.TabIndex = 61;
+            this.label11.Text = "Genero";
+            // 
+            // txtGenero
+            // 
+            this.txtGenero.Location = new System.Drawing.Point(201, 312);
+            this.txtGenero.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtGenero.Name = "txtGenero";
+            this.txtGenero.Size = new System.Drawing.Size(313, 22);
+            this.txtGenero.TabIndex = 60;
+            // 
+            // dtpFechaNacimiento
+            // 
+            this.dtpFechaNacimiento.Location = new System.Drawing.Point(201, 248);
+            this.dtpFechaNacimiento.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
+            this.dtpFechaNacimiento.Size = new System.Drawing.Size(266, 22);
+            this.dtpFechaNacimiento.TabIndex = 59;
+            this.dtpFechaNacimiento.ValueChanged += new System.EventHandler(this.dtpFechaNacimiento_ValueChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(38, 254);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(116, 16);
+            this.label7.TabIndex = 58;
+            this.label7.Text = "Fecha Nacimiento";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -328,13 +410,13 @@
             this.label5.TabIndex = 53;
             this.label5.Text = "DPI";
             // 
-            // txtDias
+            // txtDpi
             // 
-            this.txtDias.Location = new System.Drawing.Point(201, 195);
-            this.txtDias.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtDias.Name = "txtDias";
-            this.txtDias.Size = new System.Drawing.Size(313, 22);
-            this.txtDias.TabIndex = 52;
+            this.txtDpi.Location = new System.Drawing.Point(201, 195);
+            this.txtDpi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtDpi.Name = "txtDpi";
+            this.txtDpi.Size = new System.Drawing.Size(313, 22);
+            this.txtDpi.TabIndex = 52;
             // 
             // txtUsuarioSistema
             // 
@@ -387,13 +469,13 @@
             this.label14.TabIndex = 41;
             this.label14.Text = "Usuario Sistema:";
             // 
-            // txtTipoConcepto
+            // txtApellidoPaciente
             // 
-            this.txtTipoConcepto.Location = new System.Drawing.Point(201, 142);
-            this.txtTipoConcepto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTipoConcepto.Name = "txtTipoConcepto";
-            this.txtTipoConcepto.Size = new System.Drawing.Size(313, 22);
-            this.txtTipoConcepto.TabIndex = 32;
+            this.txtApellidoPaciente.Location = new System.Drawing.Point(201, 142);
+            this.txtApellidoPaciente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtApellidoPaciente.Name = "txtApellidoPaciente";
+            this.txtApellidoPaciente.Size = new System.Drawing.Size(313, 22);
+            this.txtApellidoPaciente.TabIndex = 32;
             // 
             // label10
             // 
@@ -418,6 +500,7 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnEditar
             // 
@@ -433,6 +516,7 @@
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnGuardar
             // 
@@ -448,6 +532,7 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnCancelar
             // 
@@ -463,6 +548,7 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnNuevo
             // 
@@ -478,6 +564,7 @@
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // rdbInactivo
             // 
@@ -567,6 +654,10 @@
             this.label1.TabIndex = 51;
             this.label1.Text = "Pacientes";
             // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
             // BtnCerrarr
             // 
             this.BtnCerrarr.IconChar = FontAwesome.Sharp.IconChar.X;
@@ -602,82 +693,6 @@
             this.picPrestamoLibros.TabIndex = 54;
             this.picPrestamoLibros.TabStop = false;
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(201, 249);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(266, 22);
-            this.dateTimePicker1.TabIndex = 59;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(38, 254);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(116, 16);
-            this.label7.TabIndex = 58;
-            this.label7.Text = "Fecha Nacimiento";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(38, 315);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(52, 16);
-            this.label11.TabIndex = 61;
-            this.label11.Text = "Genero";
-            // 
-            // txtGenero
-            // 
-            this.txtGenero.Location = new System.Drawing.Point(201, 312);
-            this.txtGenero.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtGenero.Name = "txtGenero";
-            this.txtGenero.Size = new System.Drawing.Size(313, 22);
-            this.txtGenero.TabIndex = 60;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(38, 374);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(61, 16);
-            this.label13.TabIndex = 63;
-            this.label13.Text = "Telefono";
-            // 
-            // txtTelefono
-            // 
-            this.txtTelefono.Location = new System.Drawing.Point(201, 371);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(313, 22);
-            this.txtTelefono.TabIndex = 62;
-            // 
-            // TxtDireccion
-            // 
-            this.TxtDireccion.Location = new System.Drawing.Point(819, 42);
-            this.TxtDireccion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TxtDireccion.Name = "TxtDireccion";
-            this.TxtDireccion.Size = new System.Drawing.Size(313, 22);
-            this.TxtDireccion.TabIndex = 64;
-            // 
-            // txtEdad
-            // 
-            this.txtEdad.Location = new System.Drawing.Point(819, 98);
-            this.txtEdad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtEdad.Name = "txtEdad";
-            this.txtEdad.Size = new System.Drawing.Size(313, 22);
-            this.txtEdad.TabIndex = 66;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(662, 104);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(40, 16);
-            this.label8.TabIndex = 65;
-            this.label8.Text = "Edad";
-            // 
             // PacientesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -689,6 +704,7 @@
             this.Controls.Add(this.label1);
             this.Name = "PacientesForm";
             this.Text = "PacientesForm";
+            this.Load += new System.EventHandler(this.PacientesForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -720,14 +736,14 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtDias;
+        private System.Windows.Forms.TextBox txtDpi;
         private System.Windows.Forms.TextBox txtUsuarioSistema;
         private System.Windows.Forms.DateTimePicker dtmHoraSistema;
         private System.Windows.Forms.DateTimePicker dtmFechaSistema;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtTipoConcepto;
+        private System.Windows.Forms.TextBox txtApellidoPaciente;
         private System.Windows.Forms.Label label10;
         private FontAwesome.Sharp.IconButton btnEliminar;
         private FontAwesome.Sharp.IconButton btnEditar;
@@ -747,13 +763,13 @@
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.TextBox txtCodigoHopitalizacion;
         private System.Windows.Forms.PictureBox picPrestamoLibros;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpFechaNacimiento;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtGenero;
         private System.Windows.Forms.TextBox txtEdad;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox TxtDireccion;
+        private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtTelefono;
     }

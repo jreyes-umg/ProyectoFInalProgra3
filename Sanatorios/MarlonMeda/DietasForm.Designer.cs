@@ -102,6 +102,7 @@
             this.chkSeleccionar.TabIndex = 12;
             this.chkSeleccionar.Text = "Seleccionar";
             this.chkSeleccionar.UseVisualStyleBackColor = true;
+            this.chkSeleccionar.CheckedChanged += new System.EventHandler(this.chkSeleccionar_CheckedChanged);
             // 
             // Seleccionar
             // 
@@ -317,6 +318,7 @@
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnLimpiar
             // 
@@ -332,6 +334,7 @@
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnBuscar
             // 
@@ -347,6 +350,7 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtBuscarNombre
             // 
@@ -437,6 +441,17 @@
             // cbxCodigoHospitalizacion
             // 
             this.cbxCodigoHospitalizacion.FormattingEnabled = true;
+            this.cbxCodigoHospitalizacion.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
             this.cbxCodigoHospitalizacion.Location = new System.Drawing.Point(177, 93);
             this.cbxCodigoHospitalizacion.Name = "cbxCodigoHospitalizacion";
             this.cbxCodigoHospitalizacion.Size = new System.Drawing.Size(313, 24);
@@ -475,6 +490,7 @@
             this.txtDias.Name = "txtDias";
             this.txtDias.Size = new System.Drawing.Size(313, 22);
             this.txtDias.TabIndex = 52;
+            this.txtDias.TextChanged += new System.EventHandler(this.txtDias_TextChanged);
             // 
             // nudCostoDiario
             // 
@@ -521,6 +537,7 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnEditar
             // 
@@ -536,6 +553,7 @@
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnGuardar
             // 
@@ -551,6 +569,7 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnCancelar
             // 
@@ -673,6 +692,10 @@
             this.label1.Size = new System.Drawing.Size(105, 36);
             this.label1.TabIndex = 43;
             this.label1.Text = "DIetas";
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // BtnCerrarr
             // 

@@ -46,14 +46,14 @@
             this.rdbActivoLaboratorio = new System.Windows.Forms.RadioButton();
             this.label13 = new System.Windows.Forms.Label();
             this.rdbInactivoHospitalizacion = new System.Windows.Forms.RadioButton();
-            this.rdbActivoHospitalizaciones = new System.Windows.Forms.RadioButton();
+            this.rdbActivoHospitalizacion = new System.Windows.Forms.RadioButton();
             this.label11 = new System.Windows.Forms.Label();
             this.rdbInactivoEmergencia = new System.Windows.Forms.RadioButton();
             this.rdbActivoEmergencia = new System.Windows.Forms.RadioButton();
             this.label7 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.nudCostoDiario = new System.Windows.Forms.NumericUpDown();
+            this.nudTarifaBase = new System.Windows.Forms.NumericUpDown();
             this.btnEliminar = new FontAwesome.Sharp.IconButton();
             this.btnEditar = new FontAwesome.Sharp.IconButton();
             this.btnGuardar = new FontAwesome.Sharp.IconButton();
@@ -63,7 +63,7 @@
             this.rdbActivo = new System.Windows.Forms.RadioButton();
             this.label12 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtCodigoAtencion = new System.Windows.Forms.TextBox();
+            this.txtNombreServicio = new System.Windows.Forms.TextBox();
             this.yhuedrgbe = new System.Windows.Forms.Label();
             this.txtCodigoTipoServicio = new System.Windows.Forms.TextBox();
             this.CodigoHospitalizacion = new System.Windows.Forms.Label();
@@ -85,7 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvTipoServicios)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCostoDiario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTarifaBase)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPrestamoLibros)).BeginInit();
@@ -101,6 +101,7 @@
             this.chkSeleccionar.TabIndex = 12;
             this.chkSeleccionar.Text = "Seleccionar";
             this.chkSeleccionar.UseVisualStyleBackColor = true;
+            this.chkSeleccionar.CheckedChanged += new System.EventHandler(this.chkSeleccionar_CheckedChanged);
             // 
             // txtUsuarioSistema
             // 
@@ -176,6 +177,7 @@
             this.dgvTipoServicios.RowTemplate.Height = 24;
             this.dgvTipoServicios.Size = new System.Drawing.Size(1327, 412);
             this.dgvTipoServicios.TabIndex = 14;
+            this.dgvTipoServicios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTipoServicios_CellContentClick);
             // 
             // Seleccionar
             // 
@@ -210,7 +212,7 @@
             this.groupBox1.Controls.Add(this.rdbActivoLaboratorio);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.rdbInactivoHospitalizacion);
-            this.groupBox1.Controls.Add(this.rdbActivoHospitalizaciones);
+            this.groupBox1.Controls.Add(this.rdbActivoHospitalizacion);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.rdbInactivoEmergencia);
             this.groupBox1.Controls.Add(this.rdbActivoEmergencia);
@@ -223,7 +225,7 @@
             this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.nudCostoDiario);
+            this.groupBox1.Controls.Add(this.nudTarifaBase);
             this.groupBox1.Controls.Add(this.btnEliminar);
             this.groupBox1.Controls.Add(this.btnEditar);
             this.groupBox1.Controls.Add(this.btnGuardar);
@@ -233,7 +235,7 @@
             this.groupBox1.Controls.Add(this.rdbActivo);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.txtCodigoAtencion);
+            this.groupBox1.Controls.Add(this.txtNombreServicio);
             this.groupBox1.Controls.Add(this.yhuedrgbe);
             this.groupBox1.Controls.Add(this.txtCodigoTipoServicio);
             this.groupBox1.Controls.Add(this.CodigoHospitalizacion);
@@ -307,17 +309,17 @@
             this.rdbInactivoHospitalizacion.Text = "Inactivo";
             this.rdbInactivoHospitalizacion.UseVisualStyleBackColor = true;
             // 
-            // rdbActivoHospitalizaciones
+            // rdbActivoHospitalizacion
             // 
-            this.rdbActivoHospitalizaciones.AutoSize = true;
-            this.rdbActivoHospitalizaciones.Location = new System.Drawing.Point(225, 255);
-            this.rdbActivoHospitalizaciones.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.rdbActivoHospitalizaciones.Name = "rdbActivoHospitalizaciones";
-            this.rdbActivoHospitalizaciones.Size = new System.Drawing.Size(65, 20);
-            this.rdbActivoHospitalizaciones.TabIndex = 62;
-            this.rdbActivoHospitalizaciones.TabStop = true;
-            this.rdbActivoHospitalizaciones.Text = "Activo";
-            this.rdbActivoHospitalizaciones.UseVisualStyleBackColor = true;
+            this.rdbActivoHospitalizacion.AutoSize = true;
+            this.rdbActivoHospitalizacion.Location = new System.Drawing.Point(225, 255);
+            this.rdbActivoHospitalizacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rdbActivoHospitalizacion.Name = "rdbActivoHospitalizacion";
+            this.rdbActivoHospitalizacion.Size = new System.Drawing.Size(65, 20);
+            this.rdbActivoHospitalizacion.TabIndex = 62;
+            this.rdbActivoHospitalizacion.TabStop = true;
+            this.rdbActivoHospitalizacion.Text = "Activo";
+            this.rdbActivoHospitalizacion.UseVisualStyleBackColor = true;
             // 
             // label11
             // 
@@ -380,19 +382,20 @@
             this.label3.TabIndex = 38;
             this.label3.Text = "RecargoBase";
             // 
-            // nudCostoDiario
+            // nudTarifaBase
             // 
-            this.nudCostoDiario.DecimalPlaces = 2;
-            this.nudCostoDiario.Location = new System.Drawing.Point(177, 149);
-            this.nudCostoDiario.Margin = new System.Windows.Forms.Padding(4);
-            this.nudCostoDiario.Maximum = new decimal(new int[] {
+            this.nudTarifaBase.DecimalPlaces = 2;
+            this.nudTarifaBase.Location = new System.Drawing.Point(177, 149);
+            this.nudTarifaBase.Margin = new System.Windows.Forms.Padding(4);
+            this.nudTarifaBase.Maximum = new decimal(new int[] {
             90000,
             0,
             0,
             0});
-            this.nudCostoDiario.Name = "nudCostoDiario";
-            this.nudCostoDiario.Size = new System.Drawing.Size(313, 22);
-            this.nudCostoDiario.TabIndex = 34;
+            this.nudTarifaBase.Name = "nudTarifaBase";
+            this.nudTarifaBase.Size = new System.Drawing.Size(313, 22);
+            this.nudTarifaBase.TabIndex = 34;
+            this.nudTarifaBase.ValueChanged += new System.EventHandler(this.nudTarifaBase_ValueChanged);
             // 
             // btnEliminar
             // 
@@ -408,6 +411,7 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnEditar
             // 
@@ -423,6 +427,7 @@
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnGuardar
             // 
@@ -438,6 +443,7 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnCancelar
             // 
@@ -453,6 +459,7 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnNuevo
             // 
@@ -468,6 +475,7 @@
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // rdbInactivo
             // 
@@ -511,13 +519,13 @@
             this.label8.TabIndex = 10;
             this.label8.Text = "Tarifa Base";
             // 
-            // txtCodigoAtencion
+            // txtNombreServicio
             // 
-            this.txtCodigoAtencion.Location = new System.Drawing.Point(177, 95);
-            this.txtCodigoAtencion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtCodigoAtencion.Name = "txtCodigoAtencion";
-            this.txtCodigoAtencion.Size = new System.Drawing.Size(313, 22);
-            this.txtCodigoAtencion.TabIndex = 3;
+            this.txtNombreServicio.Location = new System.Drawing.Point(177, 95);
+            this.txtNombreServicio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNombreServicio.Name = "txtNombreServicio";
+            this.txtNombreServicio.Size = new System.Drawing.Size(313, 22);
+            this.txtNombreServicio.TabIndex = 3;
             // 
             // yhuedrgbe
             // 
@@ -592,6 +600,7 @@
             this.btnExportar.Text = "Exportar";
             this.btnExportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // btnImprimir
             // 
@@ -607,6 +616,7 @@
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnLimpiar
             // 
@@ -622,6 +632,7 @@
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnBuscar
             // 
@@ -637,6 +648,7 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // lblTotalRegistros
             // 
@@ -678,6 +690,10 @@
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCerrar.UseVisualStyleBackColor = true;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // label1
             // 
@@ -727,12 +743,13 @@
             this.Controls.Add(this.label1);
             this.Name = "TipoServicioForm";
             this.Text = "TipoServicioForm";
+            this.Load += new System.EventHandler(this.TipoServicioForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudRecargoBase)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTipoServicios)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCostoDiario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudTarifaBase)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -758,7 +775,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown nudCostoDiario;
+        private System.Windows.Forms.NumericUpDown nudTarifaBase;
         private FontAwesome.Sharp.IconButton btnEliminar;
         private FontAwesome.Sharp.IconButton btnEditar;
         private FontAwesome.Sharp.IconButton btnGuardar;
@@ -768,7 +785,7 @@
         private System.Windows.Forms.RadioButton rdbActivo;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtCodigoAtencion;
+        private System.Windows.Forms.TextBox txtNombreServicio;
         private System.Windows.Forms.Label yhuedrgbe;
         private System.Windows.Forms.TextBox txtCodigoTipoServicio;
         private System.Windows.Forms.Label CodigoHospitalizacion;
@@ -793,7 +810,7 @@
         private System.Windows.Forms.RadioButton rdbActivoLaboratorio;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.RadioButton rdbInactivoHospitalizacion;
-        private System.Windows.Forms.RadioButton rdbActivoHospitalizaciones;
+        private System.Windows.Forms.RadioButton rdbActivoHospitalizacion;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.PictureBox picPrestamoLibros;
     }

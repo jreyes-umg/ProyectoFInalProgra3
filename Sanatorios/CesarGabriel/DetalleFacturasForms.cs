@@ -21,5 +21,10 @@ namespace Sanatorios
         {
 
         }
+
+        private void DetalleFacturasForms_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
