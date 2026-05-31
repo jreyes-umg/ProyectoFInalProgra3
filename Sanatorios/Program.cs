@@ -18,7 +18,7 @@ namespace Sanatorios
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HospitalizacionesForm());
+            Application.Run(new DietasForm());
         }
     }
 }

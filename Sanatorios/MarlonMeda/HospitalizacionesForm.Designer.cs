@@ -322,6 +322,7 @@
             0,
             0});
             this.nudTotalHospitalizacion.Name = "nudTotalHospitalizacion";
+            this.nudTotalHospitalizacion.ReadOnly = true;
             this.nudTotalHospitalizacion.Size = new System.Drawing.Size(281, 22);
             this.nudTotalHospitalizacion.TabIndex = 51;
             // 
@@ -336,6 +337,7 @@
             0,
             0});
             this.nudDescuento.Name = "nudDescuento";
+            this.nudDescuento.ReadOnly = true;
             this.nudDescuento.Size = new System.Drawing.Size(281, 22);
             this.nudDescuento.TabIndex = 50;
             this.nudDescuento.ValueChanged += new System.EventHandler(this.nudDescuento_ValueChanged);
@@ -351,6 +353,7 @@
             0,
             0});
             this.nudSubTotal.Name = "nudSubTotal";
+            this.nudSubTotal.ReadOnly = true;
             this.nudSubTotal.Size = new System.Drawing.Size(281, 22);
             this.nudSubTotal.TabIndex = 49;
             this.nudSubTotal.ValueChanged += new System.EventHandler(this.nudSubTotal_ValueChanged);

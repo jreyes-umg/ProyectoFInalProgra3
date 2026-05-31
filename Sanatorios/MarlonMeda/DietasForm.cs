@@ -574,18 +574,19 @@ namespace Sanatorios.MarlonMeda
 
         private void txtDias_TextChanged(object sender, EventArgs e)
         {
-           
-            nudSubTotal.Value = Convert.ToDecimal(Negocio.mtdDietasSubtotal(nudCostoDiario.Value, Convert.ToInt32(txtDias.Text)));
+
+            nudSubTotal.Value = Convert.ToDecimal(Negocio.mtdDietasSubtotal(nudCostoDiario.Value, Convert.ToInt32("0" + txtDias.Text)));
         }
 
         private void nudSubTotal_ValueChanged(object sender, EventArgs e)
         {
             nudImpuesto.Value = Convert.ToDecimal(Negocio.mtdDietasImpuesto(nudSubTotal.Value));
+
+            nudTotalDetalle.Value = Convert.ToDecimal(Negocio.mtdTotalDietas(nudSubTotal.Value, nudImpuesto.Value));
         }
 
         private void nudImpuesto_ValueChanged(object sender, EventArgs e)
         {
-            nudTotalDetalle.Value = Convert.ToDecimal(Negocio.mtdTotalDietas(nudSubTotal.Value, nudImpuesto.Value));
         }
     }
 }

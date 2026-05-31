@@ -157,6 +157,7 @@
             0,
             0});
             this.nudRecargoBase.Name = "nudRecargoBase";
+            this.nudRecargoBase.ReadOnly = true;
             this.nudRecargoBase.Size = new System.Drawing.Size(281, 22);
             this.nudRecargoBase.TabIndex = 50;
             // 

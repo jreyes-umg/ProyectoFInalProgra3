@@ -329,6 +329,7 @@
             this.txtEdad.Location = new System.Drawing.Point(819, 98);
             this.txtEdad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEdad.Name = "txtEdad";
+            this.txtEdad.ReadOnly = true;
             this.txtEdad.Size = new System.Drawing.Size(313, 22);
             this.txtEdad.TabIndex = 66;
             // 

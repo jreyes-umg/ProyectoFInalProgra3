@@ -104,10 +104,10 @@ namespace Negocio.MarlonMeda
         }
 
 
-        // CAPA DE NEGOCIO (Llamas al método anterior)
+        // CAPA DE NEGOCIO combobox
         public List<dynamic> MtdListaHospitalizaciones()
         {
-            return Datos.MtdListaHospitalizaciones(); // Cambia 'dietasDatos' por tu instancia real
+            return Datos.MtdListaHospitalizaciones(); 
         }
 
 
