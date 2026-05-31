@@ -189,6 +189,7 @@
     <Compile Include="CesarGabriel\SegurosMedicosForms.Designer.cs">
       <DependentUpon>SegurosMedicosForms.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsuarioLogueado.cs" />
     <EmbeddedResource Include="CesarGabriel\DetalleFacturasForms.resx">
       <DependentUpon>DetalleFacturasForms.cs</DependentUpon>
     </EmbeddedResource>

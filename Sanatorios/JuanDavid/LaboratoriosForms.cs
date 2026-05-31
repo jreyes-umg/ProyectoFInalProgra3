@@ -1,14 +1,17 @@
-﻿using Entidad.JuanDavid;
+﻿using ClosedXML.Excel;
+using Entidad.JuanDavid;
 using Negocio.JuanDavid;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Sanatorios.UsuarioLogueado;
 
 namespace Sanatorios.JuanDavid
 {
@@ -310,7 +313,7 @@ namespace Sanatorios.JuanDavid
                     SubTotal = nudSubtotal.Value,
                     TotalLaboratorio = nudTotalLaboratorio.Value,
                     Estado = rdbActivo.Checked,
-                    UsuarioSistema = "Consola",
+                    UsuarioSistema = Sesion.NombreUsuario,
                     FechaSistema = System.DateTime.Today,
                     HoraSistema = System.DateTime.Now.TimeOfDay,
 
@@ -362,7 +365,7 @@ namespace Sanatorios.JuanDavid
                     SubTotal = nudSubtotal.Value,
                     TotalLaboratorio = nudTotalLaboratorio.Value,
                     Estado = rdbActivo.Checked,
-                    UsuarioSistema = "Consola",
+                    UsuarioSistema = Sesion.NombreUsuario,
                     FechaSistema = System.DateTime.Today,
                     HoraSistema = System.DateTime.Now.TimeOfDay,
 
@@ -423,6 +426,149 @@ namespace Sanatorios.JuanDavid
         private void nudRecargoUrgencia_ValueChanged(object sender, EventArgs e)
         {
             nudTotalLaboratorio.Value = Negocio.CalcularTotalLaboratorio(nudSubtotal.Value, nudRecargoUrgencia.Value);
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtcodigoLaboratorio.Text))
+            {
+                MessageBox.Show("Seleccione un registro a imprimir", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                printDocument1.DefaultPageSettings.Margins = new Margins(20, 20, 20, 20);
+
+                int AltoDocumento = 350;
+                int AnchoDocumento = 400;
+
+                printDocument1.DefaultPageSettings.PaperSize = new PaperSize("Documento", AnchoDocumento, AltoDocumento);
+
+                PrintPreviewDialog preview = new PrintPreviewDialog
+                {
+                    Document = printDocument1,
+                    WindowState = FormWindowState.Maximized
+                };
+
+                preview.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al imprimir", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            Font tituloFont = new Font("Arial", 16, FontStyle.Bold);
+            Font textFont = new Font("Arial", 11);
+            Brush brush = Brushes.Black;
+
+            float y = 40;
+            float margenizquierdo = 50;
+
+            // ---> CAMBIAR: cambiar nombres a controles y titutlo
+
+            e.Graphics.DrawString("DATOS DEL LABORATORIO", textFont, brush, margenizquierdo, y); y += 40;
+            e.Graphics.DrawString($"Codigo de Laboratorio: {txtcodigoLaboratorio.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Codigo la atencion y Cliente: {cbxCodigodeatencion.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Tipo de Examen: {txtTipoExamen.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Costo del Examen: {nudCostoExamen.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Cantidad de Examenes: {nudCostoExamen.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            string Urgente = chkUrgente.Checked ? "Urgente" : "Normal";
+            e.Graphics.DrawString($"Importancia: {Urgente}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Recargo Por Urgencia: {nudRecargoUrgencia.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Total de la Atencion {nudSubtotal.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Total de la Atencion {nudTotalLaboratorio.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            string estado = rdbActivo.Checked ? "Activo" : "Inactivo";
+            e.Graphics.DrawString($"Estado: {estado}", textFont, brush, margenizquierdo, y); y += 25;
+        }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            // ---> CAMBIAR: Nombre a DataGridView
+            if (dgvRegistroLaboratorios.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay registros para exportar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // ---> CAMBIAR: Nombre al archivo de excel a exportar
+                SaveFileDialog saveFile = new SaveFileDialog
+                {
+                    Filter = "Archivo Excel (*.xlsx)|*.xlsx",
+                    FileName = "Listado_Laboratorios"
+                };
+
+                if (saveFile.ShowDialog() != DialogResult.OK)
+                    return;
+
+                // ---> CAMBIAR: Nombre a pestaña de excel (hoja)
+                using (XLWorkbook wb = new XLWorkbook())
+                {
+                    var ws = wb.Worksheets.Add("Control de Laboratorios");
+
+                    int colIndex = 1;
+
+                    //  Encabezados 
+                    foreach (DataGridViewColumn col in dgvRegistroLaboratorios.Columns)
+                    {
+                        if (col.Visible && col.Name != "Seleccionar")
+                        {
+                            ws.Cell(1, colIndex).Value = col.HeaderText;
+                            ws.Cell(1, colIndex).Style.Font.Bold = true;
+                            colIndex++;
+                        }
+                    }
+
+                    //  Datos DataGridView
+                    int rowIndex = 2;
+
+                    foreach (DataGridViewRow row in dgvRegistroLaboratorios.Rows)
+                    {
+                        colIndex = 1;
+
+                        foreach (DataGridViewColumn col in dgvRegistroLaboratorios.Columns)
+                        {
+                            if (col.Visible && col.Name != "Seleccionar")
+                            {
+                                object valorCelda = row.Cells[col.Name].Value;
+
+                                if (valorCelda is System.DateTime fecha)
+                                {
+                                    // Mostrar solo fecha (sin hora)
+                                    ws.Cell(rowIndex, colIndex).Value = fecha.ToString("dd/MM/yyyy");
+                                }
+                                else if (valorCelda is bool estado)
+                                {
+                                    // Convertir true / false a Activo / Inactivo
+                                    ws.Cell(rowIndex, colIndex).Value = estado ? "Activo" : "Inactivo";
+                                }
+                                else
+                                {
+                                    // Mostrar valores con formato del datagridview
+                                    ws.Cell(rowIndex, colIndex).Value = valorCelda?.ToString();
+                                }
+                                colIndex++;
+                            }
+                        }
+
+                        rowIndex++;
+                    }
+
+                    ws.Columns().AdjustToContents();
+                    wb.SaveAs(saveFile.FileName);
+                }
+
+                MessageBox.Show("Archivo exportado correctamente.", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al exportar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -56,6 +56,7 @@
     <Compile Include="JuanDavid\MedicosDatos.cs" />
     <Compile Include="CesarGabriel\PagosDatos.cs" />
     <Compile Include="JuanDavid\SanatoriosDatos.cs" />
+    <Compile Include="LoginDatos.cs" />
     <Compile Include="MarlonMeda\DietaDatos.cs" />
     <Compile Include="MarlonMeda\HospitalizacionesDatos.cs" />
     <Compile Include="MarlonMeda\PacienteDatos.cs" />

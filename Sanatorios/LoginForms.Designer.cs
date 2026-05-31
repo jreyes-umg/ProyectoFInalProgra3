@@ -55,12 +55,13 @@
             // 
             // btnIniciarSesion
             // 
-            this.btnIniciarSesion.Location = new System.Drawing.Point(199, 256);
+            this.btnIniciarSesion.Location = new System.Drawing.Point(195, 255);
             this.btnIniciarSesion.Name = "btnIniciarSesion";
             this.btnIniciarSesion.Size = new System.Drawing.Size(164, 42);
             this.btnIniciarSesion.TabIndex = 2;
             this.btnIniciarSesion.Text = "Iniciar Sesion";
             this.btnIniciarSesion.UseVisualStyleBackColor = true;
+            this.btnIniciarSesion.Click += new System.EventHandler(this.btnIniciarSesion_Click);
             // 
             // txtNombreUsuario
             // 

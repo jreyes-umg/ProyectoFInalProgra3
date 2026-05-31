@@ -1,4 +1,5 @@
-﻿using Entidad;
+﻿using ClosedXML.Excel;
+using Entidad;
 using Entidad.JuanDavid;
 using Negocio;
 using Negocio.JuanDavid;
@@ -7,10 +8,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Sanatorios.UsuarioLogueado;
 
 namespace Sanatorios.JuanDavid
 {
@@ -269,7 +272,7 @@ namespace Sanatorios.JuanDavid
                     CostoOperacionDiario = nudCostodiario.Value,
                     NivelServicio = txtTipoSanatorio.Text,
                     Estado = rdbActivo.Checked,
-                    UsuarioSistema = "Consola",
+                    UsuarioSistema = Sesion.NombreUsuario,
                     FechaSistema = System.DateTime.Today,
                     HoraSistema = System.DateTime.Now.TimeOfDay,
                 };
@@ -344,5 +347,148 @@ namespace Sanatorios.JuanDavid
             else
                 MtdActivarFilaSeleccionada(e.RowIndex);
         }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtcodigoSanatorio.Text))
+            {
+                MessageBox.Show("Seleccione un registro a imprimir", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                printDocument1.DefaultPageSettings.Margins = new Margins(20, 20, 20, 20);
+
+                int AltoDocumento = 350;
+                int AnchoDocumento = 400;
+
+                printDocument1.DefaultPageSettings.PaperSize = new PaperSize("Documento", AnchoDocumento, AltoDocumento);
+
+                PrintPreviewDialog preview = new PrintPreviewDialog
+                {
+                    Document = printDocument1,
+                    WindowState = FormWindowState.Maximized
+                };
+
+                preview.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al imprimir", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            Font tituloFont = new Font("Arial", 16, FontStyle.Bold);
+            Font textFont = new Font("Arial", 11);
+            Brush brush = Brushes.Black;
+
+            float y = 40;
+            float margenizquierdo = 50;
+
+            // ---> CAMBIAR: cambiar nombres a controles y titutlo
+
+            e.Graphics.DrawString("DATOS DEL SANATORIO", textFont, brush, margenizquierdo, y); y += 40;
+            e.Graphics.DrawString($"Codigo de Sanatorio: {txtcodigoSanatorio.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Nombre del Sanatorio: {txtNombreSanatorio.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Ubicacion del Sanatorio: {txtUbicacion.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Cantidad de Habitaciones: {nudCapacidad.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Numero de Telefono: {txtTelefono.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Direccion del Sanatorio: {txtDirector.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Tipo de Sanatorio: {txtTipoSanatorio.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Costo de Operacion Diario: Q{nudCostodiario.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Nivel de Servicio: {txtNiveldeservicio.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            string estado = rdbActivo.Checked ? "Activo" : "Inactivo";
+            e.Graphics.DrawString($"Estado: {estado}", textFont, brush, margenizquierdo, y); y += 25;
+        }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            // ---> CAMBIAR: Nombre a DataGridView
+            if (dgvRegistroSanatorios.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay registros para exportar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // ---> CAMBIAR: Nombre al archivo de excel a exportar
+                SaveFileDialog saveFile = new SaveFileDialog
+                {
+                    Filter = "Archivo Excel (*.xlsx)|*.xlsx",
+                    FileName = "Listado_Sanatorios"
+                };
+
+                if (saveFile.ShowDialog() != DialogResult.OK)
+                    return;
+
+                // ---> CAMBIAR: Nombre a pestaña de excel (hoja)
+                using (XLWorkbook wb = new XLWorkbook())
+                {
+                    var ws = wb.Worksheets.Add("Control de Sanatorios");
+
+                    int colIndex = 1;
+
+                    //  Encabezados 
+                    foreach (DataGridViewColumn col in dgvRegistroSanatorios.Columns)
+                    {
+                        if (col.Visible && col.Name != "Seleccionar")
+                        {
+                            ws.Cell(1, colIndex).Value = col.HeaderText;
+                            ws.Cell(1, colIndex).Style.Font.Bold = true;
+                            colIndex++;
+                        }
+                    }
+
+                    //  Datos DataGridView
+                    int rowIndex = 2;
+
+                    foreach (DataGridViewRow row in dgvRegistroSanatorios.Rows)
+                    {
+                        colIndex = 1;
+
+                        foreach (DataGridViewColumn col in dgvRegistroSanatorios.Columns)
+                        {
+                            if (col.Visible && col.Name != "Seleccionar")
+                            {
+                                object valorCelda = row.Cells[col.Name].Value;
+
+                                if (valorCelda is System.DateTime fecha)
+                                {
+                                    // Mostrar solo fecha (sin hora)
+                                    ws.Cell(rowIndex, colIndex).Value = fecha.ToString("dd/MM/yyyy");
+                                }
+                                else if (valorCelda is bool estado)
+                                {
+                                    // Convertir true / false a Activo / Inactivo
+                                    ws.Cell(rowIndex, colIndex).Value = estado ? "Activo" : "Inactivo";
+                                }
+                                else
+                                {
+                                    // Mostrar valores con formato del datagridview
+                                    ws.Cell(rowIndex, colIndex).Value = valorCelda?.ToString();
+                                }
+                                colIndex++;
+                            }
+                        }
+
+                        rowIndex++;
+                    }
+
+                    ws.Columns().AdjustToContents();
+                    wb.SaveAs(saveFile.FileName);
+                }
+
+                MessageBox.Show("Archivo exportado correctamente.", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al exportar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
+    
 }

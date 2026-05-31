@@ -92,5 +92,15 @@ namespace Negocio.MarlonMeda
             }
             return lista;
         }
+
+
+        //metodos 
+        public int mtdEdadPaciente(int Nacimiento)
+        {
+            int Actual = DateTime.Now.Year;
+            int edad = Actual - Nacimiento;
+
+            return edad;
+        }
     }
 }

@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Sanatorios.UsuarioLogueado;
 
 namespace Sanatorios
 {
@@ -316,7 +317,7 @@ namespace Sanatorios
                     Cambio = nudCambio.Value,
                     TotalCancelado = nudTotalCancelado.Value,
                     Estado = rdbActivo.Checked,
-                    UsuarioSistema = "Consola",
+                    UsuarioSistema = Sesion.NombreUsuario,
                     FechaSistema = System.DateTime.Today,
                     HoraSistema = System.DateTime.Now.TimeOfDay
                 };
@@ -355,7 +356,7 @@ namespace Sanatorios
                     Cambio = nudCambio.Value,
                     TotalCancelado = nudTotalCancelado.Value,
                     Estado = rdbActivo.Checked,
-                    UsuarioSistema = "Consola",
+                    UsuarioSistema = Sesion.NombreUsuario,
                     FechaSistema = System.DateTime.Today,
                     HoraSistema = System.DateTime.Now.TimeOfDay,
                 };

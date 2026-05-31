@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Sanatorios.UsuarioLogueado;
 
 namespace Sanatorios
 {
@@ -126,8 +127,8 @@ namespace Sanatorios
                 nuevoSeguro.MontoMaximo = nudMontoMaximo.Value;
                 nuevoSeguro.Estado = rdbActivo.Checked;
 
-               
-                nuevoSeguro.UsuarioSistema = "Admin";
+
+                nuevoSeguro.UsuarioSistema = Sesion.NombreUsuario;
                 nuevoSeguro.FechaSistema = DateTime.Now;
                 nuevoSeguro.HoraSistema = DateTime.Now;
 
@@ -161,7 +162,7 @@ namespace Sanatorios
                 seguroEditado.MontoMaximo = nudMontoMaximo.Value;
                 seguroEditado.Estado = rdbActivo.Checked;
 
-                seguroEditado.UsuarioSistema = "Admin";
+                seguroEditado.UsuarioSistema = Sesion.NombreUsuario;
                 seguroEditado.FechaSistema = DateTime.Now;
                 seguroEditado.HoraSistema = DateTime.Now;
 

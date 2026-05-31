@@ -8,10 +8,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Sanatorios.UsuarioLogueado;
 
 namespace Sanatorios.JuanDavid
 {
@@ -386,7 +388,7 @@ namespace Sanatorios.JuanDavid
                     RecargoEmergencia = nudRecargoEmergencia.Value,
                     TotalAtencion = nudTotal.Value,
                     Estado = rdbActivo.Checked,
-                    UsuarioSistema = "Consola",
+                    UsuarioSistema = Sesion.NombreUsuario,
                     FechaSistema = System.DateTime.Today,
                     HoraSistema = System.DateTime.Now.TimeOfDay,
 
@@ -434,7 +436,7 @@ namespace Sanatorios.JuanDavid
                     RecargoEmergencia = nudRecargoEmergencia.Value,
                     TotalAtencion = nudTotal.Value,
                     Estado = rdbActivo.Checked,
-                    UsuarioSistema = "Consola",
+                    UsuarioSistema = Sesion.NombreUsuario,
                     FechaSistema = System.DateTime.Today,
                     HoraSistema = System.DateTime.Now.TimeOfDay,
 
@@ -501,7 +503,29 @@ namespace Sanatorios.JuanDavid
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
+            Font tituloFont = new Font("Arial", 16, FontStyle.Bold);
+            Font textFont = new Font("Arial", 11);
+            Brush brush = Brushes.Black;
 
+            float y = 40;
+            float margenizquierdo = 50;
+
+            // ---> CAMBIAR: cambiar nombres a controles y titutlo
+
+            e.Graphics.DrawString("DATOS DE LA ATENCION", textFont, brush, margenizquierdo, y); y += 40;
+            e.Graphics.DrawString($"Codigo de Atencion: {txtcodigoAtencion.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Codigo Paciente: {cbxCodigodePaciente.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Codigo Medico: {cbxCodigoMedico.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Codigo Tipo de Servicio: {cbxCodigoTIpoDeservicio.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Codigo Sanatorio: {cbxCodigoSanatorio.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Fecha de la Atencion: {dtpFechaDeatencion.Value:d}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Costo Base: {nudCostoBase.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            string Urgente = rdbUrgente.Checked ? "Urgente" : "Normal";
+            e.Graphics.DrawString($"Importancia: {Urgente}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Recargo Por Emergencia: {nudRecargoEmergencia.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Total de la Atencion {nudTotal.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            string estado = rdbActivo.Checked ? "Activo" : "Inactivo";
+            e.Graphics.DrawString($"Estado: {estado}", textFont, brush, margenizquierdo, y); y += 25;
         }
 
         private void btnExportar_Click(object sender, EventArgs e)
@@ -599,6 +623,37 @@ namespace Sanatorios.JuanDavid
             MtdLimpiarControlesForm();
             MtdtrueFilaSelecionada(false);
             MtdActualizarTotalRegistros();
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtcodigoAtencion.Text))
+            {
+                MessageBox.Show("Seleccione un registro a imprimir", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                printDocument1.DefaultPageSettings.Margins = new Margins(20, 20, 20, 20);
+
+                int AltoDocumento = 350;
+                int AnchoDocumento = 400;
+
+                printDocument1.DefaultPageSettings.PaperSize = new PaperSize("Documento", AnchoDocumento, AltoDocumento);
+
+                PrintPreviewDialog preview = new PrintPreviewDialog
+                {
+                    Document = printDocument1,
+                    WindowState = FormWindowState.Maximized
+                };
+
+                preview.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al imprimir", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
     

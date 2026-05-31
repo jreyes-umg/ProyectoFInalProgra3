@@ -11,7 +11,7 @@ namespace Negocio.MarlonMeda
 {
     public class TipoServiciosNegocio
     {
-          TipoServicioDatos Datos = new TipoServicioDatos();
+        TipoServicioDatos Datos = new TipoServicioDatos();
 
         /* ----- CONSULTAR ----- */
         public List<TipoServicioEntidad> MtdConsultar()
@@ -61,7 +61,7 @@ namespace Negocio.MarlonMeda
         }
 
         /* ---- BUSCAR ---- */
-         public List<TipoServicioEntidad> MtdBuscar(int CodigoTipoServicio)
+        public List<TipoServicioEntidad> MtdBuscar(int CodigoTipoServicio)
         {
             DataTable dt = Datos.MtdBuscar(CodigoTipoServicio);
             List<TipoServicioEntidad> lista = new List<TipoServicioEntidad>();
@@ -87,6 +87,16 @@ namespace Negocio.MarlonMeda
                 lista.Add(RegistroServicio);
             }
             return lista;
+        }
+
+
+
+        const double tiposerviciorecargobase = 0.10;
+        //metodos
+        public double mtdrecargobaseTipoServicio(double tarifabase) 
+        { 
+         return tarifabase * tiposerviciorecargobase;
+        
         }
     }
 }

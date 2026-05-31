@@ -98,5 +98,41 @@ namespace Negocio.MarlonMeda
             }
             return lista;
         }
+
+
+
+        //metodos
+        const decimal hospitalizacionesdescuento = 0.10m;
+
+        public decimal mtdHospitalizacionesSubtotal(int dias, decimal costodia, decimal costomedico)
+        {
+            return (dias * costodia) + costomedico;
+
+        }
+
+        public decimal mtdhospitalizacionesdescuento(int dias, decimal subtotal)
+        {
+
+            decimal descuento;
+            if (dias > 5)
+            {
+                descuento = subtotal * hospitalizacionesdescuento;
+
+            }
+            else
+            {
+                descuento = 0;
+            }
+            return descuento;
+
+        }
+
+
+        public decimal mtdhospitalizacionesTotalHospitalizaciones(decimal subtotal, decimal descuento)
+        {
+
+            return subtotal - descuento;
+
+        }
     }
 }

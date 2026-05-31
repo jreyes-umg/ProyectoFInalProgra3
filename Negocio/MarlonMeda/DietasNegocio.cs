@@ -69,10 +69,12 @@ namespace Negocio.MarlonMeda
             return Datos.MtdEliminar(codigodieta);
         }
 
+        
         /* ---- BUSCAR ---- */
-         public List<DietasEntidad> MtdBuscar(int CodigoHospitalizacion)
+        public List<DietasEntidad> MtdBuscar(string TipoDieta) 
         {
-            DataTable dt = Datos.MtdBuscar(CodigoHospitalizacion);
+          
+            DataTable dt = Datos.MtdBuscar(TipoDieta);
 
             List<DietasEntidad> lista = new List<DietasEntidad>();
 
@@ -97,7 +99,30 @@ namespace Negocio.MarlonMeda
 
                 lista.Add(RegistroDieta);
             }
+
             return lista;
+        }
+
+
+        const decimal DietasImpuesto = 0.12m;
+        //metodos 
+        public decimal mtdDietasSubtotal(decimal costodiario, int dias)
+        {
+            return costodiario * dias;
+
+        }
+
+
+        public decimal mtdDietasImpuesto(decimal subtotal)
+        {
+            return subtotal * DietasImpuesto;
+
+        }
+
+        public decimal mtdTotalDietas(decimal subtotal, decimal impuesto)
+        {
+            return subtotal + impuesto;
+
         }
     }
 }

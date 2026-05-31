@@ -181,23 +181,25 @@ namespace Datos.MarlonMeda
             }
         }
 
-        //buscar 
-        public DataTable MtdBuscar(int CodigoHospitalizacion)
+      
+        // ---- BUSCAR ----
+        public DataTable MtdBuscar(string tipoDieta) 
         {
             try
             {
                 using (SqlConnection conn = conexionDatos.MtdConexion())
                 {
                     conn.Open();
-
                     string query = @"SELECT * 
-                                         FROM Tbl_Dietas 
-                                         WHERE CodigoHospitalizacion = @CodigoHospitalizacion;";
+                                            FROM Tbl_Dietas 
+                                            WHERE TipoDieta LIKE @TipoDieta;";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.CommandType = CommandType.Text;
-                        cmd.Parameters.AddWithValue("@CodigoHospitalizacion", CodigoHospitalizacion);
+
+                   
+                        cmd.Parameters.AddWithValue("@TipoDieta", "%" + tipoDieta + "%");
 
                         SqlDataAdapter da = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
@@ -209,11 +211,12 @@ namespace Datos.MarlonMeda
             }
             catch (SqlException exSql)
             {
-                throw new Exception("Error al buscar el Doctor: " + exSql.Message);
+               
+                throw new Exception("Error al buscar la Dieta en la base de datos: " + exSql.Message);
             }
             catch (Exception ex)
             {
-                throw new Exception("Error general al buscar el Doctor: " + ex.Message);
+                throw new Exception("Error general al buscar la Dieta: " + ex.Message);
             }
         }
 

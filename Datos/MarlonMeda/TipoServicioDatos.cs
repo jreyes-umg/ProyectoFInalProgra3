@@ -18,12 +18,11 @@ namespace Datos.MarlonMeda
         public List<TipoServicioEntidad> MtdConsultar()
         {
             List<TipoServicioEntidad> ControlServicios = new List<TipoServicioEntidad>();
-            try
-            {
+            
                 using (SqlConnection conn = conexionDatos.MtdConexion())
                 {
                     conn.Open();
-                    string QueryListar = "SELECT * FROM Tbl_TipoServicios ORDER BY CodigoTipoServicio ASC;";
+                    string QueryListar = "SELECT * FROM Tbl_TiposServicios ORDER BY CodigoTipoServicio ASC;";
                     using (SqlCommand cmd = new SqlCommand(QueryListar, conn))
                     {
                         using (SqlDataReader dr = cmd.ExecuteReader())
@@ -51,11 +50,7 @@ namespace Datos.MarlonMeda
                     return ControlServicios;
                 }
             }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al mostrar la lista de Tipos de Servicios: " + ex.Message);
-            }
-        }
+            
 
         // Agregar
         public bool MtdAgregar(TipoServicioEntidad ControlServicios)
@@ -65,7 +60,7 @@ namespace Datos.MarlonMeda
                 using (SqlConnection conn = conexionDatos.MtdConexion())
                 {
                     conn.Open();
-                    string QueryAgregar = @"INSERT INTO Tbl_TipoServicios
+                    string QueryAgregar = @"INSERT INTO Tbl_TiposServicios
                                      (
                                             NombreServicio,
                                             TarifaBase,
@@ -126,7 +121,7 @@ namespace Datos.MarlonMeda
                 using (SqlConnection conn = conexionDatos.MtdConexion())
                 {
                     conn.Open();
-                    string QueryEditar = @"UPDATE Tbl_TipoServicios 
+                    string QueryEditar = @"UPDATE Tbl_TiposServicios 
                                      SET
                                      NombreServicio = @NombreServicio,
                                      TarifaBase = @TarifaBase,
@@ -174,7 +169,7 @@ namespace Datos.MarlonMeda
                 using (SqlConnection conn = conexionDatos.MtdConexion())
                 {
                     conn.Open();
-                    string query = @"SELECT * FROM Tbl_TipoServicios 
+                    string query = @"SELECT * FROM Tbl_TiposServicios 
                                     WHERE CodigoTipoServicio = @CodigoTipoServicio;";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -201,7 +196,7 @@ namespace Datos.MarlonMeda
                 using (SqlConnection conn = conexionDatos.MtdConexion())
                 {
                     conn.Open();
-                    string QueryEliminar = @"DELETE FROM Tbl_TipoServicios 
+                    string QueryEliminar = @"DELETE FROM Tbl_TiposServicios 
                                                 WHERE CodigoTipoServicio = @CodigoTipoServicio;";
                     using (SqlCommand cmd = new SqlCommand(QueryEliminar, conn))
                     {
