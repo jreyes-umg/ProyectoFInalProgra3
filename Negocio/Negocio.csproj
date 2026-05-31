@@ -48,6 +48,7 @@
     <Compile Include="JuanDavid\MedicosNegocio.cs" />
     <Compile Include="CesarGabriel\PagosNegocio.cs" />
     <Compile Include="JuanDavid\SanatoriosNegocio.cs" />
+    <Compile Include="loginNegocio.cs" />
     <Compile Include="MarlonMeda\DietasNegocio.cs" />
     <Compile Include="MarlonMeda\HospitalizacionesNegocio.cs" />
     <Compile Include="MarlonMeda\PacienteNegocio.cs" />

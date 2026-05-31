@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Sanatorios.UsuarioLogueado;
 
 namespace Sanatorios.JuanDavid
 {
@@ -312,7 +313,7 @@ namespace Sanatorios.JuanDavid
                     SubTotal = nudSubtotal.Value,
                     TotalLaboratorio = nudTotalLaboratorio.Value,
                     Estado = rdbActivo.Checked,
-                    UsuarioSistema = "Consola",
+                    UsuarioSistema = Sesion.NombreUsuario,
                     FechaSistema = System.DateTime.Today,
                     HoraSistema = System.DateTime.Now.TimeOfDay,
 
@@ -364,7 +365,7 @@ namespace Sanatorios.JuanDavid
                     SubTotal = nudSubtotal.Value,
                     TotalLaboratorio = nudTotalLaboratorio.Value,
                     Estado = rdbActivo.Checked,
-                    UsuarioSistema = "Consola",
+                    UsuarioSistema = Sesion.NombreUsuario,
                     FechaSistema = System.DateTime.Today,
                     HoraSistema = System.DateTime.Now.TimeOfDay,
 

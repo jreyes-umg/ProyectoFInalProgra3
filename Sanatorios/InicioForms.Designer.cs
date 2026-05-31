@@ -70,6 +70,7 @@
             this.btnPacientes.TabIndex = 2;
             this.btnPacientes.Text = "Pacientes";
             this.btnPacientes.UseVisualStyleBackColor = true;
+            this.btnPacientes.Click += new System.EventHandler(this.btnPacientes_Click);
             // 
             // btnMedicos
             // 
@@ -79,6 +80,7 @@
             this.btnMedicos.TabIndex = 3;
             this.btnMedicos.Text = "Medicos";
             this.btnMedicos.UseVisualStyleBackColor = true;
+            this.btnMedicos.Click += new System.EventHandler(this.btnMedicos_Click);
             // 
             // btnTipoServicios
             // 
@@ -88,6 +90,7 @@
             this.btnTipoServicios.TabIndex = 4;
             this.btnTipoServicios.Text = "TipoServicios";
             this.btnTipoServicios.UseVisualStyleBackColor = true;
+            this.btnTipoServicios.Click += new System.EventHandler(this.btnTipoServicios_Click);
             // 
             // btnAtencionesPacientes
             // 
@@ -97,6 +100,7 @@
             this.btnAtencionesPacientes.TabIndex = 5;
             this.btnAtencionesPacientes.Text = "Atenciones Pacientes";
             this.btnAtencionesPacientes.UseVisualStyleBackColor = true;
+            this.btnAtencionesPacientes.Click += new System.EventHandler(this.btnAtencionesPacientes_Click);
             // 
             // btnSanatorios
             // 
@@ -106,6 +110,7 @@
             this.btnSanatorios.TabIndex = 6;
             this.btnSanatorios.Text = "Sanatorios";
             this.btnSanatorios.UseVisualStyleBackColor = true;
+            this.btnSanatorios.Click += new System.EventHandler(this.btnSanatorios_Click);
             // 
             // btnHospitalizaciones
             // 
@@ -115,6 +120,7 @@
             this.btnHospitalizaciones.TabIndex = 7;
             this.btnHospitalizaciones.Text = "Hospitalizaciones";
             this.btnHospitalizaciones.UseVisualStyleBackColor = true;
+            this.btnHospitalizaciones.Click += new System.EventHandler(this.btnHospitalizaciones_Click);
             // 
             // btnLaboratorios
             // 
@@ -124,6 +130,7 @@
             this.btnLaboratorios.TabIndex = 8;
             this.btnLaboratorios.Text = "Laboratorios";
             this.btnLaboratorios.UseVisualStyleBackColor = true;
+            this.btnLaboratorios.Click += new System.EventHandler(this.btnLaboratorios_Click);
             // 
             // btnDietas
             // 
@@ -133,6 +140,7 @@
             this.btnDietas.TabIndex = 9;
             this.btnDietas.Text = "Dietas";
             this.btnDietas.UseVisualStyleBackColor = true;
+            this.btnDietas.Click += new System.EventHandler(this.btnDietas_Click);
             // 
             // btnSegurosMedicos
             // 
@@ -142,6 +150,7 @@
             this.btnSegurosMedicos.TabIndex = 10;
             this.btnSegurosMedicos.Text = "Seguros Medicos";
             this.btnSegurosMedicos.UseVisualStyleBackColor = true;
+            this.btnSegurosMedicos.Click += new System.EventHandler(this.btnSegurosMedicos_Click);
             // 
             // btnFacturas
             // 
@@ -151,6 +160,7 @@
             this.btnFacturas.TabIndex = 11;
             this.btnFacturas.Text = "Facturas";
             this.btnFacturas.UseVisualStyleBackColor = true;
+            this.btnFacturas.Click += new System.EventHandler(this.btnFacturas_Click);
             // 
             // btnDetalleFacturas
             // 
@@ -160,6 +170,7 @@
             this.btnDetalleFacturas.TabIndex = 12;
             this.btnDetalleFacturas.Text = "Detalle Facturas";
             this.btnDetalleFacturas.UseVisualStyleBackColor = true;
+            this.btnDetalleFacturas.Click += new System.EventHandler(this.btnDetalleFacturas_Click);
             // 
             // btnPago
             // 
@@ -169,6 +180,7 @@
             this.btnPago.TabIndex = 13;
             this.btnPago.Text = "Pago";
             this.btnPago.UseVisualStyleBackColor = true;
+            this.btnPago.Click += new System.EventHandler(this.btnPago_Click);
             // 
             // InicioForms
             // 

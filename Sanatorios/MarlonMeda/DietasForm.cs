@@ -258,5 +258,10 @@ namespace Sanatorios.MarlonMeda
             MtdLimpiarControlesForm();
             MtdtrueFilaSelecionada(false);
         }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

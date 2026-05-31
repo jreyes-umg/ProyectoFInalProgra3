@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Sanatorios.UsuarioLogueado;
 
 namespace Sanatorios
 {
@@ -130,7 +131,7 @@ namespace Sanatorios
                 nuevoDetalle.TotalDetalle = nudTotalDetalle.Value;
                 nuevoDetalle.Estado = rdbActivo.Checked;
 
-                nuevoDetalle.UsuarioSistema = "Admin";
+                nuevoDetalle.UsuarioSistema = Sesion.NombreUsuario;
                 nuevoDetalle.FechaSistema = DateTime.Now.Date;
                 nuevoDetalle.HoraSistema = DateTime.Now; // En tu entidad es DateTime
 
@@ -173,7 +174,7 @@ namespace Sanatorios
                 detalleEditado.TotalDetalle = nudTotalDetalle.Value;
                 detalleEditado.Estado = rdbActivo.Checked;
 
-                detalleEditado.UsuarioSistema = "Admin";
+                detalleEditado.UsuarioSistema = Sesion.NombreUsuario;
                 detalleEditado.FechaSistema = DateTime.Now.Date;
                 detalleEditado.HoraSistema = DateTime.Now;
 

@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static ClosedXML.Excel.XLPredefinedFormat;
+using static Sanatorios.UsuarioLogueado;
 
 namespace Sanatorios
 {
@@ -263,7 +264,7 @@ namespace Sanatorios
                     AniosExperiencia = Convert.ToInt32(nudAñosdeexperiencia.Value),
                     BonoExperiencia = nudBonoporexperiencia.Value,
                     Estado = rdbActivo.Checked,
-                    UsuarioSistema = "Consola",
+                    UsuarioSistema = Sesion.NombreUsuario,
                     FechaSistema = System.DateTime.Today,
                     HoraSistema = System.DateTime.Now.TimeOfDay,
 
@@ -309,7 +310,7 @@ namespace Sanatorios
                     AniosExperiencia = Convert.ToInt32(nudAñosdeexperiencia.Value),
                     BonoExperiencia = nudBonoporexperiencia.Value,
                     Estado = rdbActivo.Checked,
-                    UsuarioSistema = "Consola",
+                    UsuarioSistema = Sesion.NombreUsuario,
                     FechaSistema = System.DateTime.Today,
                     HoraSistema = System.DateTime.Now.TimeOfDay,   
                 }; 

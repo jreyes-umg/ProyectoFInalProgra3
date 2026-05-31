@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Sanatorios.UsuarioLogueado;
 
 namespace Sanatorios
 {
@@ -108,8 +109,8 @@ namespace Sanatorios
                 nuevaFactura.TotalPagar = nudTotalPagar.Value;
                 nuevaFactura.Estado = rdbActivo.Checked;
 
-               
-                nuevaFactura.UsuarioSistema = "Admin"; //Prueba, aun faltan los tipos de usuario
+
+                nuevaFactura.UsuarioSistema = Sesion.NombreUsuario;
                 nuevaFactura.FechaSistema = DateTime.Now.Date;
                 nuevaFactura.HoraSistema = DateTime.Now.TimeOfDay;
 
@@ -185,7 +186,7 @@ namespace Sanatorios
                 facturaEditada.TotalPagar = nudTotalPagar.Value;
                 facturaEditada.Estado = rdbActivo.Checked;
 
-                facturaEditada.UsuarioSistema = "Admin";
+                facturaEditada.UsuarioSistema = Sesion.NombreUsuario;
                 facturaEditada.FechaSistema = DateTime.Now.Date;
                 facturaEditada.HoraSistema = DateTime.Now.TimeOfDay;
 
