@@ -20,7 +20,7 @@ namespace Entidad
         public bool Estado { get; set; }
         public string UsuarioSistema { get; set; }
         public DateTime FechaSistema { get; set; }
-        public DateTime HoraSistema { get; set; }
+        public TimeSpan HoraSistema { get; set; }
 
 
     }
