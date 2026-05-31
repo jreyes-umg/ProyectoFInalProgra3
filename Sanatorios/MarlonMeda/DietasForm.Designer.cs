@@ -163,6 +163,7 @@
             this.nudImpuesto.Name = "nudImpuesto";
             this.nudImpuesto.Size = new System.Drawing.Size(281, 22);
             this.nudImpuesto.TabIndex = 50;
+            this.nudImpuesto.ValueChanged += new System.EventHandler(this.nudImpuesto_ValueChanged);
             // 
             // nudSubTotal
             // 
@@ -177,6 +178,7 @@
             this.nudSubTotal.Name = "nudSubTotal";
             this.nudSubTotal.Size = new System.Drawing.Size(281, 22);
             this.nudSubTotal.TabIndex = 49;
+            this.nudSubTotal.ValueChanged += new System.EventHandler(this.nudSubTotal_ValueChanged);
             // 
             // txtUsuarioSistema
             // 
