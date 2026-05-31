@@ -495,15 +495,15 @@ namespace Sanatorios
             // ---> CAMBIAR: cambiar nombres a controles y titutlo
 
             e.Graphics.DrawString("DATOS DEL DOCOTOR", textFont, brush, margenizquierdo, y); y += 40;
-            e.Graphics.DrawString($"CodigoPaciente: {txtCodigomedico.Text}", textFont, brush, margenizquierdo, y); y += 25;
-            e.Graphics.DrawString($"CodigoPaciente: {txtNombreDoctor.Text}", textFont, brush, margenizquierdo, y); y += 25;
-            e.Graphics.DrawString($"CodigoPaciente: {txtApellidoDoctor.Text}", textFont, brush, margenizquierdo, y); y += 25;
-            e.Graphics.DrawString($"CodigoPaciente: {txtEspecialidad.Text}", textFont, brush, margenizquierdo, y); y += 25;
-            e.Graphics.DrawString($"CodigoPaciente: {txtTelefono.Text}", textFont, brush, margenizquierdo, y); y += 25;
-            e.Graphics.DrawString($"CodigoPaciente: {txtcorreo.Text}", textFont, brush, margenizquierdo, y); y += 25;
-            e.Graphics.DrawString($"FechaCita: {Convert.ToString(nudhonorarioBase.Value)}", textFont, brush, margenizquierdo, y); y += 25;
-            e.Graphics.DrawString($"DpiPaciente: {Convert.ToString(nudAñosdeexperiencia.Value)}", textFont, brush, margenizquierdo, y); y += 25;
-            e.Graphics.DrawString($"Nombre: {Convert.ToString(nudBonoporexperiencia.Value)}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Codigo Medico: {txtCodigomedico.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Nombre del Docotor: {txtNombreDoctor.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Apellido del Docotor: {txtApellidoDoctor.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Especialidad: {txtEspecialidad.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Telefono: {txtTelefono.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Correo Electronico: {txtcorreo.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Honorario Base: {Convert.ToString(nudhonorarioBase.Value)}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Años de Experiencia: {Convert.ToString(nudAñosdeexperiencia.Value)} Años", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Bono Por sus Años de Experiencia: {Convert.ToString(nudBonoporexperiencia.Value)}", textFont, brush, margenizquierdo, y); y += 25;
             string estado = rdbActivo.Checked ? "Activo" : "Inactivo";
             e.Graphics.DrawString($"Estado: {estado}", textFont, brush, margenizquierdo, y); y += 25;
 

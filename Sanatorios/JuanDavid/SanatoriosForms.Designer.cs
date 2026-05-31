@@ -98,6 +98,7 @@
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // label9
             // 
@@ -183,6 +184,7 @@
             this.btnExportar.Text = "Exportar";
             this.btnExportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // label4
             // 
@@ -193,6 +195,10 @@
             this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 2;
             this.label4.Text = "Nombre:";
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // tabPage2
             // 
@@ -647,7 +653,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.picPrestamoLibros);
             this.Name = "Sanatorios";
-            this.Text = "LaboratoriosForms";
+            this.Text = "SanatoriosForms";
             this.Load += new System.EventHandler(this.LaboratoriosForms_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudCostodiario)).EndInit();
             this.tabPage2.ResumeLayout(false);
