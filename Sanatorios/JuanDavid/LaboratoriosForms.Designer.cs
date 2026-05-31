@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LaboratoriosForms));
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnBuscar = new FontAwesome.Sharp.IconButton();
-            this.dgvRegistroSanatorios = new System.Windows.Forms.DataGridView();
+            this.dgvRegistroLaboratorios = new System.Windows.Forms.DataGridView();
             this.lblTotalRegistros = new System.Windows.Forms.Label();
             this.chkSeleccionar = new System.Windows.Forms.CheckBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -59,9 +59,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkUrgente = new System.Windows.Forms.CheckBox();
             this.nudTotalLaboratorio = new System.Windows.Forms.NumericUpDown();
             this.nudRecargoUrgencia = new System.Windows.Forms.NumericUpDown();
-            this.rdbUrgente = new System.Windows.Forms.RadioButton();
             this.nudCantidad = new System.Windows.Forms.NumericUpDown();
             this.cbxCodigodeatencion = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -74,7 +74,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.BtnCerrarr = new FontAwesome.Sharp.IconButton();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroSanatorios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroLaboratorios)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCostoExamen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSubtotal)).BeginInit();
@@ -114,24 +114,26 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // dgvRegistroSanatorios
+            // dgvRegistroLaboratorios
             // 
-            this.dgvRegistroSanatorios.AllowUserToAddRows = false;
-            this.dgvRegistroSanatorios.AllowUserToDeleteRows = false;
-            this.dgvRegistroSanatorios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvRegistroSanatorios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRegistroSanatorios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvRegistroLaboratorios.AllowUserToAddRows = false;
+            this.dgvRegistroLaboratorios.AllowUserToDeleteRows = false;
+            this.dgvRegistroLaboratorios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvRegistroLaboratorios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRegistroLaboratorios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar});
-            this.dgvRegistroSanatorios.Location = new System.Drawing.Point(12, 77);
-            this.dgvRegistroSanatorios.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvRegistroSanatorios.MultiSelect = false;
-            this.dgvRegistroSanatorios.Name = "dgvRegistroSanatorios";
-            this.dgvRegistroSanatorios.ReadOnly = true;
-            this.dgvRegistroSanatorios.RowHeadersWidth = 51;
-            this.dgvRegistroSanatorios.RowTemplate.Height = 24;
-            this.dgvRegistroSanatorios.Size = new System.Drawing.Size(995, 335);
-            this.dgvRegistroSanatorios.TabIndex = 14;
+            this.dgvRegistroLaboratorios.Location = new System.Drawing.Point(12, 77);
+            this.dgvRegistroLaboratorios.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvRegistroLaboratorios.MultiSelect = false;
+            this.dgvRegistroLaboratorios.Name = "dgvRegistroLaboratorios";
+            this.dgvRegistroLaboratorios.ReadOnly = true;
+            this.dgvRegistroLaboratorios.RowHeadersWidth = 51;
+            this.dgvRegistroLaboratorios.RowTemplate.Height = 24;
+            this.dgvRegistroLaboratorios.Size = new System.Drawing.Size(995, 335);
+            this.dgvRegistroLaboratorios.TabIndex = 14;
+            this.dgvRegistroLaboratorios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRegistroLaboratorios_CellContentClick);
             // 
             // lblTotalRegistros
             // 
@@ -153,6 +155,7 @@
             this.chkSeleccionar.TabIndex = 12;
             this.chkSeleccionar.Text = "Seleccionar";
             this.chkSeleccionar.UseVisualStyleBackColor = true;
+            this.chkSeleccionar.CheckedChanged += new System.EventHandler(this.chkSeleccionar_CheckedChanged);
             // 
             // tabPage1
             // 
@@ -161,7 +164,7 @@
             this.tabPage1.Controls.Add(this.btnImprimir);
             this.tabPage1.Controls.Add(this.btnLimpiar);
             this.tabPage1.Controls.Add(this.btnBuscar);
-            this.tabPage1.Controls.Add(this.dgvRegistroSanatorios);
+            this.tabPage1.Controls.Add(this.dgvRegistroLaboratorios);
             this.tabPage1.Controls.Add(this.lblTotalRegistros);
             this.tabPage1.Controls.Add(this.chkSeleccionar);
             this.tabPage1.Controls.Add(this.txtBuscarNombre);
@@ -219,6 +222,7 @@
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // txtBuscarNombre
             // 
@@ -265,6 +269,7 @@
             this.nudCostoExamen.Name = "nudCostoExamen";
             this.nudCostoExamen.Size = new System.Drawing.Size(236, 20);
             this.nudCostoExamen.TabIndex = 37;
+            this.nudCostoExamen.ValueChanged += new System.EventHandler(this.nudCostoExamen_ValueChanged);
             // 
             // txtTipoExamen
             // 
@@ -308,6 +313,7 @@
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnGuardar
             // 
@@ -323,6 +329,7 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnCancelar
             // 
@@ -338,6 +345,7 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // label1
             // 
@@ -361,8 +369,10 @@
             0,
             0});
             this.nudSubtotal.Name = "nudSubtotal";
+            this.nudSubtotal.ReadOnly = true;
             this.nudSubtotal.Size = new System.Drawing.Size(211, 20);
             this.nudSubtotal.TabIndex = 36;
+            this.nudSubtotal.ValueChanged += new System.EventHandler(this.nudSubtotal_ValueChanged);
             // 
             // btnEliminar
             // 
@@ -378,6 +388,7 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnNuevo
             // 
@@ -393,6 +404,7 @@
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // rdbInactivo
             // 
@@ -405,7 +417,6 @@
             this.rdbInactivo.TabStop = true;
             this.rdbInactivo.Text = "Inactivo";
             this.rdbInactivo.UseVisualStyleBackColor = true;
-            this.rdbInactivo.CheckedChanged += new System.EventHandler(this.rdbInactivo_CheckedChanged);
             // 
             // rdbActivo
             // 
@@ -418,7 +429,6 @@
             this.rdbActivo.TabStop = true;
             this.rdbActivo.Text = "Activo";
             this.rdbActivo.UseVisualStyleBackColor = true;
-            this.rdbActivo.CheckedChanged += new System.EventHandler(this.rdbActivo_CheckedChanged);
             // 
             // picPrestamoLibros
             // 
@@ -440,7 +450,6 @@
             this.label12.Size = new System.Drawing.Size(43, 13);
             this.label12.TabIndex = 18;
             this.label12.Text = "Estado:";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // tabControl1
             // 
@@ -467,9 +476,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkUrgente);
             this.groupBox1.Controls.Add(this.nudTotalLaboratorio);
             this.groupBox1.Controls.Add(this.nudRecargoUrgencia);
-            this.groupBox1.Controls.Add(this.rdbUrgente);
             this.groupBox1.Controls.Add(this.nudCantidad);
             this.groupBox1.Controls.Add(this.cbxCodigodeatencion);
             this.groupBox1.Controls.Add(this.nudCostoExamen);
@@ -502,6 +511,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del doctor";
             // 
+            // chkUrgente
+            // 
+            this.chkUrgente.AutoSize = true;
+            this.chkUrgente.Location = new System.Drawing.Point(617, 43);
+            this.chkUrgente.Name = "chkUrgente";
+            this.chkUrgente.Size = new System.Drawing.Size(64, 17);
+            this.chkUrgente.TabIndex = 47;
+            this.chkUrgente.Text = "Urgente";
+            this.chkUrgente.UseVisualStyleBackColor = true;
+            this.chkUrgente.CheckedChanged += new System.EventHandler(this.chkUrgente_CheckedChanged);
+            // 
             // nudTotalLaboratorio
             // 
             this.nudTotalLaboratorio.DecimalPlaces = 2;
@@ -512,6 +532,7 @@
             0,
             0});
             this.nudTotalLaboratorio.Name = "nudTotalLaboratorio";
+            this.nudTotalLaboratorio.ReadOnly = true;
             this.nudTotalLaboratorio.Size = new System.Drawing.Size(211, 20);
             this.nudTotalLaboratorio.TabIndex = 46;
             // 
@@ -528,18 +549,7 @@
             this.nudRecargoUrgencia.ReadOnly = true;
             this.nudRecargoUrgencia.Size = new System.Drawing.Size(211, 20);
             this.nudRecargoUrgencia.TabIndex = 45;
-            // 
-            // rdbUrgente
-            // 
-            this.rdbUrgente.AutoSize = true;
-            this.rdbUrgente.Location = new System.Drawing.Point(627, 45);
-            this.rdbUrgente.Margin = new System.Windows.Forms.Padding(2);
-            this.rdbUrgente.Name = "rdbUrgente";
-            this.rdbUrgente.Size = new System.Drawing.Size(63, 17);
-            this.rdbUrgente.TabIndex = 44;
-            this.rdbUrgente.TabStop = true;
-            this.rdbUrgente.Text = "Urgente";
-            this.rdbUrgente.UseVisualStyleBackColor = true;
+            this.nudRecargoUrgencia.ValueChanged += new System.EventHandler(this.nudRecargoUrgencia_ValueChanged);
             // 
             // nudCantidad
             // 
@@ -552,6 +562,7 @@
             this.nudCantidad.Name = "nudCantidad";
             this.nudCantidad.Size = new System.Drawing.Size(236, 20);
             this.nudCantidad.TabIndex = 41;
+            this.nudCantidad.ValueChanged += new System.EventHandler(this.nudCantidad_ValueChanged);
             // 
             // cbxCodigodeatencion
             // 
@@ -610,7 +621,6 @@
             this.label6.Size = new System.Drawing.Size(72, 13);
             this.label6.TabIndex = 6;
             this.label6.Text = "Tipo Examen:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label4
             // 
@@ -668,7 +678,7 @@
             this.Name = "LaboratoriosForms";
             this.Text = "LaboratoriosForms";
             this.Load += new System.EventHandler(this.LaboratoriosForms_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroSanatorios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroLaboratorios)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCostoExamen)).EndInit();
@@ -690,7 +700,7 @@
 
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private FontAwesome.Sharp.IconButton btnBuscar;
-        private System.Windows.Forms.DataGridView dgvRegistroSanatorios;
+        private System.Windows.Forms.DataGridView dgvRegistroLaboratorios;
         private System.Windows.Forms.Label lblTotalRegistros;
         private System.Windows.Forms.CheckBox chkSeleccionar;
         private System.Windows.Forms.TabPage tabPage1;
@@ -730,8 +740,8 @@
         private System.Windows.Forms.ComboBox cbxCodigodeatencion;
         public System.Windows.Forms.Label label9CosotExc;
         private System.Windows.Forms.NumericUpDown nudRecargoUrgencia;
-        private System.Windows.Forms.RadioButton rdbUrgente;
         private System.Windows.Forms.NumericUpDown nudCantidad;
         private System.Windows.Forms.NumericUpDown nudTotalLaboratorio;
+        private System.Windows.Forms.CheckBox chkUrgente;
     }
 }
