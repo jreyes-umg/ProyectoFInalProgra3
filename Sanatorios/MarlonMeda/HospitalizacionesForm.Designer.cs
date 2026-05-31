@@ -338,6 +338,7 @@
             this.nudDescuento.Name = "nudDescuento";
             this.nudDescuento.Size = new System.Drawing.Size(281, 22);
             this.nudDescuento.TabIndex = 50;
+            this.nudDescuento.ValueChanged += new System.EventHandler(this.nudDescuento_ValueChanged);
             // 
             // nudSubTotal
             // 

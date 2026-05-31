@@ -104,6 +104,13 @@ namespace Negocio.MarlonMeda
         }
 
 
+        // CAPA DE NEGOCIO (Llamas al método anterior)
+        public List<dynamic> MtdListaHospitalizaciones()
+        {
+            return Datos.MtdListaHospitalizaciones(); // Cambia 'dietasDatos' por tu instancia real
+        }
+
+
         const decimal DietasImpuesto = 0.12m;
         //metodos 
         public decimal mtdDietasSubtotal(decimal costodiario, int dias)

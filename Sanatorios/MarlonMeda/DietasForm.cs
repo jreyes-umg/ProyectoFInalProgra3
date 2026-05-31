@@ -82,12 +82,27 @@ namespace Sanatorios.MarlonMeda
             }
         }
 
+
         private void MtdCargarDatosFilaEnControlesForm(int filaSeleccionada)
         {
-               var Dieta = (DietasEntidad)dgvDietas.Rows[filaSeleccionada].DataBoundItem;
-            
+            var Dieta = (DietasEntidad)dgvDietas.Rows[filaSeleccionada].DataBoundItem;
+
             txtCodigoDietas.Text = Dieta.CodigoDieta.ToString();
-            cbxCodigoHospitalizacion.Text = Dieta.CodigoHospitalizacion.ToString();
+
+            // Lógica para seleccionar el ítem correcto en el ComboBox de Hospitalizaciones
+            int CodigoHospSeleccionado = Dieta.CodigoHospitalizacion;
+            foreach (var item in cbxCodigoHospitalizacion.Items)
+            {
+                var hospItem = (dynamic)item;
+                int CodigoItem = (int)hospItem.GetType().GetProperty("Value").GetValue(hospItem, null);
+
+                if (CodigoItem == CodigoHospSeleccionado)
+                {
+                    cbxCodigoHospitalizacion.SelectedItem = item;
+                    break;
+                }
+            }
+
             txtTipoConcepto.Text = Dieta.TipoDieta;
             txtDias.Text = Dieta.Dias.ToString();
             txtNutricionista.Text = Dieta.Nutricionista;
@@ -206,9 +221,27 @@ namespace Sanatorios.MarlonMeda
 
         }
 
+
+        private void MtdMostrarListaHospitalizaciones()
+        {
+            // Asegúrate de usar el nombre correcto de tu capa de negocio
+            var Lista = Negocio.MtdListaHospitalizaciones();
+            cbxCodigoHospitalizacion.Items.Clear();
+
+            foreach (var hosp in Lista)
+            {
+                cbxCodigoHospitalizacion.Items.Add(hosp);
+            }
+
+            // Esto es crucial para que sepa qué mostrar y qué valor oculto guardar
+            cbxCodigoHospitalizacion.DisplayMember = "Text";
+            cbxCodigoHospitalizacion.ValueMember = "Value";
+        }
+
         private void DietasForm_Load(object sender, EventArgs e)
         {
             MtdConsultardietas();
+            MtdMostrarListaHospitalizaciones();
         }
 
         private void dgvDietas_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -279,43 +312,43 @@ namespace Sanatorios.MarlonMeda
         {
             try
             {
-           
+                // 1. Extraer el valor real (ID) del ComboBox
+                var SelectedCodigoHosp = (dynamic)cbxCodigoHospitalizacion.SelectedItem;
+                int codigoHospitalizacionValor = (int)SelectedCodigoHosp.GetType().GetProperty("Value").GetValue(SelectedCodigoHosp, null);
+
                 DietasEntidad controlDietas = new DietasEntidad
                 {
-                 
-                    CodigoHospitalizacion = Convert.ToInt32(cbxCodigoHospitalizacion.Text), 
-                    TipoDieta = txtTipoConcepto.Text,                                         
-                    CostoDiario = nudCostoDiario.Value,                                  
-                    Dias = Convert.ToInt32(txtDias.Text),                                  
-                    Nutricionista = txtNutricionista.Text,                                
+                    CodigoHospitalizacion = codigoHospitalizacionValor, // 2. Usar la variable extraída
+                    TipoDieta = txtTipoConcepto.Text,
+                    CostoDiario = nudCostoDiario.Value,
+                    Dias = Convert.ToInt32(txtDias.Text),
+                    Nutricionista = txtNutricionista.Text,
                     SubTotal = nudSubTotal.Value,
                     Impuesto = nudImpuesto.Value,
-                    TotalDieta = nudTotalDetalle.Value,                                     
+                    TotalDieta = nudTotalDetalle.Value,
                     Estado = rdbActivo.Checked,
-                
                     FechaSistema = dtmFechaSistema.Value.Date,
                     UsuarioSistema = txtUsuarioSistema.Text,
-                    HoraSistema = dtmHoraSistema.Value.TimeOfDay                           
+                    HoraSistema = dtmHoraSistema.Value.TimeOfDay
                 };
 
-                     Negocio.MtdAgregar(controlDietas);
+                Negocio.MtdAgregar(controlDietas);
 
-                      MessageBox.Show("Dieta agregada correctamente", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Dieta agregada correctamente", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 MtdLimpiarControlesForm();
-                MtdConsultardietas(); 
+                MtdConsultardietas();
                 MtdtrueFilaSelecionada(false);
-                
             }
             catch (Exception ex)
             {
-                    string errorReal = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
-
+                string errorReal = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
                 MessageBox.Show("El error oculto de SQL es: \n\n" + errorReal, "Investigando el Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
-        {   if (string.IsNullOrWhiteSpace(txtCodigoDietas.Text)) 
+        {
+            if (string.IsNullOrWhiteSpace(txtCodigoDietas.Text))
             {
                 MessageBox.Show("Seleccione una Dieta para editar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -323,10 +356,14 @@ namespace Sanatorios.MarlonMeda
 
             try
             {
-                    DietasEntidad eventoDieta = new DietasEntidad
+                // 1. Extraer el valor real (ID) del ComboBox
+                var SelectedCodigoHosp = (dynamic)cbxCodigoHospitalizacion.SelectedItem;
+                int codigoHospitalizacionValor = (int)SelectedCodigoHosp.GetType().GetProperty("Value").GetValue(SelectedCodigoHosp, null);
+
+                DietasEntidad eventoDieta = new DietasEntidad
                 {
-                    CodigoDieta = Convert.ToInt32(txtCodigoDietas.Text), 
-                    CodigoHospitalizacion = Convert.ToInt32(cbxCodigoHospitalizacion.Text),
+                    CodigoDieta = Convert.ToInt32(txtCodigoDietas.Text),
+                    CodigoHospitalizacion = codigoHospitalizacionValor, // 2. Usar la variable extraída
                     TipoDieta = txtTipoConcepto.Text,
                     CostoDiario = nudCostoDiario.Value,
                     Dias = Convert.ToInt32(txtDias.Text),
@@ -340,10 +377,10 @@ namespace Sanatorios.MarlonMeda
                     HoraSistema = dtmHoraSistema.Value.TimeOfDay
                 };
 
-                     Negocio.MtdEditar(eventoDieta);
-        MessageBox.Show("Dieta Editada correctamente", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Negocio.MtdEditar(eventoDieta);
+                MessageBox.Show("Dieta Editada correctamente", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 MtdLimpiarControlesForm();
-                MtdConsultardietas(); // Nombre actualizado para el contexto de Dietas
+                MtdConsultardietas();
                 MtdtrueFilaSelecionada(false);
             }
             catch (Exception ex)

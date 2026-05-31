@@ -231,5 +231,46 @@ namespace Datos.MarlonMeda
                 throw new Exception("Error al eliminar la hospitalización de la base de datos", ex);
             }
         }
+
+     
+        public List<dynamic> MtdListaAtenciones()
+        {
+            List<dynamic> ListarDatos = new List<dynamic>();
+
+            try
+            {
+                using (SqlConnection conn = conexionDatos.MtdConexion())
+                {
+                    conn.Open();
+                  
+                    string QueryListaAtenciones = @"
+                                    SELECT CodigoAtencion, FechaAtencion
+                                    FROM Tbl_AtencionesPacientes;";
+
+                    using (SqlCommand cmd = new SqlCommand(QueryListaAtenciones, conn))
+                    {
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                
+                                DateTime fecha = Convert.ToDateTime(dr["FechaAtencion"]);
+
+                                ListarDatos.Add(new
+                                {
+                                    Value = dr["CodigoAtencion"],
+                                    Text = dr["CodigoAtencion"].ToString() 
+                                });
+                            }
+                        }
+                    }
+                }
+                return ListarDatos;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al mostrar los datos de atenciones: " + ex.Message);
+            }
+        }
     }
 }

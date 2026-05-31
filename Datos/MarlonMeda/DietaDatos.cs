@@ -244,5 +244,44 @@ namespace Datos.MarlonMeda
             }
         }
 
+        // CAPA DE DATOS
+        public List<dynamic> MtdListaHospitalizaciones()
+        {
+            List<dynamic> ListarDatos = new List<dynamic>();
+            try
+            {
+                using (SqlConnection conn = conexionDatos.MtdConexion())
+                {
+                    conn.Open();
+                    // Consultamos la tabla de Hospitalizaciones
+                    string QueryLista = @"
+                SELECT CodigoHospitalizacion, NumeroHabitacion 
+                FROM Tbl_Hospitalizaciones;";
+
+                    using (SqlCommand cmd = new SqlCommand(QueryLista, conn))
+                    {
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                ListarDatos.Add(new
+                                {
+                                    Value = dr["CodigoHospitalizacion"],
+                                    Text = $"Hosp: {dr["CodigoHospitalizacion"]} - Hab: {dr["NumeroHabitacion"]}" // Formato Número + Habitación
+                                });
+                            }
+                        }
+                    }
+                }
+                return ListarDatos;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al mostrar hospitalizaciones: " + ex.Message);
+            }
+        }
+
+       
+
     }
 }

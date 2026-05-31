@@ -443,17 +443,6 @@
             // cbxCodigoHospitalizacion
             // 
             this.cbxCodigoHospitalizacion.FormattingEnabled = true;
-            this.cbxCodigoHospitalizacion.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
             this.cbxCodigoHospitalizacion.Location = new System.Drawing.Point(177, 93);
             this.cbxCodigoHospitalizacion.Name = "cbxCodigoHospitalizacion";
             this.cbxCodigoHospitalizacion.Size = new System.Drawing.Size(313, 24);

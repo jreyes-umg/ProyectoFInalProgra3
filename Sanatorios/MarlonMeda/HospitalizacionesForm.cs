@@ -83,7 +83,21 @@ namespace Sanatorios.MarlonMeda
             var Hospitalizacion = (HospitalizacionesEntidad)dgvHospitalizaciones.Rows[filaSeleccionada].DataBoundItem;
 
             txtCodigoHospitalizacion.Text = Hospitalizacion.CodigoHospitalizacion.ToString();
-            cbmCodigoAtencion.Text = Hospitalizacion.CodigoAtencion.ToString();
+
+            // 1. Lógica para seleccionar el ítem correcto en el ComboBox
+            int CodigoAtencionSeleccionado = Hospitalizacion.CodigoAtencion;
+            foreach (var item in cbmCodigoAtencion.Items)
+            {
+                var atencionItem = (dynamic)item;
+                int CodigoItem = (int)atencionItem.GetType().GetProperty("Value").GetValue(atencionItem, null);
+
+                if (CodigoItem == CodigoAtencionSeleccionado)
+                {
+                    cbmCodigoAtencion.SelectedItem = item;
+                    break; // Detiene el bucle al encontrar la coincidencia
+                }
+            }
+
             txtNumeroHabitacion.Text = Hospitalizacion.NumeroHabitacion;
             txtDias.Text = Hospitalizacion.Dias.ToString();
 
@@ -100,6 +114,9 @@ namespace Sanatorios.MarlonMeda
             dtmFechaSistema.Value = Hospitalizacion.FechaSistema;
             dtmHoraSistema.Value = DateTime.Today.Add(Hospitalizacion.HoraSistema);
         }
+
+
+      
 
         private int? filaActiva = null;
 
@@ -190,11 +207,23 @@ namespace Sanatorios.MarlonMeda
             MtdtrueFilaSelecionada(false);
         }
 
+        // Crear Metodo que Imprime Lista ComboBox Atenciones
+        private void MtdMostrarListaAtenciones()
+        {
+            var Lista = Negocio.MtdListaAtenciones(); // Cambiar por tu instancia de la capa negocio
+            cbmCodigoAtencion.Items.Clear();
 
+            foreach (var Atencion in Lista)
+            {
+                cbmCodigoAtencion.Items.Add(Atencion);
+            }
+            cbmCodigoAtencion.DisplayMember = "Text";
+            cbmCodigoAtencion.ValueMember = "Value";
+        }
         private void HospitalizacionesForm_Load(object sender, EventArgs e)
         {
             MtdConsultarHospitalizaciones();
-
+            MtdMostrarListaAtenciones();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -248,9 +277,13 @@ namespace Sanatorios.MarlonMeda
         {
             try
             {
+                // 1. Extraer el valor real (ID) del ComboBox seleccionado
+                var SelectedCodigoAtencion = (dynamic)cbmCodigoAtencion.SelectedItem;
+                int codigoAtencionValor = (int)SelectedCodigoAtencion.GetType().GetProperty("Value").GetValue(SelectedCodigoAtencion, null);
+
                 HospitalizacionesEntidad controlHospitalizacion = new HospitalizacionesEntidad
                 {
-                    CodigoAtencion = Convert.ToInt32(cbmCodigoAtencion.Text),
+                    CodigoAtencion = codigoAtencionValor, // 2. Usar la variable extraída aquí
                     NumeroHabitacion = txtNumeroHabitacion.Text,
                     Dias = Convert.ToInt32(txtDias.Text),
                     CostoDia = nudCostoDia.Value,
@@ -287,10 +320,14 @@ namespace Sanatorios.MarlonMeda
 
             try
             {
+                // 1. Extraer el valor real (ID) del ComboBox seleccionado
+                var SelectedCodigoAtencion = (dynamic)cbmCodigoAtencion.SelectedItem;
+                int codigoAtencionValor = (int)SelectedCodigoAtencion.GetType().GetProperty("Value").GetValue(SelectedCodigoAtencion, null);
+
                 HospitalizacionesEntidad eventoHospitalizacion = new HospitalizacionesEntidad
                 {
                     CodigoHospitalizacion = Convert.ToInt32(txtCodigoHospitalizacion.Text),
-                    CodigoAtencion = Convert.ToInt32(cbmCodigoAtencion.Text),
+                    CodigoAtencion = codigoAtencionValor, // 2. Usar la variable extraída aquí
                     NumeroHabitacion = txtNumeroHabitacion.Text,
                     Dias = Convert.ToInt32(txtDias.Text),
                     CostoDia = nudCostoDia.Value,
@@ -522,17 +559,18 @@ namespace Sanatorios.MarlonMeda
 
         private void nudCostoMedico_ValueChanged(object sender, EventArgs e)
         {
-            nudSubTotal.Value = Convert.ToDecimal(Negocio.mtdHospitalizacionesSubtotal(Convert.ToInt32(txtDias.Text),  nudCostoDia.Value, nudCostoMedico.Value));
+            nudSubTotal.Value = Convert.ToDecimal(Negocio.mtdHospitalizacionesSubtotal(Convert.ToInt32("0" + txtDias.Text), nudCostoDia.Value, nudCostoMedico.Value));
         }
 
         private void nudSubTotal_ValueChanged(object sender, EventArgs e)
         {
-            nudDescuento.Value = Convert.ToDecimal(Negocio.mtdhospitalizacionesdescuento(Convert.ToInt32(txtDias.Text), nudSubTotal.Value));
+            nudDescuento.Value = Convert.ToDecimal(Negocio.mtdhospitalizacionesdescuento(Convert.ToInt32("0" + txtDias.Text), nudSubTotal.Value));
+            nudTotalHospitalizacion.Value = Convert.ToDecimal(Negocio.mtdhospitalizacionesTotalHospitalizaciones(nudSubTotal.Value, nudDescuento.Value));
         }
 
         private void nudDescuento_ValueChanged(object sender, EventArgs e)
         {
-            nudTotalHospitalizacion.Value = Convert.ToDecimal(Negocio.mtdhospitalizacionesTotalHospitalizaciones(nudSubTotal.Value, nudDescuento.Value));
+                   
         }
     }
 }

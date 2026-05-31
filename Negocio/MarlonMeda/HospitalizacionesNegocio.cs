@@ -99,6 +99,11 @@ namespace Negocio.MarlonMeda
             return lista;
         }
 
+        // Crear Metodo Envia Atenciones de la Base de Datos a Capa Presentación
+        public List<dynamic> MtdListaAtenciones()
+        {
+            return Datos.MtdListaAtenciones();
+        }
 
 
         //metodos
