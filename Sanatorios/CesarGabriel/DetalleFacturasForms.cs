@@ -1,5 +1,7 @@
 ﻿using Entidad.Detalles;
 using Negocio.DetalleFacturas;
+using Negocio.Facturas;
+using Negocio.JuanDavid;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,8 +25,8 @@ namespace Sanatorios
         {
            
             MtdCargarDatosEnTabla();
+            MtdCargarFacturasEnCombo();
 
-           
             MtdLimpiarCampos();
         }
 
@@ -58,6 +60,7 @@ namespace Sanatorios
         }
 
        
+
         private void nudCantidad_ValueChanged(object sender, EventArgs e)
         {
             MtdCalcularValoresDetalle();
@@ -68,7 +71,22 @@ namespace Sanatorios
             MtdCalcularValoresDetalle();
         }
 
-    
+        private void MtdCargarFacturasEnCombo()
+        {
+            try
+            {
+                FacturasNegocio negocioFacturas = new FacturasNegocio();
+
+                cbxCodigoFactura.DataSource = negocioFacturas.MtdConsultarFacturas();
+                cbxCodigoFactura.DisplayMember = "CodigoFactura"; 
+                cbxCodigoFactura.ValueMember = "CodigoFactura";   
+                cbxCodigoFactura.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar las facturas: " + ex.Message);
+            }
+        }
         private void MtdCargarDatosEnTabla()
         {
             try
@@ -119,7 +137,7 @@ namespace Sanatorios
             {
                 DetallesFacturasEntidad nuevoDetalle = new DetallesFacturasEntidad();
 
-                nuevoDetalle.CodigoFactura = Convert.ToInt32(cbxCodigoFactura.SelectedValue ?? 0); // Ajustar si el cbx no tiene valor asignado aún
+                nuevoDetalle.CodigoFactura = Convert.ToInt32(cbxCodigoFactura.SelectedValue ?? 0); 
                 nuevoDetalle.TipoConcepto = cbxTipoConcepto.SelectedItem?.ToString() ?? "";
                 nuevoDetalle.CodigoReferencia = Convert.ToInt32(nudCodigoReferencia.Value);
                 nuevoDetalle.DescripcionReferencia = txtDescripcionReferencia.Text;
@@ -132,7 +150,7 @@ namespace Sanatorios
 
                 nuevoDetalle.UsuarioSistema = "Admin";
                 nuevoDetalle.FechaSistema = DateTime.Now.Date;
-                nuevoDetalle.HoraSistema = DateTime.Now; // En tu entidad es DateTime
+                nuevoDetalle.HoraSistema = DateTime.Now; 
 
                 DetalleFacturasNegocio negocioDetalles = new DetalleFacturasNegocio();
                 if (negocioDetalles.MtdAgregar(nuevoDetalle))

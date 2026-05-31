@@ -188,7 +188,22 @@ namespace Sanatorios
             CargarFacturasEnCombo();
         }
 
+        private void MtdCargarFacturasEnCombo()
+        {
+            try
+            {
+                FacturasNegocio negocioFacturas = new FacturasNegocio();
 
+                cmbCodigoFactura.DataSource = negocioFacturas.MtdConsultarFacturas();
+                cmbCodigoFactura.DisplayMember = "CodigoFactura"; 
+                cmbCodigoFactura.ValueMember = "CodigoFactura";   
+                cmbCodigoFactura.SelectedIndex = -1;              
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar las facturas: " + ex.Message);
+            }
+        }
         private void CargarFacturasEnCombo()
         {
             try
@@ -596,6 +611,7 @@ namespace Sanatorios
         private void PagosForms_Load_1(object sender, EventArgs e)
         {
             MtdConsultarControlPagos();
+            MtdCargarFacturasEnCombo();
         }
 
         private void printDocument1_PrintPage_1(object sender, PrintPageEventArgs e)
