@@ -21,7 +21,7 @@ namespace Sanatorios
         {
             InitializeComponent();
         }
-
+        DetalleFacturasNegocio negocioFacturas = new DetalleFacturasNegocio();
         private void DetallesFacturasForms_Load(object sender, EventArgs e)
         {
            
@@ -74,19 +74,15 @@ namespace Sanatorios
 
         private void MtdCargarFacturasEnCombo()
         {
-            try
-            {
-                FacturasNegocio negocioFacturas = new FacturasNegocio();
+            var Lista = negocioFacturas.MtdConsultarFacturas(); // Instanciar clase y cambiar nombre de metodo
+            cbxCodigoFactura.Items.Clear(); //Cambiar el nombre del combobox
 
-                cbxCodigoFactura.DataSource = negocioFacturas.MtdConsultarFacturas();
-                cbxCodigoFactura.DisplayMember = "CodigoFactura"; 
-                cbxCodigoFactura.ValueMember = "CodigoFactura";   
-                cbxCodigoFactura.SelectedIndex = -1;
-            }
-            catch (Exception ex)
+            foreach (var Clientes in Lista)
             {
-                MessageBox.Show("Error al cargar las facturas: " + ex.Message);
+                cbxCodigoFactura.Items.Add(Clientes); //Cambiar el nombre del combobox
             }
+            cbxCodigoFactura.DisplayMember = "Text"; //Cambiar el nombre del combobox
+            cbxCodigoFactura.ValueMember = "Value"; //Cambiar el nombre del combobox
         }
         private void MtdCargarDatosEnTabla()
         {
@@ -151,7 +147,7 @@ namespace Sanatorios
 
                 nuevoDetalle.UsuarioSistema = Sesion.NombreUsuario;
                 nuevoDetalle.FechaSistema = DateTime.Now.Date;
-                nuevoDetalle.HoraSistema = DateTime.Now; 
+                nuevoDetalle.HoraSistema = DateTime.Now.TimeOfDay; 
 
                 DetalleFacturasNegocio negocioDetalles = new DetalleFacturasNegocio();
                 if (negocioDetalles.MtdAgregar(nuevoDetalle))
@@ -194,7 +190,7 @@ namespace Sanatorios
 
                 detalleEditado.UsuarioSistema = Sesion.NombreUsuario;
                 detalleEditado.FechaSistema = DateTime.Now.Date;
-                detalleEditado.HoraSistema = DateTime.Now;
+                detalleEditado.HoraSistema = DateTime.Now.TimeOfDay;
 
                 DetalleFacturasNegocio negocioDetalles = new DetalleFacturasNegocio();
                 if (negocioDetalles.MtdEditar(detalleEditado))

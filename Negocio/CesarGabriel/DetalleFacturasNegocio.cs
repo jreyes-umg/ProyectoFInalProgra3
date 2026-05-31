@@ -63,14 +63,17 @@ namespace Negocio.DetalleFacturas
                     Estado = Convert.ToBoolean(dr["Estado"]),
                     UsuarioSistema = Convert.ToString(dr["UsuarioSistema"]),
                     FechaSistema = Convert.ToDateTime(dr["FechaSistema"]),
-                    HoraSistema = Convert.ToDateTime(dr["HoraSistema"])
+                    HoraSistema = (TimeSpan)(dr["HoraSistema"])
                 };
                 lista.Add(detalle);
             }
             return lista;
         }
+        public List<dynamic> MtdConsultarFacturas()
+        {
+            return Datos.MtdListarFacturas();
+        }
 
-      
         public decimal CalcularSubTotal(int cantidad, decimal precioUnitario)
         {
             return cantidad * precioUnitario;
