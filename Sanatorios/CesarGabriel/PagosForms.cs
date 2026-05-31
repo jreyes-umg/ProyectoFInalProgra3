@@ -587,7 +587,7 @@ namespace Sanatorios
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                
             }
@@ -596,6 +596,26 @@ namespace Sanatorios
         private void PagosForms_Load_1(object sender, EventArgs e)
         {
             MtdConsultarControlPagos();
+        }
+
+        private void printDocument1_PrintPage_1(object sender, PrintPageEventArgs e)
+        {
+            Font tituloFont = new Font("Arial", 16, FontStyle.Bold);
+            Font textFont = new Font("Arial", 11);
+            Brush brush = Brushes.Black;
+            float y = 40;
+            float margenizquierdo = 50;
+
+            e.Graphics.DrawString("COMPROBANTE DE PAGO", tituloFont, brush, margenizquierdo, y);
+            y += 40;
+
+            e.Graphics.DrawString($"Código de Pago: {txtCodigoPago.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Código de Factura: {cmbCodigoFactura.Text}", textFont, brush, margenizquierdo, y); y += 25;
+            e.Graphics.DrawString($"Método de Pago: {cmbMetodoPago.Text}", textFont, brush, margenizquierdo, y); y += 25; 
+            e.Graphics.DrawString($"Monto Recibido: Q{nudMontoFactura.Value}", textFont, brush, margenizquierdo, y); y += 25;
+
+            string estado = rdbActivo.Checked ? "Procesado" : "Revertido";
+            e.Graphics.DrawString($"Estado: {estado}", textFont, brush, margenizquierdo, y);
         }
     }
 }

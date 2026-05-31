@@ -33,22 +33,17 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.nudCodigoReferencia = new System.Windows.Forms.NumericUpDown();
+            this.cbxTipoConcepto = new System.Windows.Forms.ComboBox();
+            this.cbxCodigoFactura = new System.Windows.Forms.ComboBox();
             this.nudTotalDetalle = new System.Windows.Forms.NumericUpDown();
             this.nudImpuesto = new System.Windows.Forms.NumericUpDown();
             this.nudSubTotal = new System.Windows.Forms.NumericUpDown();
             this.nudPrecioUnitario = new System.Windows.Forms.NumericUpDown();
-            this.txtUsuarioSistema = new System.Windows.Forms.TextBox();
-            this.dtmHoraSistema = new System.Windows.Forms.DateTimePicker();
-            this.dtmFechaSistema = new System.Windows.Forms.DateTimePicker();
             this.txtDescripcionReferencia = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.nudCantidad = new System.Windows.Forms.NumericUpDown();
-            this.txtCodigoReferencia = new System.Windows.Forms.TextBox();
-            this.txtTipoConcepto = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnEliminar = new FontAwesome.Sharp.IconButton();
             this.btnEditar = new FontAwesome.Sharp.IconButton();
@@ -63,7 +58,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtNombreSeguro = new System.Windows.Forms.TextBox();
             this.yhuedrgbe = new System.Windows.Forms.Label();
             this.txtCodigoDetalle = new System.Windows.Forms.TextBox();
             this.CodigoSeguro = new System.Windows.Forms.Label();
@@ -73,7 +67,7 @@
             this.btnImprimir = new FontAwesome.Sharp.IconButton();
             this.btnLimpiar = new FontAwesome.Sharp.IconButton();
             this.btnBuscar = new FontAwesome.Sharp.IconButton();
-            this.dgvRegistroMedicos = new System.Windows.Forms.DataGridView();
+            this.dgvRegistroDetalles = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.lblTotalRegistros = new System.Windows.Forms.Label();
             this.chkSeleccionar = new System.Windows.Forms.CheckBox();
@@ -84,6 +78,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCodigoReferencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTotalDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudImpuesto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSubTotal)).BeginInit();
@@ -91,7 +86,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroMedicos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroDetalles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPrestamoLibros)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,6 +104,11 @@
             this.BtnCerrarr.Text = "Cerrar";
             this.BtnCerrarr.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnCerrarr.UseVisualStyleBackColor = true;
+            this.BtnCerrarr.Click += new System.EventHandler(this.BtnCerrarr_Click);
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // tabPage2
             // 
@@ -124,22 +124,17 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.nudCodigoReferencia);
+            this.groupBox1.Controls.Add(this.cbxTipoConcepto);
+            this.groupBox1.Controls.Add(this.cbxCodigoFactura);
             this.groupBox1.Controls.Add(this.nudTotalDetalle);
             this.groupBox1.Controls.Add(this.nudImpuesto);
             this.groupBox1.Controls.Add(this.nudSubTotal);
             this.groupBox1.Controls.Add(this.nudPrecioUnitario);
-            this.groupBox1.Controls.Add(this.txtUsuarioSistema);
-            this.groupBox1.Controls.Add(this.dtmHoraSistema);
-            this.groupBox1.Controls.Add(this.dtmFechaSistema);
             this.groupBox1.Controls.Add(this.txtDescripcionReferencia);
-            this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.nudCantidad);
-            this.groupBox1.Controls.Add(this.txtCodigoReferencia);
-            this.groupBox1.Controls.Add(this.txtTipoConcepto);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.btnEliminar);
             this.groupBox1.Controls.Add(this.btnEditar);
@@ -154,7 +149,6 @@
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtNombreSeguro);
             this.groupBox1.Controls.Add(this.yhuedrgbe);
             this.groupBox1.Controls.Add(this.txtCodigoDetalle);
             this.groupBox1.Controls.Add(this.CodigoSeguro);
@@ -165,6 +159,40 @@
             this.groupBox1.Size = new System.Drawing.Size(974, 425);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // nudCodigoReferencia
+            // 
+            this.nudCodigoReferencia.DecimalPlaces = 2;
+            this.nudCodigoReferencia.Location = new System.Drawing.Point(151, 157);
+            this.nudCodigoReferencia.Maximum = new decimal(new int[] {
+            90000,
+            0,
+            0,
+            0});
+            this.nudCodigoReferencia.Name = "nudCodigoReferencia";
+            this.nudCodigoReferencia.Size = new System.Drawing.Size(211, 20);
+            this.nudCodigoReferencia.TabIndex = 54;
+            // 
+            // cbxTipoConcepto
+            // 
+            this.cbxTipoConcepto.FormattingEnabled = true;
+            this.cbxTipoConcepto.Items.AddRange(new object[] {
+            "Atención",
+            "Hospitalización",
+            "Laboratorio",
+            "Dieta"});
+            this.cbxTipoConcepto.Location = new System.Drawing.Point(133, 111);
+            this.cbxTipoConcepto.Name = "cbxTipoConcepto";
+            this.cbxTipoConcepto.Size = new System.Drawing.Size(229, 21);
+            this.cbxTipoConcepto.TabIndex = 53;
+            // 
+            // cbxCodigoFactura
+            // 
+            this.cbxCodigoFactura.FormattingEnabled = true;
+            this.cbxCodigoFactura.Location = new System.Drawing.Point(133, 75);
+            this.cbxCodigoFactura.Name = "cbxCodigoFactura";
+            this.cbxCodigoFactura.Size = new System.Drawing.Size(229, 21);
+            this.cbxCodigoFactura.TabIndex = 52;
             // 
             // nudTotalDetalle
             // 
@@ -217,66 +245,15 @@
             this.nudPrecioUnitario.Name = "nudPrecioUnitario";
             this.nudPrecioUnitario.Size = new System.Drawing.Size(211, 20);
             this.nudPrecioUnitario.TabIndex = 48;
-            // 
-            // txtUsuarioSistema
-            // 
-            this.txtUsuarioSistema.Location = new System.Drawing.Point(133, 378);
-            this.txtUsuarioSistema.Margin = new System.Windows.Forms.Padding(2);
-            this.txtUsuarioSistema.Name = "txtUsuarioSistema";
-            this.txtUsuarioSistema.Size = new System.Drawing.Size(236, 20);
-            this.txtUsuarioSistema.TabIndex = 47;
-            // 
-            // dtmHoraSistema
-            // 
-            this.dtmHoraSistema.Location = new System.Drawing.Point(160, 321);
-            this.dtmHoraSistema.Name = "dtmHoraSistema";
-            this.dtmHoraSistema.Size = new System.Drawing.Size(209, 20);
-            this.dtmHoraSistema.TabIndex = 46;
-            // 
-            // dtmFechaSistema
-            // 
-            this.dtmFechaSistema.Location = new System.Drawing.Point(157, 268);
-            this.dtmFechaSistema.Name = "dtmFechaSistema";
-            this.dtmFechaSistema.Size = new System.Drawing.Size(209, 20);
-            this.dtmFechaSistema.TabIndex = 45;
+            this.nudPrecioUnitario.ValueChanged += new System.EventHandler(this.nudPrecioUnitario_ValueChanged);
             // 
             // txtDescripcionReferencia
             // 
-            this.txtDescripcionReferencia.Location = new System.Drawing.Point(157, 208);
+            this.txtDescripcionReferencia.Location = new System.Drawing.Point(150, 205);
             this.txtDescripcionReferencia.Margin = new System.Windows.Forms.Padding(2);
             this.txtDescripcionReferencia.Name = "txtDescripcionReferencia";
             this.txtDescripcionReferencia.Size = new System.Drawing.Size(212, 20);
             this.txtDescripcionReferencia.TabIndex = 44;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(46, 327);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(73, 13);
-            this.label16.TabIndex = 43;
-            this.label16.Text = "Hora Sistema:";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(39, 268);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(80, 13);
-            this.label15.TabIndex = 42;
-            this.label15.Text = "Fecha Sistema:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(39, 381);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(86, 13);
-            this.label14.TabIndex = 41;
-            this.label14.Text = "Usuario Sistema:";
             // 
             // label4
             // 
@@ -310,22 +287,7 @@
             this.nudCantidad.Name = "nudCantidad";
             this.nudCantidad.Size = new System.Drawing.Size(211, 20);
             this.nudCantidad.TabIndex = 34;
-            // 
-            // txtCodigoReferencia
-            // 
-            this.txtCodigoReferencia.Location = new System.Drawing.Point(133, 156);
-            this.txtCodigoReferencia.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCodigoReferencia.Name = "txtCodigoReferencia";
-            this.txtCodigoReferencia.Size = new System.Drawing.Size(236, 20);
-            this.txtCodigoReferencia.TabIndex = 33;
-            // 
-            // txtTipoConcepto
-            // 
-            this.txtTipoConcepto.Location = new System.Drawing.Point(133, 116);
-            this.txtTipoConcepto.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTipoConcepto.Name = "txtTipoConcepto";
-            this.txtTipoConcepto.Size = new System.Drawing.Size(236, 20);
-            this.txtTipoConcepto.TabIndex = 32;
+            this.nudCantidad.ValueChanged += new System.EventHandler(this.nudCantidad_ValueChanged);
             // 
             // label10
             // 
@@ -351,6 +313,7 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnEditar
             // 
@@ -366,6 +329,7 @@
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnGuardar
             // 
@@ -381,6 +345,7 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnCancelar
             // 
@@ -396,6 +361,7 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnNuevo
             // 
@@ -411,11 +377,12 @@
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // rdbInactivo
             // 
             this.rdbInactivo.AutoSize = true;
-            this.rdbInactivo.Location = new System.Drawing.Point(615, 297);
+            this.rdbInactivo.Location = new System.Drawing.Point(150, 278);
             this.rdbInactivo.Margin = new System.Windows.Forms.Padding(2);
             this.rdbInactivo.Name = "rdbInactivo";
             this.rdbInactivo.Size = new System.Drawing.Size(63, 17);
@@ -427,7 +394,7 @@
             // rdbActivo
             // 
             this.rdbActivo.AutoSize = true;
-            this.rdbActivo.Location = new System.Drawing.Point(616, 272);
+            this.rdbActivo.Location = new System.Drawing.Point(151, 253);
             this.rdbActivo.Margin = new System.Windows.Forms.Padding(2);
             this.rdbActivo.Name = "rdbActivo";
             this.rdbActivo.Size = new System.Drawing.Size(55, 17);
@@ -439,7 +406,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(502, 280);
+            this.label12.Location = new System.Drawing.Point(37, 261);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(43, 13);
@@ -496,14 +463,6 @@
             this.label6.TabIndex = 6;
             this.label6.Text = "Tipo de Concepto:";
             // 
-            // txtNombreSeguro
-            // 
-            this.txtNombreSeguro.Location = new System.Drawing.Point(133, 77);
-            this.txtNombreSeguro.Margin = new System.Windows.Forms.Padding(2);
-            this.txtNombreSeguro.Name = "txtNombreSeguro";
-            this.txtNombreSeguro.Size = new System.Drawing.Size(236, 20);
-            this.txtNombreSeguro.TabIndex = 3;
-            // 
             // yhuedrgbe
             // 
             this.yhuedrgbe.AutoSize = true;
@@ -520,7 +479,7 @@
             this.txtCodigoDetalle.Margin = new System.Windows.Forms.Padding(2);
             this.txtCodigoDetalle.Name = "txtCodigoDetalle";
             this.txtCodigoDetalle.ReadOnly = true;
-            this.txtCodigoDetalle.Size = new System.Drawing.Size(236, 20);
+            this.txtCodigoDetalle.Size = new System.Drawing.Size(229, 20);
             this.txtCodigoDetalle.TabIndex = 1;
             // 
             // CodigoSeguro
@@ -551,7 +510,7 @@
             this.tabPage1.Controls.Add(this.btnImprimir);
             this.tabPage1.Controls.Add(this.btnLimpiar);
             this.tabPage1.Controls.Add(this.btnBuscar);
-            this.tabPage1.Controls.Add(this.dgvRegistroMedicos);
+            this.tabPage1.Controls.Add(this.dgvRegistroDetalles);
             this.tabPage1.Controls.Add(this.lblTotalRegistros);
             this.tabPage1.Controls.Add(this.chkSeleccionar);
             this.tabPage1.Controls.Add(this.txtBuscarNombre);
@@ -579,6 +538,7 @@
             this.btnExportar.Text = "Exportar";
             this.btnExportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // btnImprimir
             // 
@@ -594,6 +554,7 @@
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnLimpiar
             // 
@@ -609,6 +570,7 @@
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnBuscar
             // 
@@ -624,24 +586,25 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // dgvRegistroMedicos
+            // dgvRegistroDetalles
             // 
-            this.dgvRegistroMedicos.AllowUserToAddRows = false;
-            this.dgvRegistroMedicos.AllowUserToDeleteRows = false;
-            this.dgvRegistroMedicos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvRegistroMedicos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRegistroMedicos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvRegistroDetalles.AllowUserToAddRows = false;
+            this.dgvRegistroDetalles.AllowUserToDeleteRows = false;
+            this.dgvRegistroDetalles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvRegistroDetalles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRegistroDetalles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar});
-            this.dgvRegistroMedicos.Location = new System.Drawing.Point(12, 77);
-            this.dgvRegistroMedicos.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvRegistroMedicos.MultiSelect = false;
-            this.dgvRegistroMedicos.Name = "dgvRegistroMedicos";
-            this.dgvRegistroMedicos.ReadOnly = true;
-            this.dgvRegistroMedicos.RowHeadersWidth = 51;
-            this.dgvRegistroMedicos.RowTemplate.Height = 24;
-            this.dgvRegistroMedicos.Size = new System.Drawing.Size(995, 335);
-            this.dgvRegistroMedicos.TabIndex = 14;
+            this.dgvRegistroDetalles.Location = new System.Drawing.Point(12, 77);
+            this.dgvRegistroDetalles.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvRegistroDetalles.MultiSelect = false;
+            this.dgvRegistroDetalles.Name = "dgvRegistroDetalles";
+            this.dgvRegistroDetalles.ReadOnly = true;
+            this.dgvRegistroDetalles.RowHeadersWidth = 51;
+            this.dgvRegistroDetalles.RowTemplate.Height = 24;
+            this.dgvRegistroDetalles.Size = new System.Drawing.Size(995, 335);
+            this.dgvRegistroDetalles.TabIndex = 14;
             // 
             // Seleccionar
             // 
@@ -672,9 +635,9 @@
             this.chkSeleccionar.Location = new System.Drawing.Point(19, 56);
             this.chkSeleccionar.Margin = new System.Windows.Forms.Padding(2);
             this.chkSeleccionar.Name = "chkSeleccionar";
-            this.chkSeleccionar.Size = new System.Drawing.Size(100, 17);
+            this.chkSeleccionar.Size = new System.Drawing.Size(82, 17);
             this.chkSeleccionar.TabIndex = 12;
-            this.chkSeleccionar.Text = "chkSeleccionar";
+            this.chkSeleccionar.Text = "Seleccionar";
             this.chkSeleccionar.UseVisualStyleBackColor = true;
             // 
             // txtBuscarNombre
@@ -713,10 +676,10 @@
             // picPrestamoLibros
             // 
             this.picPrestamoLibros.Image = ((System.Drawing.Image)(resources.GetObject("picPrestamoLibros.Image")));
-            this.picPrestamoLibros.Location = new System.Drawing.Point(936, 7);
+            this.picPrestamoLibros.Location = new System.Drawing.Point(931, 2);
             this.picPrestamoLibros.Margin = new System.Windows.Forms.Padding(2);
             this.picPrestamoLibros.Name = "picPrestamoLibros";
-            this.picPrestamoLibros.Size = new System.Drawing.Size(66, 53);
+            this.picPrestamoLibros.Size = new System.Drawing.Size(85, 69);
             this.picPrestamoLibros.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picPrestamoLibros.TabIndex = 42;
             this.picPrestamoLibros.TabStop = false;
@@ -732,7 +695,6 @@
             this.label1.Size = new System.Drawing.Size(216, 29);
             this.label1.TabIndex = 39;
             this.label1.Text = "Detalles Facturas";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // DetalleFacturasForms
             // 
@@ -745,9 +707,11 @@
             this.Controls.Add(this.label1);
             this.Name = "DetalleFacturasForms";
             this.Text = "DetalleFacturasForms";
+            this.Load += new System.EventHandler(this.DetallesFacturasForms_Load);
             this.tabPage2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCodigoReferencia)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTotalDetalle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudImpuesto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSubTotal)).EndInit();
@@ -756,7 +720,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroMedicos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroDetalles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPrestamoLibros)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -770,8 +734,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown nudCantidad;
-        private System.Windows.Forms.TextBox txtCodigoReferencia;
-        private System.Windows.Forms.TextBox txtTipoConcepto;
         private System.Windows.Forms.Label label10;
         private FontAwesome.Sharp.IconButton btnEliminar;
         private FontAwesome.Sharp.IconButton btnEditar;
@@ -786,7 +748,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtNombreSeguro;
         private System.Windows.Forms.Label yhuedrgbe;
         private System.Windows.Forms.TextBox txtCodigoDetalle;
         private System.Windows.Forms.Label CodigoSeguro;
@@ -796,7 +757,7 @@
         private FontAwesome.Sharp.IconButton btnImprimir;
         private FontAwesome.Sharp.IconButton btnLimpiar;
         private FontAwesome.Sharp.IconButton btnBuscar;
-        private System.Windows.Forms.DataGridView dgvRegistroMedicos;
+        private System.Windows.Forms.DataGridView dgvRegistroDetalles;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private System.Windows.Forms.Label lblTotalRegistros;
         private System.Windows.Forms.CheckBox chkSeleccionar;
@@ -805,17 +766,14 @@
         private FontAwesome.Sharp.IconButton btnCerrar;
         private System.Windows.Forms.PictureBox picPrestamoLibros;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtDescripcionReferencia;
-        private System.Windows.Forms.DateTimePicker dtmHoraSistema;
-        private System.Windows.Forms.DateTimePicker dtmFechaSistema;
         private System.Windows.Forms.NumericUpDown nudTotalDetalle;
         private System.Windows.Forms.NumericUpDown nudImpuesto;
         private System.Windows.Forms.NumericUpDown nudSubTotal;
         private System.Windows.Forms.NumericUpDown nudPrecioUnitario;
-        private System.Windows.Forms.TextBox txtUsuarioSistema;
+        private System.Windows.Forms.NumericUpDown nudCodigoReferencia;
+        private System.Windows.Forms.ComboBox cbxTipoConcepto;
+        private System.Windows.Forms.ComboBox cbxCodigoFactura;
     }
 }

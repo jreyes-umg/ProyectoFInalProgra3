@@ -1,4 +1,5 @@
 ﻿using Entidad;
+using Entidad.Detalles;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -82,7 +83,7 @@ namespace Datos.DetalleFacturas
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception("Error al Agregar los Pagos en la base de datos (datos) ", ex);
+                        throw new Exception("Error al Agregar los Detalles de Facturas en la base de datos (datos) ", ex);
                     }
                 }
                 /*  ----- EDITAR ----- */
@@ -130,7 +131,7 @@ namespace Datos.DetalleFacturas
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception("Error al Editar el Doctor en la base de datos", ex);
+                        throw new Exception("Error al Editar el Detalle de Factura en la base de datos", ex);
                     }
                 }
 
@@ -153,7 +154,7 @@ namespace Datos.DetalleFacturas
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception("Error al eliminar al eliminar el Doctor de la base de datos", ex);
+                        throw new Exception("Error al eliminar al eliminar el Detalle de Factura de la base de datos", ex);
                     }
                 }
 
@@ -185,60 +186,58 @@ namespace Datos.DetalleFacturas
                     }
                     catch (SqlException exSql)
                     {
-                        throw new Exception("Error al buscar el Doctor: " + exSql.Message);
+                        throw new Exception("Error al buscar el Detalle de Factura: " + exSql.Message);
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception("Error general al buscar el Doctor: " + ex.Message);
+                        throw new Exception("Error general al buscar el Detalle de Factura: " + ex.Message);
                     }
                 }
-                public List<DetallesFacturasEntidad> MtdConsultarPagos()
+        public List<DetallesFacturasEntidad> MtdConsultarDetalles()
+        {
+            List<DetallesFacturasEntidad> ListaDetallesFacturas = new List<DetallesFacturasEntidad>();
+            try
+            {
+                using (SqlConnection conn = conexionDatos.MtdConexion())
                 {
-                    List<DetallesFacturasEntidad> ListaDetallesFacturas = new List<DetallesFacturasEntidad>();
-                    try
+                    conn.Open();
+                    string QueryListar = "SELECT * FROM Tbl_DetalleFacturas ORDER BY CodigoDetalle ASC;";
+                    using (SqlCommand cmd = new SqlCommand(QueryListar, conn))
                     {
-                        using (SqlConnection conn = conexionDatos.MtdConexion())
+                        using (SqlDataReader dr = cmd.ExecuteReader())
                         {
-                            conn.Open();
-                            string QueryListar = "SELECT * FROM Tbl_DetalleFacturas ORDER BY CodigoDetalle ASC;";
-                            using (SqlCommand cmd = new SqlCommand(QueryListar, conn))
+                            while (dr.Read())
                             {
-                                using (SqlDataReader dr = cmd.ExecuteReader())
+                                ListaDetallesFacturas.Add(new DetallesFacturasEntidad()
                                 {
-                                    while (dr.Read())
-                                    {
-                                    ListaDetallesFacturas.Add(new DetallesFacturasEntidad()
-                                        {
-                                            CodigoDetalle = Convert.ToInt32(dr["CodigoDetalle"]),
-                                            CodigoFactura = Convert.ToInt32(dr["CodigoFactura"]),
-                                            TipoConcepto = Convert.ToString(dr["TipoConcepto"]),
-                                            CodigoReferencia = Convert.ToInt32(dr["CodigoReferencia"]),
-                                            DescripcionReferencia = Convert.ToString(dr["DescripcionReferencia"]),
-                                            Cantidad = Convert.ToInt32(dr["Cantidad"]),
-                                            PrecioUnitario = Convert.ToDecimal(dr["PrecioUnitario"]),
-                                            SubTotal = Convert.ToDecimal(dr["SubTotal"]),
-                                            Impuesto = Convert.ToDecimal(dr["Impuesto"]),
-                                            TotalDetalle = Convert.ToDecimal(dr["TotalDetalle"]),
-                                            Estado = Convert.ToBoolean(dr["Estado"]),
-                                            UsuarioSistema = Convert.ToString(dr["UsuarioSistema"]),
-                                            FechaSistema = Convert.ToDateTime(dr["FechaSistema"]),
-                                            HoraSistema = Convert.ToDateTime(dr["HoraSistema"])
-                                        });
-                                    }
-                                }
-
+                                    CodigoDetalle = Convert.ToInt32(dr["CodigoDetalle"]),
+                                    CodigoFactura = Convert.ToInt32(dr["CodigoFactura"]),
+                                    TipoConcepto = Convert.ToString(dr["TipoConcepto"]),
+                                    CodigoReferencia = Convert.ToInt32(dr["CodigoReferencia"]),
+                                    DescripcionReferencia = Convert.ToString(dr["DescripcionReferencia"]),
+                                    Cantidad = Convert.ToInt32(dr["Cantidad"]),
+                                    PrecioUnitario = Convert.ToDecimal(dr["PrecioUnitario"]),
+                                    SubTotal = Convert.ToDecimal(dr["SubTotal"]),
+                                    Impuesto = Convert.ToDecimal(dr["Impuesto"]),
+                                    TotalDetalle = Convert.ToDecimal(dr["TotalDetalle"]),
+                                    Estado = Convert.ToBoolean(dr["Estado"]),
+                                    UsuarioSistema = Convert.ToString(dr["UsuarioSistema"]),
+                                    FechaSistema = Convert.ToDateTime(dr["FechaSistema"]),
+                                    HoraSistema = Convert.ToDateTime(dr["HoraSistema"])
+                                });
                             }
-                            return ListaDetallesFacturas;
                         }
                     }
-                    catch (Exception ex)
-                    {
-                       throw new Exception("Error al mostrar la lista" + ex.Message);
-
-                    }
+                    return ListaDetallesFacturas;
                 }
-
             }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al mostrar la lista: " + ex.Message);
+            }
+        }
+
+    }
 }
 
 

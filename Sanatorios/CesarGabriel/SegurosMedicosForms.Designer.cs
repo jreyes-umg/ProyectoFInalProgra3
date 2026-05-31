@@ -34,20 +34,17 @@
             this.btnExportar = new FontAwesome.Sharp.IconButton();
             this.btnImprimir = new FontAwesome.Sharp.IconButton();
             this.btnBuscar = new FontAwesome.Sharp.IconButton();
-            this.dgvRegistroMedicos = new System.Windows.Forms.DataGridView();
+            this.dgvSeguros = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.lblTotalRegistros = new System.Windows.Forms.Label();
             this.chkSeleccionar = new System.Windows.Forms.CheckBox();
-            this.txtBuscarNombre = new System.Windows.Forms.TextBox();
+            this.txtNombreBusqueda = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnCerrar = new FontAwesome.Sharp.IconButton();
             this.nudMontoMaximo = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.picPrestamoLibros = new System.Windows.Forms.PictureBox();
-            this.txtPorcentajeCobertura = new System.Windows.Forms.TextBox();
-            this.txtTipoSeguro = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.btnEditar = new FontAwesome.Sharp.IconButton();
@@ -62,27 +59,25 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dtpHoraSistema = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtUsuarioSistema = new System.Windows.Forms.TextBox();
             this.rdbActivo = new System.Windows.Forms.RadioButton();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtNombreSeguro = new System.Windows.Forms.TextBox();
-            this.txtCodigomedico = new System.Windows.Forms.TextBox();
+            this.txtCodigoSeguro = new System.Windows.Forms.TextBox();
             this.CodigoSeguro = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.cbxTipoSeguro = new System.Windows.Forms.ComboBox();
+            this.nudPorcentaje = new System.Windows.Forms.NumericUpDown();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroMedicos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSeguros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMontoMaximo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPrestamoLibros)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPorcentaje)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLimpiar
@@ -99,6 +94,7 @@
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // tabPage1
             // 
@@ -107,10 +103,10 @@
             this.tabPage1.Controls.Add(this.btnImprimir);
             this.tabPage1.Controls.Add(this.btnLimpiar);
             this.tabPage1.Controls.Add(this.btnBuscar);
-            this.tabPage1.Controls.Add(this.dgvRegistroMedicos);
+            this.tabPage1.Controls.Add(this.dgvSeguros);
             this.tabPage1.Controls.Add(this.lblTotalRegistros);
             this.tabPage1.Controls.Add(this.chkSeleccionar);
-            this.tabPage1.Controls.Add(this.txtBuscarNombre);
+            this.tabPage1.Controls.Add(this.txtNombreBusqueda);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.btnCerrar);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -135,6 +131,7 @@
             this.btnExportar.Text = "Exportar";
             this.btnExportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // btnImprimir
             // 
@@ -150,6 +147,7 @@
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnBuscar
             // 
@@ -165,24 +163,25 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // dgvRegistroMedicos
+            // dgvSeguros
             // 
-            this.dgvRegistroMedicos.AllowUserToAddRows = false;
-            this.dgvRegistroMedicos.AllowUserToDeleteRows = false;
-            this.dgvRegistroMedicos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvRegistroMedicos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRegistroMedicos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvSeguros.AllowUserToAddRows = false;
+            this.dgvSeguros.AllowUserToDeleteRows = false;
+            this.dgvSeguros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvSeguros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSeguros.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar});
-            this.dgvRegistroMedicos.Location = new System.Drawing.Point(12, 77);
-            this.dgvRegistroMedicos.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvRegistroMedicos.MultiSelect = false;
-            this.dgvRegistroMedicos.Name = "dgvRegistroMedicos";
-            this.dgvRegistroMedicos.ReadOnly = true;
-            this.dgvRegistroMedicos.RowHeadersWidth = 51;
-            this.dgvRegistroMedicos.RowTemplate.Height = 24;
-            this.dgvRegistroMedicos.Size = new System.Drawing.Size(995, 335);
-            this.dgvRegistroMedicos.TabIndex = 14;
+            this.dgvSeguros.Location = new System.Drawing.Point(12, 77);
+            this.dgvSeguros.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvSeguros.MultiSelect = false;
+            this.dgvSeguros.Name = "dgvSeguros";
+            this.dgvSeguros.ReadOnly = true;
+            this.dgvSeguros.RowHeadersWidth = 51;
+            this.dgvSeguros.RowTemplate.Height = 24;
+            this.dgvSeguros.Size = new System.Drawing.Size(995, 335);
+            this.dgvSeguros.TabIndex = 14;
             // 
             // Seleccionar
             // 
@@ -213,18 +212,18 @@
             this.chkSeleccionar.Location = new System.Drawing.Point(19, 56);
             this.chkSeleccionar.Margin = new System.Windows.Forms.Padding(2);
             this.chkSeleccionar.Name = "chkSeleccionar";
-            this.chkSeleccionar.Size = new System.Drawing.Size(100, 17);
+            this.chkSeleccionar.Size = new System.Drawing.Size(82, 17);
             this.chkSeleccionar.TabIndex = 12;
-            this.chkSeleccionar.Text = "chkSeleccionar";
+            this.chkSeleccionar.Text = "Seleccionar";
             this.chkSeleccionar.UseVisualStyleBackColor = true;
             // 
-            // txtBuscarNombre
+            // txtNombreBusqueda
             // 
-            this.txtBuscarNombre.Location = new System.Drawing.Point(70, 24);
-            this.txtBuscarNombre.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBuscarNombre.Name = "txtBuscarNombre";
-            this.txtBuscarNombre.Size = new System.Drawing.Size(352, 20);
-            this.txtBuscarNombre.TabIndex = 11;
+            this.txtNombreBusqueda.Location = new System.Drawing.Point(70, 24);
+            this.txtNombreBusqueda.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNombreBusqueda.Name = "txtNombreBusqueda";
+            this.txtNombreBusqueda.Size = new System.Drawing.Size(352, 20);
+            this.txtNombreBusqueda.TabIndex = 11;
             // 
             // label2
             // 
@@ -279,29 +278,13 @@
             // picPrestamoLibros
             // 
             this.picPrestamoLibros.Image = ((System.Drawing.Image)(resources.GetObject("picPrestamoLibros.Image")));
-            this.picPrestamoLibros.Location = new System.Drawing.Point(936, 7);
+            this.picPrestamoLibros.Location = new System.Drawing.Point(907, 1);
             this.picPrestamoLibros.Margin = new System.Windows.Forms.Padding(2);
             this.picPrestamoLibros.Name = "picPrestamoLibros";
-            this.picPrestamoLibros.Size = new System.Drawing.Size(66, 53);
+            this.picPrestamoLibros.Size = new System.Drawing.Size(95, 73);
             this.picPrestamoLibros.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picPrestamoLibros.TabIndex = 38;
             this.picPrestamoLibros.TabStop = false;
-            // 
-            // txtPorcentajeCobertura
-            // 
-            this.txtPorcentajeCobertura.Location = new System.Drawing.Point(133, 186);
-            this.txtPorcentajeCobertura.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPorcentajeCobertura.Name = "txtPorcentajeCobertura";
-            this.txtPorcentajeCobertura.Size = new System.Drawing.Size(236, 20);
-            this.txtPorcentajeCobertura.TabIndex = 33;
-            // 
-            // txtTipoSeguro
-            // 
-            this.txtTipoSeguro.Location = new System.Drawing.Point(133, 134);
-            this.txtTipoSeguro.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTipoSeguro.Name = "txtTipoSeguro";
-            this.txtTipoSeguro.Size = new System.Drawing.Size(236, 20);
-            this.txtTipoSeguro.TabIndex = 32;
             // 
             // txtTelefono
             // 
@@ -310,16 +293,6 @@
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(236, 20);
             this.txtTelefono.TabIndex = 31;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(494, 189);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(80, 13);
-            this.label10.TabIndex = 29;
-            this.label10.Text = "Fecha Sistema:";
             // 
             // txtDireccion
             // 
@@ -353,6 +326,7 @@
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnGuardar
             // 
@@ -368,6 +342,7 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnCancelar
             // 
@@ -383,6 +358,7 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnNuevo
             // 
@@ -398,6 +374,7 @@
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // btnEliminar
             // 
@@ -413,6 +390,7 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // rdbInactivo
             // 
@@ -450,6 +428,7 @@
             this.BtnCerrarr.Text = "Cerrar";
             this.BtnCerrarr.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnCerrarr.UseVisualStyleBackColor = true;
+            this.BtnCerrarr.Click += new System.EventHandler(this.BtnCerrarr_Click);
             // 
             // NombreSeguro
             // 
@@ -460,6 +439,10 @@
             this.NombreSeguro.Size = new System.Drawing.Size(99, 13);
             this.NombreSeguro.TabIndex = 2;
             this.NombreSeguro.Text = "Nombre de Seguro:";
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // tabPage2
             // 
@@ -475,15 +458,10 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dtpHoraSistema);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtUsuarioSistema);
+            this.groupBox1.Controls.Add(this.nudPorcentaje);
+            this.groupBox1.Controls.Add(this.cbxTipoSeguro);
             this.groupBox1.Controls.Add(this.nudMontoMaximo);
-            this.groupBox1.Controls.Add(this.txtPorcentajeCobertura);
-            this.groupBox1.Controls.Add(this.txtTipoSeguro);
             this.groupBox1.Controls.Add(this.txtTelefono);
-            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.txtDireccion);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.btnEliminar);
@@ -497,11 +475,10 @@
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtNombreSeguro);
             this.groupBox1.Controls.Add(this.NombreSeguro);
-            this.groupBox1.Controls.Add(this.txtCodigomedico);
+            this.groupBox1.Controls.Add(this.txtCodigoSeguro);
             this.groupBox1.Controls.Add(this.CodigoSeguro);
             this.groupBox1.Location = new System.Drawing.Point(18, 22);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
@@ -510,38 +487,6 @@
             this.groupBox1.Size = new System.Drawing.Size(974, 403);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            // 
-            // dtpHoraSistema
-            // 
-            this.dtpHoraSistema.Location = new System.Drawing.Point(617, 227);
-            this.dtpHoraSistema.Name = "dtpHoraSistema";
-            this.dtpHoraSistema.Size = new System.Drawing.Size(209, 20);
-            this.dtpHoraSistema.TabIndex = 40;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(616, 186);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(209, 20);
-            this.dateTimePicker1.TabIndex = 39;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(494, 230);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 13);
-            this.label3.TabIndex = 38;
-            this.label3.Text = "Hora Sistema:";
-            // 
-            // txtUsuarioSistema
-            // 
-            this.txtUsuarioSistema.Location = new System.Drawing.Point(616, 134);
-            this.txtUsuarioSistema.Margin = new System.Windows.Forms.Padding(2);
-            this.txtUsuarioSistema.Name = "txtUsuarioSistema";
-            this.txtUsuarioSistema.Size = new System.Drawing.Size(210, 20);
-            this.txtUsuarioSistema.TabIndex = 37;
             // 
             // rdbActivo
             // 
@@ -585,16 +530,6 @@
             this.label8.TabIndex = 10;
             this.label8.Text = "Monto Maximo:";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(494, 137);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(86, 13);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Usuario Sistema:";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -613,14 +548,14 @@
             this.txtNombreSeguro.Size = new System.Drawing.Size(236, 20);
             this.txtNombreSeguro.TabIndex = 3;
             // 
-            // txtCodigomedico
+            // txtCodigoSeguro
             // 
-            this.txtCodigomedico.Location = new System.Drawing.Point(133, 44);
-            this.txtCodigomedico.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCodigomedico.Name = "txtCodigomedico";
-            this.txtCodigomedico.ReadOnly = true;
-            this.txtCodigomedico.Size = new System.Drawing.Size(236, 20);
-            this.txtCodigomedico.TabIndex = 1;
+            this.txtCodigoSeguro.Location = new System.Drawing.Point(133, 44);
+            this.txtCodigoSeguro.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCodigoSeguro.Name = "txtCodigoSeguro";
+            this.txtCodigoSeguro.ReadOnly = true;
+            this.txtCodigoSeguro.Size = new System.Drawing.Size(236, 20);
+            this.txtCodigoSeguro.TabIndex = 1;
             // 
             // CodigoSeguro
             // 
@@ -643,6 +578,33 @@
             this.tabControl1.Size = new System.Drawing.Size(1024, 488);
             this.tabControl1.TabIndex = 36;
             // 
+            // cbxTipoSeguro
+            // 
+            this.cbxTipoSeguro.FormattingEnabled = true;
+            this.cbxTipoSeguro.Items.AddRange(new object[] {
+            "Básico",
+            "Intermedio",
+            "Premium"});
+            this.cbxTipoSeguro.Location = new System.Drawing.Point(133, 141);
+            this.cbxTipoSeguro.Name = "cbxTipoSeguro";
+            this.cbxTipoSeguro.Size = new System.Drawing.Size(235, 21);
+            this.cbxTipoSeguro.TabIndex = 35;
+            this.cbxTipoSeguro.SelectedIndexChanged += new System.EventHandler(this.cbxTipoSeguro_SelectedIndexChanged);
+            // 
+            // nudPorcentaje
+            // 
+            this.nudPorcentaje.DecimalPlaces = 2;
+            this.nudPorcentaje.Enabled = false;
+            this.nudPorcentaje.Location = new System.Drawing.Point(158, 187);
+            this.nudPorcentaje.Maximum = new decimal(new int[] {
+            90000,
+            0,
+            0,
+            0});
+            this.nudPorcentaje.Name = "nudPorcentaje";
+            this.nudPorcentaje.Size = new System.Drawing.Size(211, 20);
+            this.nudPorcentaje.TabIndex = 36;
+            // 
             // SegurosMedicosForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -654,15 +616,17 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "SegurosMedicosForms";
             this.Text = "SegurosMedicosForms";
+            this.Load += new System.EventHandler(this.SegurosMedicosForms_Load);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroMedicos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSeguros)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMontoMaximo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPrestamoLibros)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nudPorcentaje)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -675,20 +639,17 @@
         private FontAwesome.Sharp.IconButton btnExportar;
         private FontAwesome.Sharp.IconButton btnImprimir;
         private FontAwesome.Sharp.IconButton btnBuscar;
-        private System.Windows.Forms.DataGridView dgvRegistroMedicos;
+        private System.Windows.Forms.DataGridView dgvSeguros;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private System.Windows.Forms.Label lblTotalRegistros;
         private System.Windows.Forms.CheckBox chkSeleccionar;
-        private System.Windows.Forms.TextBox txtBuscarNombre;
+        private System.Windows.Forms.TextBox txtNombreBusqueda;
         private System.Windows.Forms.Label label2;
         private FontAwesome.Sharp.IconButton btnCerrar;
         private System.Windows.Forms.NumericUpDown nudMontoMaximo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox picPrestamoLibros;
-        private System.Windows.Forms.TextBox txtPorcentajeCobertura;
-        private System.Windows.Forms.TextBox txtTipoSeguro;
         private System.Windows.Forms.TextBox txtTelefono;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.Label label13;
         private FontAwesome.Sharp.IconButton btnEditar;
@@ -707,15 +668,12 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtNombreSeguro;
-        private System.Windows.Forms.TextBox txtCodigomedico;
+        private System.Windows.Forms.TextBox txtCodigoSeguro;
         private System.Windows.Forms.Label CodigoSeguro;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TextBox txtUsuarioSistema;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dtpHoraSistema;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox cbxTipoSeguro;
+        private System.Windows.Forms.NumericUpDown nudPorcentaje;
     }
 }

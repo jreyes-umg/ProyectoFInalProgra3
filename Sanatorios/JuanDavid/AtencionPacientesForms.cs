@@ -591,5 +591,5 @@ namespace Sanatorios.JuanDavid
 
         }
     }
-    }
 }
+

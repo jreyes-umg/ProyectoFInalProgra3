@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CesarGabriel\FacturaNegocio.cs" />
+    <Compile Include="CesarGabriel\DetalleFacturasNegocio.cs" />
     <Compile Include="JuanDavid\AntencionNegocio.cs" />
     <Compile Include="JuanDavid\MedicosNegocio.cs" />
     <Compile Include="CesarGabriel\PagosNegocio.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="MarlonMeda\PacienteNegocio.cs" />
     <Compile Include="MarlonMeda\TipoServicioNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CesarGabriel\SegurosMedicosNegocio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Datos\Datos.csproj">
