@@ -202,7 +202,7 @@ namespace Datos.SegurosMedicos
                                             Estado = Convert.ToBoolean(dr["Estado"]),
                                             UsuarioSistema = Convert.ToString(dr["UsuarioSistema"]),
                                             FechaSistema = Convert.ToDateTime(dr["FechaSistema"]),
-                                            HoraSistema = Convert.ToDateTime(dr["HoraSistema"])
+                                            HoraSistema = (TimeSpan)(dr["HoraSistema"])
                                         });
                                     }
                                 }

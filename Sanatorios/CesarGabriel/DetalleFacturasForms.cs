@@ -1,5 +1,7 @@
 ﻿using Entidad.Detalles;
 using Negocio.DetalleFacturas;
+using Negocio.Facturas;
+using Negocio.JuanDavid;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,13 +21,13 @@ namespace Sanatorios
         {
             InitializeComponent();
         }
-
+        DetalleFacturasNegocio negocioFacturas = new DetalleFacturasNegocio();
         private void DetallesFacturasForms_Load(object sender, EventArgs e)
         {
            
             MtdCargarDatosEnTabla();
+            MtdCargarFacturasEnCombo();
 
-           
             MtdLimpiarCampos();
         }
 
@@ -59,6 +61,7 @@ namespace Sanatorios
         }
 
        
+
         private void nudCantidad_ValueChanged(object sender, EventArgs e)
         {
             MtdCalcularValoresDetalle();
@@ -69,7 +72,18 @@ namespace Sanatorios
             MtdCalcularValoresDetalle();
         }
 
-    
+        private void MtdCargarFacturasEnCombo()
+        {
+            var Lista = negocioFacturas.MtdConsultarFacturas(); // Instanciar clase y cambiar nombre de metodo
+            cbxCodigoFactura.Items.Clear(); //Cambiar el nombre del combobox
+
+            foreach (var Clientes in Lista)
+            {
+                cbxCodigoFactura.Items.Add(Clientes); //Cambiar el nombre del combobox
+            }
+            cbxCodigoFactura.DisplayMember = "Text"; //Cambiar el nombre del combobox
+            cbxCodigoFactura.ValueMember = "Value"; //Cambiar el nombre del combobox
+        }
         private void MtdCargarDatosEnTabla()
         {
             try
@@ -120,7 +134,7 @@ namespace Sanatorios
             {
                 DetallesFacturasEntidad nuevoDetalle = new DetallesFacturasEntidad();
 
-                nuevoDetalle.CodigoFactura = Convert.ToInt32(cbxCodigoFactura.SelectedValue ?? 0); // Ajustar si el cbx no tiene valor asignado aún
+                nuevoDetalle.CodigoFactura = Convert.ToInt32(cbxCodigoFactura.SelectedValue ?? 0); 
                 nuevoDetalle.TipoConcepto = cbxTipoConcepto.SelectedItem?.ToString() ?? "";
                 nuevoDetalle.CodigoReferencia = Convert.ToInt32(nudCodigoReferencia.Value);
                 nuevoDetalle.DescripcionReferencia = txtDescripcionReferencia.Text;
@@ -133,7 +147,7 @@ namespace Sanatorios
 
                 nuevoDetalle.UsuarioSistema = Sesion.NombreUsuario;
                 nuevoDetalle.FechaSistema = DateTime.Now.Date;
-                nuevoDetalle.HoraSistema = DateTime.Now; // En tu entidad es DateTime
+                nuevoDetalle.HoraSistema = DateTime.Now.TimeOfDay; 
 
                 DetalleFacturasNegocio negocioDetalles = new DetalleFacturasNegocio();
                 if (negocioDetalles.MtdAgregar(nuevoDetalle))
@@ -176,7 +190,7 @@ namespace Sanatorios
 
                 detalleEditado.UsuarioSistema = Sesion.NombreUsuario;
                 detalleEditado.FechaSistema = DateTime.Now.Date;
-                detalleEditado.HoraSistema = DateTime.Now;
+                detalleEditado.HoraSistema = DateTime.Now.TimeOfDay;
 
                 DetalleFacturasNegocio negocioDetalles = new DetalleFacturasNegocio();
                 if (negocioDetalles.MtdEditar(detalleEditado))

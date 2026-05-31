@@ -1,5 +1,7 @@
 ﻿using Entidad.Factura;
 using Negocio.Facturas;
+using Negocio.JuanDavid;
+using Negocio.SegurosMedicos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Sanatorios.UsuarioLogueado;
 
 namespace Sanatorios
 {
@@ -61,6 +62,48 @@ namespace Sanatorios
 
             }
         }
+        private void MtdCargarAtencionesEnCombo()
+        {
+            try
+            {
+
+                AntencionNegocio negocioAtenciones = new AntencionNegocio();
+
+
+                cbxAtencion.DataSource = negocioAtenciones.MtdConsultar();
+
+
+                cbxAtencion.DisplayMember = "CodigoAtencion";
+                cbxAtencion.ValueMember = "CodigoAtencion";
+                cbxAtencion.SelectedIndex = -1; 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar las Atenciones: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void MtdCargarSegurosEnCombo()
+        {
+            try
+            {
+               
+                SegurosMedicosNegocio negocioSeguros = new SegurosMedicosNegocio();
+
+                cbxCodigoSeguro.DataSource = negocioSeguros.MtdConsultarSeguros();
+
+               
+                cbxCodigoSeguro.DisplayMember = "NombreSeguro";
+
+              
+                cbxCodigoSeguro.ValueMember = "CodigoSeguro";
+                cbxCodigoSeguro.SelectedIndex = -1; 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los Seguros Médicos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         //----- LIMPIAR ----//
         private void MtdLimpiarCampos()
@@ -109,8 +152,8 @@ namespace Sanatorios
                 nuevaFactura.TotalPagar = nudTotalPagar.Value;
                 nuevaFactura.Estado = rdbActivo.Checked;
 
-
-                nuevaFactura.UsuarioSistema = Sesion.NombreUsuario;
+               
+                nuevaFactura.UsuarioSistema = "Admin"; 
                 nuevaFactura.FechaSistema = DateTime.Now.Date;
                 nuevaFactura.HoraSistema = DateTime.Now.TimeOfDay;
 
@@ -186,7 +229,7 @@ namespace Sanatorios
                 facturaEditada.TotalPagar = nudTotalPagar.Value;
                 facturaEditada.Estado = rdbActivo.Checked;
 
-                facturaEditada.UsuarioSistema = Sesion.NombreUsuario;
+                facturaEditada.UsuarioSistema = "Admin";
                 facturaEditada.FechaSistema = DateTime.Now.Date;
                 facturaEditada.HoraSistema = DateTime.Now.TimeOfDay;
 
@@ -215,7 +258,12 @@ namespace Sanatorios
 
         private void FacturasForms_Load(object sender, EventArgs e)
         {
-            
+            MtdCargarAtencionesEnCombo(); 
+            MtdCargarSegurosEnCombo();   
+
+            MtdCargarDatosEnTabla();
+            MtdLimpiarCampos();
+          
             MtdCargarDatosEnTabla();
 
             

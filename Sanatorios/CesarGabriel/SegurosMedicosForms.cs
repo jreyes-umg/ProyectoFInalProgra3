@@ -130,7 +130,7 @@ namespace Sanatorios
 
                 nuevoSeguro.UsuarioSistema = Sesion.NombreUsuario;
                 nuevoSeguro.FechaSistema = DateTime.Now;
-                nuevoSeguro.HoraSistema = DateTime.Now;
+                nuevoSeguro.HoraSistema = DateTime.Now.TimeOfDay;
 
                 SegurosMedicosNegocio negocio = new SegurosMedicosNegocio();
                 if (negocio.MtdAgregar(nuevoSeguro))
@@ -164,7 +164,7 @@ namespace Sanatorios
 
                 seguroEditado.UsuarioSistema = Sesion.NombreUsuario;
                 seguroEditado.FechaSistema = DateTime.Now;
-                seguroEditado.HoraSistema = DateTime.Now;
+                seguroEditado.HoraSistema = DateTime.Now.TimeOfDay;
 
                 SegurosMedicosNegocio negocio = new SegurosMedicosNegocio();
                 if (negocio.MtdEditar(seguroEditado))

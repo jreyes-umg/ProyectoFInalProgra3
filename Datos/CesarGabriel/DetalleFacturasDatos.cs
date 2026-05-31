@@ -1,5 +1,6 @@
 ﻿using Entidad;
 using Entidad.Detalles;
+using Entidad.Factura;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -223,7 +224,7 @@ namespace Datos.DetalleFacturas
                                     Estado = Convert.ToBoolean(dr["Estado"]),
                                     UsuarioSistema = Convert.ToString(dr["UsuarioSistema"]),
                                     FechaSistema = Convert.ToDateTime(dr["FechaSistema"]),
-                                    HoraSistema = Convert.ToDateTime(dr["HoraSistema"])
+                                    HoraSistema = (TimeSpan)(dr["HoraSistema"])
                                 });
                             }
                         }
@@ -236,7 +237,45 @@ namespace Datos.DetalleFacturas
                 throw new Exception("Error al mostrar la lista: " + ex.Message);
             }
         }
+        public List<dynamic> MtdListarFacturas()
+                             {
+            List<dynamic> ListarDatos = new List<dynamic>();
 
+            try
+            {
+                using (SqlConnection conn = conexionDatos.MtdConexion())
+                {
+                    conn.Open();
+                    string QueryListaClientes = @"
+												                    select  CodigoFactura, CodigoAtencion
+													                    From Tbl_Facturas;
+												                    "; // Cambiar query
+
+                    using (SqlCommand cmd = new SqlCommand(QueryListaClientes, conn))
+                    {
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+
+
+                            while (dr.Read())
+                            {
+                                ListarDatos.Add(new
+                                {
+                                    Value = dr["CodigoFactura"], // Cambiar nombre de campo codigo segun query
+                                    Text = $"Factura:{dr["CodigoFactura"]} - Atencion: {dr["CodigoAtencion"]}" // Cambiar codigo y nombre, segun query
+                                });
+                            }
+                        }
+                    }
+
+                }
+                return ListarDatos;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al mostrar los datos : " + ex.Message);
+            }
+        }
     }
 }
 

@@ -178,11 +178,11 @@ namespace Datos.Pagos
                 }
                 catch (SqlException exSql)
                 {
-                    throw new Exception("Error al buscar el Doctor: " + exSql.Message);
+                    throw new Exception("Error al buscar el Codigo de pago: " + exSql.Message);
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Error general al buscar el Doctor: " + ex.Message);
+                    throw new Exception("Error general al buscar el Codigo de pago: " + ex.Message);
                 }
             }
             public List<PagosEntidad> MtdConsultarPagos()
@@ -225,7 +225,7 @@ namespace Datos.Pagos
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Error al mostrar la lista" + ex.Message);
+                    throw new Exception("Error al mostrar la lista codigo pagos" + ex.Message);
 
                 }
             }
